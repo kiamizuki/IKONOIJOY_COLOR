@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="ja" class="transition-colors duration-300">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>IKONOIJOY PENLIGHT COLOR</title>
+
+  <!-- ========================================== -->
+  <!-- SNSシェア用リンクカード設定 (OGP / Twitter Card) -->
+  <!-- ========================================== -->
+  <meta property="og:title" content="イコノイジョイ メンカラ＆ペンライトカラー早見表">
+  <meta property="og:description" content="＝LOVE、≠ME、≒JOYのメンバーカラーとペンライトカラーが一目でわかる、ファン専用の非公式便利早見表ツール！色系統の絞り込みやお気に入りピン留め機能も。">
+  <meta property="og:url" content="https://your-domain.com/color_chart.html">
+  <meta property="og:image" content="https://placehold.co/1200x630/fdf2f8/db2777/png?text=IKONOIJOY%0AColor+Chart">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="イコノイジョイ ペンライトアシスタント">
+  <meta property="og:locale" content="ja_JP">
+
+  <!-- X (旧Twitter) 用個別設定 -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="イコノイジョイ メンカラ＆ペンライトカラー早見表">
+  <meta name="twitter:description" content="＝LOVE、≠ME、≒JOYのメンバーカラーとペンライトカラーが一目でわかる、ファン専用の非公式便利早見表ツール！">
+  <meta name="twitter:image" content="https://placehold.co/1200x630/fdf2f8/db2777/png?text=IKONOIJOY%0AColor+Chart">
+  <!-- ========================================== -->
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Noto Sans JP & M PLUS Rounded 1c -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <script>
+    // Tailwindのカスタム設定
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Noto Sans JP', 'sans-serif'],
+            rounded: ['M PLUS Rounded 1c', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Noto Sans JP', 'M PLUS Rounded 1c', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* ライブ感のある発光グラデーションアニメーション */
+    @keyframes glow {
+      0%, 100% { filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 10px var(--glow-color, #ff7da0)); }
+      50% { filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 16px var(--glow-color, #ff7da0)); }
+    }
+    
+    .glow-effect {
+      animation: glow 3s infinite ease-in-out;
+    }
+
+    /* 慣性スクロール */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen pb-24 transition-colors duration-300">
+
+  <!-- ヘッダー -->
+  <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 shadow-sm sticky top-0 z-40 transition-colors duration-300">
+    <div class="max-w-6xl mx-auto px-4 py-3.5 flex flex-col md:flex-row items-center justify-between gap-4">
+      
+      <!-- タイトル & 非公式バッジ -->
+      <div class="text-center md:text-left flex items-center justify-between w-full md:w-auto">
+        <div>
+          <div class="flex items-center justify-center md:justify-start gap-2">
+            <h1 class="text-xl md:text-2xl font-bold font-rounded bg-gradient-to-r from-pink-500 via-emerald-500 to-yellow-500 bg-clip-text text-transparent flex items-center gap-2">
+              <span>✨</span> メンカラ＆ペンライト早見表
+            </h1>
+            <span class="bg-slate-100 dark:bg-slate-800 text-[9px] text-slate-500 dark:text-slate-400 font-bold px-1.5 py-0.5 rounded border border-slate-200/60 dark:border-slate-700/60">非公式</span>
+          </div>
+          <p class="text-[10px] text-slate-400 dark:text-slate-500 mt-0.5 text-center md:text-left">イコノイジョイのメンバーカラー＆ペンライト色まとめファンアプリ</p>
+        </div>
+        
+        <!-- モバイル用ダークモード切り替えボタン -->
+        <button onclick="toggleDarkMode()" class="md:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-amber-400 transition-colors" aria-label="テーマ切り替え">
+          <span id="themeIconMobile" class="text-lg">🌙</span>
+        </button>
+      </div>
+      
+      <!-- 検索・システムコントロール -->
+      <div class="w-full md:w-auto flex items-center gap-2">
+        <div class="relative flex-1 md:w-64">
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="メンバー名・かな・色・ローマ字で検索..." 
+            class="w-full pl-10 pr-4 py-2 text-sm border border-slate-200 dark:border-slate-800 dark:bg-slate-850 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400 dark:focus:ring-pink-500 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600"
+          >
+          <span class="absolute left-3.5 top-2.5 text-slate-400 dark:text-slate-600 text-sm">🔍</span>
+        </div>
+        
+        <!-- PC用ダークモード切り替えボタン -->
+        <button onclick="toggleDarkMode()" class="hidden md:flex p-2.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-amber-400 hover:scale-105 transition-all" title="ダークモード切り替え">
+          <span id="themeIconPC" class="text-md">🌙</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 mt-6">
+    
+    <!-- グループ切り替えタブ -->
+    <div class="flex justify-center p-1 bg-slate-200/60 dark:bg-slate-900/60 rounded-2xl max-w-md mx-auto mb-5 border border-slate-100 dark:border-slate-800/80">
+      <button onclick="filterGroup('all')" id="tab-all" class="flex-1 py-2 text-xs md:text-sm font-bold rounded-xl transition-all duration-300 bg-white dark:bg-slate-800 text-slate-800 dark:text-white shadow-sm">ALL</button>
+      <button onclick="filterGroup('equal-love')" id="tab-equal-love" class="flex-1 py-2 text-xs md:text-sm font-bold rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all duration-300">＝LOVE</button>
+      <button onclick="filterGroup('not-equal-me')" id="tab-not-equal-me" class="flex-1 py-2 text-xs md:text-sm font-bold rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all duration-300">≠ME</button>
+      <button onclick="filterGroup('nearly-equal-joy')" id="tab-nearly-equal-joy" class="flex-1 py-2 text-xs md:text-sm font-bold rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all duration-300">≒JOY</button>
+    </div>
+
+    <!-- お気に入り/推しメンのみ表示トグル -->
+    <div class="flex justify-center mb-5">
+      <button onclick="toggleFavoritesOnly()" id="favToggleBtn" class="flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+        <span id="favToggleIcon">☆</span>
+        <span>お気に入りメンバーのみ表示</span>
+      </button>
+    </div>
+
+    <!-- 色系統クイックフィルター -->
+    <div class="mb-8">
+      <p class="text-[10px] font-black text-slate-400 dark:text-slate-500 text-center mb-2.5 uppercase tracking-widest">カラー系統で絞り込む</p>
+      <div class="flex flex-wrap justify-center gap-1.5 max-w-2xl mx-auto px-2" id="colorFilterContainer">
+        <!-- JSで動的に構築 -->
+      </div>
+    </div>
+
+    <!-- 「お気に入り・推し」セクション（ピン留め） -->
+    <div id="pinnedSection" class="hidden mb-10">
+      <div class="flex items-center gap-2 mb-4 border-b border-pink-100 dark:border-pink-950/40 pb-2">
+        <span class="text-lg">💖</span>
+        <h2 class="text-sm font-bold font-rounded text-pink-500 tracking-wider">マイ推し（お気に入りピン留め）</h2>
+      </div>
+      <div id="pinnedGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- お気に入りメンバーがここに複製されます -->
+      </div>
+    </div>
+
+    <!-- メインメンバー一覧グリッド -->
+    <div>
+      <div class="flex items-center justify-between mb-4">
+        <h2 id="gridTitle" class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">メンバー一覧</h2>
+        <span id="resultCount" class="text-xs font-bold text-slate-400">0人</span>
+      </div>
+      <div id="memberGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- JSでカードを動的にレンダリング -->
+      </div>
+    </div>
+
+    <!-- 該当なし表示 -->
+    <div id="noResults" class="hidden text-center py-20">
+      <div class="text-5xl mb-4">🧐</div>
+      <p class="text-slate-500 dark:text-slate-400 font-bold">条件に合うメンバーが見つかりませんでした</p>
+      <p class="text-xs text-slate-400 mt-1">検索ワードを変えるか、フィルターをリセットしてください</p>
+      <button onclick="resetFilters()" class="mt-5 px-5 py-2.5 text-xs font-bold text-pink-500 hover:text-white border border-pink-400 dark:border-pink-800 hover:bg-pink-400 dark:hover:bg-pink-900 rounded-full transition-all shadow-sm">
+        すべての条件をクリアする
+      </button>
+    </div>
+  </main>
+
+  <!-- フッター -->
+  <footer class="mt-20 text-center text-xs text-slate-400 dark:text-slate-600 border-t border-slate-100 dark:border-slate-900 py-10 px-4">
+    <p class="font-rounded font-bold bg-gradient-to-r from-pink-400 via-emerald-400 to-yellow-400 bg-clip-text text-transparent inline-block mb-2">イコノイジョイ ペンライトアシスタント</p>
+    <p>© 2026 IKONOIJOY Penlight Assistant</p>
+    <p class="mt-1.5 text-[11px] leading-relaxed max-w-xl mx-auto">
+      ※本アプリはファン有志が制作した非公式のファンツールです。<br>
+      公式プロフィールや実際のライブステージ情報をベースに、ペンライトが複数色のメンバーに対応した色数を並べて表示しています。お気に入りデータはお手元の端末内に安全に保存されます。
+    </p>
+  </footer>
+
+  <!-- トースト通知 -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 transform bg-slate-900/95 dark:bg-slate-100/95 text-white dark:text-slate-950 text-xs px-5 py-3 rounded-full shadow-2xl opacity-0 translate-y-3 pointer-events-none transition-all duration-300 z-50 flex items-center gap-2 font-bold">
+    <span id="toastIcon">📋</span> <span id="toastMsg">コピーしました！</span>
+  </div>
+
+  <script>
+    // メンバーカラーのパレット定義
+    const colorPalette = {
+      "薄紫（ラベンダー）": ["#E8D7FF"],
+      "ラベンダー": ["#E8D7FF"],
+      "白": ["#FFFFFF"],
+      "紫": ["#BE79FF"],
+      "オレンジ": ["#FFA23A"],
+      "青": ["#3B82F6"],
+      "水色": ["#60A5FA"],
+      "ピンク": ["#FF7DA0"],
+      "薄ピンク": ["#FFCCD5"],
+      "赤": ["#EF4444"],
+      "黄色": ["#FBBF24"],
+      "黄": ["#FBBF24"],
+      "ミントグリーン": ["#6EE7B7"],
+      "黒": ["#1F2937"], 
+      "緑": ["#10B981"],
+      "薄黄色": ["#FEF08A"],
+      "アイスエメラルドグリーン": ["#A7F3D0"],
+      "エメラルドグリーン": ["#34D399"]
+    };
+
+    // メンバーデータ定義
+    const members = [
+      // ＝LOVE (イコラブ)
+      { id: "emiri", group: "equal-love", name: "大谷 映美里", kana: "Emiri Otani", mColorName: "薄紫（ラベンダー）", pColorName: "白×紫", mColors: ["#E8D7FF"], pColors: ["#FFFFFF", "#BE79FF"], tags: ["purple", "lavender", "white"], imageUrl: "https://placehold.co/150x150/fdf2f8/db2777?text=EO", initials: "EO" },
+      { id: "hana", group: "equal-love", name: "大場 花菜", kana: "Hana Oba", mColorName: "オレンジ", pColorName: "オレンジ×青", mColors: ["#FFA23A"], pColors: ["#FFA23A", "#3B82F6"], tags: ["orange", "blue"], imageUrl: "https://placehold.co/150x150/fdf2f8/db2777?text=HO", initials: "HO" },
+      { id: "risa", group: "equal-love", name: "音嶋 莉沙", kana: "Risa Otoshima", mColorName: "水色", pColorName: "水色×ピンク", mColors: ["#60A5FA"], pColors: ["#60A5FA", "#FF7DA0"], tags: ["blue", "sky", "pink"], imageUrl: "https://placehold.co/150x150/fdf2f8/db2777?text=RO", initials: "RO" },
+      { id: "kiara", group: "equal-love", name: "齋藤 樹愛羅", kana: "Kiara Saito", mColorName: "ピンク", pColorName: "薄ピンク×薄ピンク", mColors: ["#FF7DA0"], pColors: ["#FFCCD5", "#FFCCD5"], tags: ["pink"], imageUrl: "https://placehold.co/150x150/fdf2f8/db2777?text=KS", initials: "KS" },
+      { id: "maika", group: "equal-love", name: "佐々木 舞香", kana: "Maika Sasaki", mColorName: "白", pColorName: "白", mColors: ["#FFFFFF"], pColors: ["#FFFFFF"], tags: ["white"], imageUrl: "https://placehold.co/150x150/fdf2f8/db2777?text=MS", initials: "MS" },
+      { id: "hitomi", group: "equal-love", name: "髙松 瞳", kana: "Hitomi Takamatsu", mColorName: "赤", pColorName: "赤", mColors: ["#EF4444"], pColors: ["#EF4444"], tags: ["red"], imageUrl: "https://placehold.co/150x150/fdf2f8/db2777?text=HT", initials: "HT" },
+      { id: "shoko", group: "equal-love", name: "瀧脇 笙古", kana: "Shoko Takiwaki", mColorName: "黄色", pColorName: "黄色×オレンジ×ピンク", mColors: ["#FBBF24"], pColors: ["#FBBF24", "#FFA23A", "#FF7DA0"], tags: ["yellow", "orange", "pink"], imageUrl: "https://placehold.co/150x150/fdf2f8/db2777?text=ST", initials: "ST" },
+      { id: "iori", group: "equal-love", name: "野口 衣織", kana: "Iori Noguchi", mColorName: "紫", pColorName: "紫", mColors: ["#BE79FF"], pColors: ["#BE79FF"], tags: ["purple"], imageUrl: "https://placehold.co/150x150/fdf2f8/db2777?text=IN", initials: "IN" },
+      { id: "sana", group: "equal-love", name: "諸橋 沙夏", kana: "Sana Morohashi", mColorName: "赤", pColorName: "赤", mColors: ["#EF4444"], pColors: ["#EF4444"], tags: ["red"], imageUrl: "https://placehold.co/150x150/fdf2f8/db2777?text=SM", initials: "SM" },
+      { id: "anna", group: "equal-love", name: "山本 杏奈", kana: "Anna Yamamoto", mColorName: "黄色×青", pColorName: "黄色×青", mColors: ["#FBBF24", "#3B82F6"], pColors: ["#FBBF24", "#3B82F6"], tags: ["yellow", "blue"], imageUrl: "https://placehold.co/150x150/fdf2f8/db2777?text=AY", initials: "AY" },
+
+      // ≠ME (ノイミー)
+      { id: "hana_o", group: "not-equal-me", name: "尾木 波菜", kana: "Hana Ogi", mColorName: "青×白", pColorName: "青×白", mColors: ["#3B82F6", "#FFFFFF"], pColors: ["#3B82F6", "#FFFFFF"], tags: ["blue", "white"], imageUrl: "https://placehold.co/150x150/ecfdf5/059669?text=HO", initials: "HO" },
+      { id: "kirari", group: "not-equal-me", name: "落合 希来里", kana: "Kirari Ochiai", mColorName: "黄×黄", pColorName: "黄×黄", mColors: ["#FBBF24", "#FBBF24"], pColors: ["#FBBF24", "#FBBF24"], tags: ["yellow"], imageUrl: "https://placehold.co/150x150/ecfdf5/059669?text=KO", initials: "KO" },
+      { id: "moeko", group: "not-equal-me", name: "蟹沢 萌子", kana: "Moeko Kanisawa", mColorName: "水色×赤", pColorName: "水色×赤", mColors: ["#60A5FA", "#EF4444"], pColors: ["#60A5FA", "#EF4444"], tags: ["blue", "sky", "red"], imageUrl: "https://placehold.co/150x150/ecfdf5/059669?text=MK", initials: "MK" },
+      { id: "natsune", group: "not-equal-me", name: "河口 夏音", kana: "Natsune Kawaguchi", mColorName: "オレンジ×白", pColorName: "オレンジ×白", mColors: ["#FFA23A", "#FFFFFF"], pColors: ["#FFA23A", "#FFFFFF"], tags: ["orange", "white"], imageUrl: "https://placehold.co/150x150/ecfdf5/059669?text=NK", initials: "NK" },
+      { id: "natsumi", group: "not-equal-me", name: "川中子 奈月心", kana: "Natsumi Kawanago", mColorName: "黒×ミントグリーン", pColorName: "黒×ミントグリーン", mColors: ["#1F2937", "#6EE7B7"], pColors: ["#1F2937", "#6EE7B7"], tags: ["black", "green"], imageUrl: "https://placehold.co/150x150/ecfdf5/059669?text=NK", initials: "NK" },
+      { id: "momo", group: "not-equal-me", name: "櫻井 もも", kana: "Momo Sakurai", mColorName: "ピンク×薄ピンク", pColorName: "ピンク×薄ピンク", mColors: ["#FF7DA0", "#FFCCD5"], pColors: ["#FF7DA0", "#FFCCD5"], tags: ["pink"], imageUrl: "https://placehold.co/150x150/ecfdf5/059669?text=MS", initials: "MS" },
+      { id: "hitomi_s", group: "not-equal-me", name: "鈴木 瞳美", kana: "Hitomi Suzuki", mColorName: "薄ピンク×薄ピンク", pColorName: "薄ピンク×薄ピンク", mColors: ["#FFCCD5", "#FFCCD5"], pColors: ["#FFCCD5", "#FFCCD5"], tags: ["pink"], imageUrl: "https://placehold.co/150x150/ecfdf5/059669?text=HS", initials: "HS" },
+      { id: "saya", group: "not-equal-me", name: "谷崎 早耶", kana: "Saya Tanizaki", mColorName: "ピンク×白", pColorName: "ピンク×白", mColors: ["#FF7DA0", "#FFFFFF"], pColors: ["#FF7DA0", "#FFFFFF"], tags: ["pink", "white"], imageUrl: "https://placehold.co/150x150/ecfdf5/059669?text=ST", initials: "ST" },
+      { id: "nanaka", group: "not-equal-me", name: "冨田 菜々風", kana: "Nanaka Tomita", mColorName: "黄×緑", pColorName: "黄×緑", mColors: ["#FBBF24", "#10B981"], pColors: ["#FBBF24", "#10B981"], tags: ["yellow", "green"], imageUrl: "https://placehold.co/150x150/ecfdf5/059669?text=NT", initials: "NT" },
+      { id: "shiori", group: "not-equal-me", name: "永田 詩央里", kana: "Shiori Nagata", mColorName: "青×青", pColorName: "青×青", mColors: ["#3B82F6", "#3B82F6"], pColors: ["#3B82F6", "#3B82F6"], tags: ["blue"], imageUrl: "https://placehold.co/150x150/ecfdf5/059669?text=SN", initials: "SN" },
+      { id: "miyuki", group: "not-equal-me", name: "本田 珠由記", kana: "Miyuki Honda", mColorName: "薄紫×水色", pColorName: "薄紫×水色", mColors: ["#E8D7FF", "#60A5FA"], pColors: ["#E8D7FF", "#60A5FA"], tags: ["purple", "lavender", "blue", "sky"], imageUrl: "https://placehold.co/150x150/ecfdf5/059669?text=MH", initials: "MH" },
+
+      // ≒JOY (ニアジョイ)
+      { id: "jurii", group: "nearly-equal-joy", name: "逢田 珠里依", kana: "Jurii Aida", mColorName: "赤", pColorName: "赤×赤", mColors: ["#EF4444"], pColors: ["#EF4444", "#EF4444"], tags: ["red"], imageUrl: "https://placehold.co/150x150/fef9c3/ca8a04?text=JA", initials: "JA" },
+      { id: "konoa", group: "nearly-equal-joy", name: "天野 香乃愛", kana: "Konoa Amano", mColorName: "薄ピンク", pColorName: "薄ピンク×薄ピンク", mColors: ["#FFCCD5"], pColors: ["#FFCCD5", "#FFCCD5"], tags: ["pink"], imageUrl: "https://placehold.co/150x150/fef9c3/ca8a04?text=KA", initials: "KA" },
+      { id: "ayumi", group: "nearly-equal-joy", name: "市原 愛弓", kana: "Ayumi Ichihara", mColorName: "紫", pColorName: "紫×紫", mColors: ["#BE79FF"], pColors: ["#BE79FF", "#BE79FF"], tags: ["purple"], imageUrl: "https://placehold.co/150x150/fef9c3/ca8a04?text=AI", initials: "AI" },
+      { id: "renn", group: "nearly-equal-joy", name: "江角 怜音", kana: "Renn Esumi", mColorName: "青", pColorName: "青×青", mColors: ["#3B82F6"], pColors: ["#3B82F6", "#3B82F6"], tags: ["blue"], imageUrl: "https://placehold.co/150x150/fef9c3/ca8a04?text=RE", initials: "RE" },
+      { id: "mitsuki", group: "nearly-equal-joy", name: "大信田 美月", kana: "Mitsuki Oshida", mColorName: "水色", pColorName: "水色×水色", mColors: ["#60A5FA"], pColors: ["#60A5FA", "#60A5FA"], tags: ["blue", "sky"], imageUrl: "https://placehold.co/150x150/fef9c3/ca8a04?text=MO", initials: "MO" },
+      { id: "aoi", group: "nearly-equal-joy", name: "大西 葵", kana: "Aoi Onishi", mColorName: "白", pColorName: "白×白", mColors: ["#FFFFFF"], pColors: ["#FFFFFF", "#FFFFFF"], tags: ["white"], imageUrl: "https://placehold.co/150x150/fef9c3/ca8a04?text=AO", initials: "AO" },
+      { id: "amimi", group: "nearly-equal-joy", name: "小澤 愛実", kana: "Manami Ozawa", mColorName: "黄色", pColorName: "黄×黄", mColors: ["#FBBF24"], pColors: ["#FBBF24", "#FBBF24"], tags: ["yellow"], imageUrl: "https://placehold.co/150x150/fef9c3/ca8a04?text=MO", initials: "MO" },
+      { id: "mai", group: "nearly-equal-joy", name: "高橋 舞", kana: "Mai Takahashi", mColorName: "ピンク", pColorName: "ピンク×ピンク", mColors: ["#FF7DA0"], pColors: ["#FF7DA0", "#FF7DA0"], tags: ["pink"], imageUrl: "https://placehold.co/150x150/fef9c3/ca8a04?text=MT", initials: "MT" },
+      { id: "riko", group: "nearly-equal-joy", name: "藤沢 莉子", kana: "Riko Fujisawa", mColorName: "オレンジ", pColorName: "オレンジ×オレンジ", mColors: ["#FFA23A"], pColors: ["#FFA23A", "#FFA23A"], tags: ["orange"], imageUrl: "https://placehold.co/150x150/fef9c3/ca8a04?text=RF", initials: "RF" },
+      { id: "yuika", group: "nearly-equal-joy", name: "村山 結香", kana: "Yuika Murayama", mColorName: "緑", pColorName: "緑×緑", mColors: ["#10B981"], pColors: ["#10B981", "#10B981"], tags: ["green"], imageUrl: "https://placehold.co/150x150/fef9c3/ca8a04?text=YM", initials: "YM" },
+      { id: "kyoka", group: "nearly-equal-joy", name: "山田 杏佳", kana: "Kyoka Yamada", mColorName: "薄黄色", pColorName: "薄黄色×薄黄色", mColors: ["#FEF08A"], pColors: ["#FEF08A", "#FEF08A"], tags: ["yellow"], imageUrl: "https://placehold.co/150x150/fef9c3/ca8a04?text=KY", initials: "KY" },
+      { id: "arisu", group: "nearly-equal-joy", name: "山野 愛月", kana: "Arisu Yamano", mColorName: "アイスエメラルドグリーン", pColorName: "エメラルドグリーン×エメラルドグリーン", mColors: ["#A7F3D0"], pColors: ["#34D399", "#34D399"], tags: ["green"], imageUrl: "https://placehold.co/150x150/fef9c3/ca8a04?text=AY", initials: "AY" }
+    ];
+
+    // グループ別のテーマカラー定義 (イコラブ＝ピンク、ノイミー＝エメラルド、ニアジョイ＝イエロー)
+    const groupMeta = {
+      "equal-love": { 
+        name: "＝LOVE", 
+        color: "from-pink-50/60 to-pink-100/30 dark:from-pink-950/20 dark:to-pink-900/10", 
+        border: "border-pink-200 dark:border-pink-900/40", 
+        badge: "bg-pink-100 text-pink-700 dark:bg-pink-900/40 dark:text-pink-300" 
+      },
+      "not-equal-me": { 
+        name: "≠ME", 
+        color: "from-emerald-50/60 to-emerald-100/30 dark:from-emerald-950/20 dark:to-emerald-900/10", 
+        border: "border-emerald-200 dark:border-emerald-900/40", 
+        badge: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300" 
+      },
+      "nearly-equal-joy": { 
+        name: "≒JOY", 
+        color: "from-yellow-50/60 to-yellow-100/30 dark:from-yellow-950/20 dark:to-yellow-900/10", 
+        border: "border-yellow-200 dark:border-yellow-900/40", 
+        badge: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/40 dark:text-yellow-300" 
+      }
+    };
+
+    // アプリケーションの状態管理
+    const state = {
+      group: "all",
+      colorTag: "all",
+      searchQuery: "",
+      favorites: JSON.parse(localStorage.getItem('ikj_favorites') || '[]'),
+      favoritesOnly: false,
+      theme: localStorage.getItem('ikj_theme') || 'light'
+    };
+
+    // クイックフィルター配色リスト
+    const systemColors = [
+      { id: "all", name: "ALL", class: "bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 text-slate-800 dark:text-slate-200" },
+      { id: "red", name: "赤系", class: "bg-red-500 text-white shadow-sm hover:scale-105" },
+      { id: "pink", name: "ピンク系", class: "bg-pink-400 text-white shadow-sm hover:scale-105" },
+      { id: "blue", name: "青・水色", class: "bg-blue-400 text-white shadow-sm hover:scale-105" },
+      { id: "purple", name: "紫・薄紫", class: "bg-purple-400 text-white shadow-sm hover:scale-105" },
+      { id: "yellow", name: "黄・薄黄", class: "bg-yellow-300 text-slate-800 dark:bg-yellow-400 shadow-sm hover:scale-105" },
+      { id: "orange", name: "オレンジ系", class: "bg-orange-400 text-white shadow-sm hover:scale-105" },
+      { id: "green", name: "緑・エメラルド", class: "bg-emerald-400 text-white shadow-sm hover:scale-105" },
+      { id: "white", name: "白系", class: "bg-white text-slate-700 dark:bg-slate-100 border border-slate-200 dark:border-slate-700 shadow-sm hover:scale-105" },
+      { id: "black", name: "黒系", class: "bg-slate-800 dark:bg-slate-200 text-white dark:text-slate-900 shadow-sm hover:scale-105" }
+    ];
+
+    // SVG構築ヘルパー (ハート) - 複数色時のスプリットカラー対応
+    function createHeartSvg(id, colors, isPinned = false) {
+      let gradStr = '';
+      const prefix = isPinned ? 'pin-' : '';
+      if (colors.length === 1) {
+        gradStr = `<stop offset="0%" stop-color="${colors[0]}" /><stop offset="100%" stop-color="${colors[0]}" />`;
+      } else if (colors.length === 2) {
+        gradStr = `<stop offset="0%" stop-color="${colors[0]}" /><stop offset="50%" stop-color="${colors[0]}" /><stop offset="50%" stop-color="${colors[1]}" /><stop offset="100%" stop-color="${colors[1]}" />`;
+      } else {
+        gradStr = `<stop offset="0%" stop-color="${colors[0]}" /><stop offset="50%" stop-color="${colors[1]}" /><stop offset="100%" stop-color="${colors[2]}" />`;
+      }
+
+      const isWhite = colors.every(c => c.toUpperCase() === '#FFFFFF');
+      const strokeColor = isWhite ? '#cbd5e1' : '#f1f5f9';
+      const glowVar = colors[0];
+
+      return `
+        <svg viewBox="0 0 32 32" class="w-11 h-11 transition-transform duration-300 hover:scale-125 glow-effect" style="--glow-color: ${glowVar}">
+          <defs>
+            <linearGradient id="${prefix}heart-grad-${id}" x1="0%" y1="100%" x2="100%" y2="0%">
+              ${gradStr}
+            </linearGradient>
+          </defs>
+          <path d="M16,28.5 C16,28.5 3,20 3,11.5 C3,5.5 7,2.5 11.5,2.5 C14.5,2.5 16,4.5 16,4.5 C16,4.5 17.5,2.5 20.5,2.5 C25,2.5 29,5.5 29,11.5 C29,20 16,28.5 16,28.5 Z" fill="url(#${prefix}heart-grad-${id})" stroke="${strokeColor}" stroke-width="1.5" />
+        </svg>
+      `;
+    }
+
+    // 単色ペンライトを生成する関数
+    function createSinglePenlightSvg(color, id, index, total, isPinned = false) {
+      const prefix = isPinned ? 'pin-' : '';
+      const gradId = `${prefix}pen-grad-${id}-${index}`;
+      const isWhite = color.toUpperCase() === '#FFFFFF';
+      
+      // 3D風グラデーション定義
+      let gradHtml = `
+        <linearGradient id="${gradId}" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="${color}" />
+          <stop offset="35%" stop-color="#FFFFFF" />
+          <stop offset="70%" stop-color="${color}" />
+          <stop offset="100%" stop-color="${color}" />
+        </linearGradient>
+      `;
+      if (isWhite) {
+        gradHtml = `
+          <linearGradient id="${gradId}" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#E2E8F0" />
+            <stop offset="50%" stop-color="#FFFFFF" />
+            <stop offset="100%" stop-color="#CBD5E1" />
+          </linearGradient>
+        `;
+      }
+
+      const strokeColor = isWhite ? '#cbd5e1' : '#f8fafc';
+      
+      // 複数ある場合にバルログ持ち風に重ね合わせるための角度と位置計算
+      let transformStyle = '';
+      let marginStyle = '';
+      if (total > 1) {
+        const angle = -15 + (index * (30 / (total - 1)));
+        const tx = -6 + (index * 6);
+        transformStyle = `transform: rotate(${angle}deg) translateX(${tx}px);`;
+        marginStyle = index > 0 ? 'margin-left: -18px;' : '';
+      }
+
+      const glowColor = color === '#FFFFFF' ? '#e2e8f0' : color;
+
+      return `
+        <svg viewBox="0 0 40 52" class="w-10 h-12 transition-all duration-300 hover:scale-110 hover:z-20 glow-effect" style="--glow-color: ${glowColor}; ${transformStyle} ${marginStyle} z-index: ${index + 1}; position: relative;">
+          <defs>
+            ${gradHtml}
+          </defs>
+          <!-- 持ち手 -->
+          <path d="M18,34 L22,34 L23,47 A3,3 0 0,1 17,47 Z" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1.2"/>
+          <rect x="18" y="36" width="4" height="2" rx="0.5" fill="#94a3b8"/>
+          <!-- 发光部 -->
+          <rect x="13" y="6" width="14" height="27" rx="7" fill="url(#${gradId})" stroke="${strokeColor}" stroke-width="1" />
+          <!-- キャップ -->
+          <rect x="12" y="32" width="16" height="2.5" fill="#cbd5e1" rx="0.5"/>
+        </svg>
+      `;
+    }
+
+    // 各メンバーのペンライト群(本数分)を描画するラッパー
+    function createPenlightsHtml(pColors, id, isPinned = false) {
+      let html = '<div class="flex items-center relative h-14 pr-3">';
+      pColors.forEach((color, index) => {
+        html += createSinglePenlightSvg(color, id, index, pColors.length, isPinned);
+      });
+      html += '</div>';
+      return html;
+    }
+
+    // お気に入りの登録・解除
+    function toggleFavorite(id, event) {
+      if (event) event.stopPropagation();
+      const index = state.favorites.indexOf(id);
+      if (index > -1) {
+        state.favorites.splice(index, 1);
+        showToast("お気に入りから削除しました", "★");
+      } else {
+        state.favorites.push(id);
+        showToast("お気に入りに登録しました！", "💖");
+      }
+      localStorage.setItem('ikj_favorites', JSON.stringify(state.favorites));
+      renderGrid();
+    }
+
+    // ダークモード切り替え
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        state.theme = 'light';
+        document.getElementById('themeIconMobile').innerText = '🌙';
+        document.getElementById('themeIconPC').innerText = '🌙';
+      } else {
+        html.classList.add('dark');
+        state.theme = 'dark';
+        document.getElementById('themeIconMobile').innerText = '☀️';
+        document.getElementById('themeIconPC').innerText = '☀️';
+      }
+      localStorage.setItem('ikj_theme', state.theme);
+    }
+
+    // 初期テーマのロード
+    function loadTheme() {
+      if (state.theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.getElementById('themeIconMobile').innerText = '☀️';
+        document.getElementById('themeIconPC').innerText = '☀️';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.getElementById('themeIconMobile').innerText = '🌙';
+        document.getElementById('themeIconPC').innerText = '🌙';
+      }
+    }
+
+    // お気に入りフィルターのトグル
+    function toggleFavoritesOnly() {
+      state.favoritesOnly = !state.favoritesOnly;
+      const btn = document.getElementById("favToggleBtn");
+      const icon = document.getElementById("favToggleIcon");
+      if (state.favoritesOnly) {
+        btn.classList.add("bg-pink-500", "text-white", "border-pink-500", "hover:bg-pink-600");
+        btn.classList.remove("bg-white", "dark:bg-slate-900", "text-slate-500", "dark:text-slate-400");
+        icon.innerText = "★";
+      } else {
+        btn.classList.remove("bg-pink-500", "text-white", "border-pink-500", "hover:bg-pink-600");
+        btn.classList.add("bg-white", "dark:bg-slate-900", "text-slate-500", "dark:text-slate-400");
+        icon.innerText = "☆";
+      }
+      renderGrid();
+    }
+
+    // クイックカラーフィルター構築
+    function renderColorFilters() {
+      const container = document.getElementById("colorFilterContainer");
+      container.innerHTML = systemColors.map(color => {
+        const isActive = state.colorTag === color.id;
+        const activeClass = isActive 
+          ? 'ring-2 ring-offset-2 ring-pink-500 dark:ring-offset-slate-950 scale-105 font-black z-10' 
+          : 'opacity-70 hover:opacity-100 scale-100';
+        return `
+          <button 
+            onclick="filterColor('${color.id}')"
+            class="px-3.5 py-1.5 rounded-full text-[11px] font-bold transition-all duration-200 ${color.class} ${activeClass}"
+          >
+            ${color.name}
+          </button>
+        `;
+      }).join('');
+    }
+
+    // カードテンプレート生成 (アバター丸画像とローマ字ふりがな付き)
+    function createMemberCard(member, isPinned = false) {
+      const meta = groupMeta[member.group];
+      const heartSvg = createHeartSvg(member.id, member.mColors, isPinned);
+      const penlightsHtml = createPenlightsHtml(member.pColors, member.id, isPinned);
+      const isFav = state.favorites.includes(member.id);
+      
+      return `
+        <div class="bg-gradient-to-br ${meta.color} bg-white dark:bg-slate-900/40 rounded-2xl border ${meta.border} p-5 shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-full min-h-[220px] group">
+          
+          <!-- お気に入り★ & グループバッジ -->
+          <div class="absolute top-3.5 right-3.5 flex items-center gap-1.5 z-10">
+            <button onclick="toggleFavorite('${member.id}', event)" class="w-8 h-8 flex items-center justify-center rounded-full bg-white/80 dark:bg-slate-800/80 shadow-xs text-sm hover:scale-110 active:scale-[0.9] transition-all text-pink-500" title="お気に入り">
+              ${isFav ? '★' : '☆'}
+            </button>
+            <span class="text-[9px] font-black tracking-wider ${meta.badge} px-2.5 py-1 rounded-full uppercase">
+              ${meta.name}
+            </span>
+          </div>
+
+          <!-- メンバーヘッダー -->
+          <div class="flex items-center gap-3">
+            <img 
+              src="${member.imageUrl}" 
+              alt="${member.name}" 
+              onerror="this.src='https://placehold.co/150x150/cbd5e1/1e293b?text=${member.initials}'"
+              class="w-12 h-12 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm flex-shrink-0"
+            />
+            <div class="min-w-0 pr-16">
+              <span class="text-[10px] text-slate-400 dark:text-slate-500 font-bold block leading-tight tracking-wide font-mono uppercase">${member.kana}</span>
+              <h3 class="text-base md:text-lg font-bold text-slate-800 dark:text-slate-100 tracking-wide mt-0.5 truncate">${member.name}</h3>
+            </div>
+          </div>
+
+          <!-- カラー情報エリア -->
+          <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800/80 space-y-3.5">
+            
+            <!-- メンバーカラー -->
+            <div class="flex items-center gap-3">
+              <div class="flex-shrink-0">
+                ${heartSvg}
+              </div>
+              <div class="min-w-0">
+                <span class="text-[8px] text-slate-400 dark:text-slate-500 font-black block tracking-wider uppercase">MEMBER COLOR</span>
+                <span class="text-xs md:text-sm font-bold text-slate-700 dark:text-slate-300 mt-0.5 block break-all whitespace-normal">
+                  ${member.mColorName}
+                </span>
+              </div>
+            </div>
+
+            <!-- ペンライトカラー -->
+            <div 
+              class="flex items-center gap-3 cursor-pointer hover:bg-slate-100/60 dark:hover:bg-slate-800/40 p-1.5 rounded-xl transition-colors duration-150"
+              onclick="copyToClipboard('${member.pColorName}', '${member.name}')"
+              title="ペンライト設定をコピー"
+            >
+              <div class="flex-shrink-0">
+                ${penlightsHtml}
+              </div>
+              <div class="min-w-0 flex-1 pl-1">
+                <span class="text-[8px] text-slate-400 dark:text-slate-500 font-black flex items-center gap-1 tracking-wider uppercase">
+                  PENLIGHT COLOR
+                  <span class="text-[10px] text-slate-300 dark:text-slate-600">📋</span>
+                </span>
+                <span class="text-xs md:text-sm font-bold text-slate-700 dark:text-slate-300 mt-0.5 block break-all whitespace-normal leading-tight">
+                  ${member.pColorName}
+                </span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      `;
+    }
+
+    // データ描画エンジン
+    function renderGrid() {
+      const grid = document.getElementById("memberGrid");
+      const pinnedGrid = document.getElementById("pinnedGrid");
+      const pinnedSection = document.getElementById("pinnedSection");
+      const noResults = document.getElementById("noResults");
+      const resultCount = document.getElementById("resultCount");
+      
+      // 各フィルターを適用して抽出
+      const filtered = members.filter(member => {
+        // グループ
+        if (state.group !== "all" && member.group !== state.group) return false;
+        // カラー系統タグ
+        if (state.colorTag !== "all" && !member.tags.includes(state.colorTag)) return false;
+        // お気に入り限定
+        if (state.favoritesOnly && !state.favorites.includes(member.id)) return false;
+        // 検索クエリ
+        if (state.searchQuery) {
+          const query = state.searchQuery.toLowerCase().trim();
+          const matchName = member.name.toLowerCase().includes(query);
+          const matchKana = member.kana.toLowerCase().includes(query);
+          const matchColor = member.mColorName.toLowerCase().includes(query) || member.pColorName.toLowerCase().includes(query);
+          if (!matchName && !matchKana && !matchColor) return false;
+        }
+        return true;
+      });
+
+      resultCount.innerText = `${filtered.length}人`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = "";
+        noResults.classList.remove("hidden");
+        pinnedSection.classList.add("hidden");
+        return;
+      }
+
+      noResults.classList.add("hidden");
+
+      // ピン留め（お気に入り）構築
+      const favMembers = filtered.filter(m => state.favorites.includes(m.id));
+      if (favMembers.length > 0 && !state.favoritesOnly) {
+        pinnedSection.classList.remove("hidden");
+        pinnedGrid.innerHTML = favMembers.map(m => createMemberCard(m, true)).join('');
+      } else {
+        pinnedSection.classList.add("hidden");
+      }
+
+      // メインリストのレンダリング
+      grid.innerHTML = filtered.map(m => createMemberCard(m, false)).join('');
+    }
+
+    // グループフィルター切り替え
+    function filterGroup(groupName) {
+      state.group = groupName;
+      const tabs = ['all', 'equal-love', 'not-equal-me', 'nearly-equal-joy'];
+      tabs.forEach(tabId => {
+        const tab = document.getElementById(`tab-${tabId}`);
+        if (tabId === groupName) {
+          if (tabId === 'all') {
+            tab.className = "flex-1 py-2 text-xs md:text-sm font-bold rounded-xl transition-all duration-300 bg-white dark:bg-slate-800 text-slate-800 dark:text-white shadow-sm";
+          } else if (tabId === 'equal-love') {
+            // ＝LOVE: ピンク
+            tab.className = "flex-1 py-2 text-xs md:text-sm font-bold rounded-xl transition-all duration-300 bg-pink-500 text-white shadow-sm";
+          } else if (tabId === 'not-equal-me') {
+            // ≠ME: エメラルドグリーン
+            tab.className = "flex-1 py-2 text-xs md:text-sm font-bold rounded-xl transition-all duration-300 bg-emerald-500 text-white shadow-sm";
+          } else if (tabId === 'nearly-equal-joy') {
+            // ≒JOY: イエロー
+            tab.className = "flex-1 py-2 text-xs md:text-sm font-bold rounded-xl transition-all duration-300 bg-yellow-400 text-slate-900 shadow-sm";
+          }
+        } else {
+          tab.className = "flex-1 py-2 text-xs md:text-sm font-bold rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all duration-300";
+        }
+      });
+      renderGrid();
+    }
+
+    // 色分類フィルター
+    function filterColor(colorId) {
+      state.colorTag = colorId;
+      renderColorFilters();
+      renderGrid();
+    }
+
+    // 全てのフィルターをクリア
+    function resetFilters() {
+      state.group = "all";
+      state.colorTag = "all";
+      state.searchQuery = "";
+      state.favoritesOnly = false;
+      document.getElementById("searchInput").value = "";
+      
+      const favBtn = document.getElementById("favToggleBtn");
+      favBtn.classList.remove("bg-pink-500", "text-white", "border-pink-500");
+      favBtn.classList.add("bg-white", "dark:bg-slate-900", "text-slate-500");
+      document.getElementById("favToggleIcon").innerText = "☆";
+
+      filterGroup("all");
+      renderColorFilters();
+      renderGrid();
+    }
+
+    // クリップボードコピー処理
+    function copyToClipboard(text, name) {
+      const copyViaInput = (val) => {
+        const tempInput = document.createElement("input");
+        tempInput.style.position = "absolute";
+        tempInput.style.left = "-9999px";
+        tempInput.value = val;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        const success = document.execCommand("copy");
+        document.body.removeChild(tempInput);
+        return success;
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast(`${name}のペンライト「${text}」をコピーしました！`, "📋");
+        }).catch(() => {
+          if(copyViaInput(text)) {
+            showToast(`${name}のペンライト「${text}」をコピーしました！`, "📋");
+          }
+        });
+      } else {
+        if(copyViaInput(text)) {
+          showToast(`${name}のペンライト「${text}」をコピーしました！`, "📋");
+        }
+      }
+    }
+
+    // トースト通知のポップアップ
+    function showToast(message, icon = "📋") {
+      const toast = document.getElementById("toast");
+      const toastMsg = document.getElementById("toastMsg");
+      const toastIcon = document.getElementById("toastIcon");
+      
+      toastMsg.innerText = message;
+      toastIcon.innerText = icon;
+      
+      toast.classList.remove("opacity-0", "translate-y-3", "pointer-events-none");
+      toast.classList.add("opacity-100", "translate-y-0");
+
+      setTimeout(() => {
+        toast.classList.remove("opacity-100", "translate-y-0");
+        toast.classList.add("opacity-0", "translate-y-3", "pointer-events-none");
+      }, 2000);
+    }
+
+    // 検索入力の監視
+    document.getElementById("searchInput").addEventListener("input", (e) => {
+      state.searchQuery = e.target.value;
+      renderGrid();
+    });
+
+    // ページロード時の初期設定
+    window.onload = () => {
+      loadTheme();
+      renderColorFilters();
+      renderGrid();
+    };
+  </script>
+</body>
+</html>
