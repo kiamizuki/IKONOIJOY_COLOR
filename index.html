@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>IKONOIJOY PENLIGHT COLOR</title>
+  <title>イコノイジョイ メンカラ＆ペンライトカラー早見表（非公式）</title>
 
   <!-- ========================================== -->
   <!-- SNSシェア用リンクカード設定 (OGP / Twitter Card) -->
   <!-- ========================================== -->
-  <meta property="og:title" content="イコノイジョイ メンカラ＆ペンライトカラー早見表">
-  <meta property="og:description" content="＝LOVE、≠ME、≒JOYのメンバーカラーとペンライトカラーが一目でわかる、ファン専用の非公式便利早見表ツール！色系統の絞り込みやお気に入りピン留め機能も。">
+  <meta property="og:title" content="イコノイジョイ メンカラ＆ペンライトカラー早見表（非公式）">
+  <meta property="og:description" content="＝LOVE、≠ME、≒JOYのメンバーカラーとペンライトカラーが一目でわかる、ファン専用の非公式便利早見表ツール！各SNS（X、Instagram、TikTok）の公式アカウントへのリンクや、色系統の絞り込み、お気に入りピン留め機能も。">
   <meta property="og:url" content="https://your-domain.com/color_chart.html">
   <meta property="og:image" content="https://placehold.co/1200x630/fdf2f8/db2777/png?text=IKONOIJOY%0AColor+Chart">
   <meta property="og:type" content="website">
@@ -18,7 +18,7 @@
 
   <!-- X (旧Twitter) 用個別設定 -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="イコノイジョイ メンカラ＆ペンライトカラー早見表">
+  <meta name="twitter:title" content="イコノイジョイ メンカラ＆ペンライトカラー早見表（非公式）">
   <meta name="twitter:description" content="＝LOVE、≠ME、≒JOYのメンバーカラーとペンライトカラーが一目でわかる、ファン専用の非公式便利早見表ツール！">
   <meta name="twitter:image" content="https://placehold.co/1200x630/fdf2f8/db2777/png?text=IKONOIJOY%0AColor+Chart">
   <!-- ========================================== -->
@@ -118,7 +118,7 @@
 
   <main class="max-w-6xl mx-auto px-4 mt-6">
     
-    <!-- グループ切り替えタブ -->
+    <!-- グループ切り替えタブ (イコラブ＝ピンク、ノイミー＝エメラルドグリーン、ニアジョイ＝イエロー) -->
     <div class="flex justify-center p-1 bg-slate-200/60 dark:bg-slate-900/60 rounded-2xl max-w-md mx-auto mb-5 border border-slate-100 dark:border-slate-800/80">
       <button onclick="filterGroup('all')" id="tab-all" class="flex-1 py-2 text-xs md:text-sm font-bold rounded-xl transition-all duration-300 bg-white dark:bg-slate-800 text-slate-800 dark:text-white shadow-sm">ALL</button>
       <button onclick="filterGroup('equal-love')" id="tab-equal-love" class="flex-1 py-2 text-xs md:text-sm font-bold rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all duration-300">＝LOVE</button>
@@ -180,8 +180,7 @@
     <p class="font-rounded font-bold bg-gradient-to-r from-pink-400 via-emerald-400 to-yellow-400 bg-clip-text text-transparent inline-block mb-2">イコノイジョイ ペンライトアシスタント</p>
     <p>© 2026 IKONOIJOY Penlight Assistant</p>
     <p class="mt-1.5 text-[11px] leading-relaxed max-w-xl mx-auto">
-      ※本アプリはファン有志が制作した非公式のファンツールです。<br>
-      公式プロフィールや実際のライブステージ情報をベースに、ペンライトが複数色のメンバーに対応した色数を並べて表示しています。お気に入りデータはお手元の端末内に安全に保存されます。
+      本アプリはファン有志が制作した非公式のファンツールです<br>
     </p>
   </footer>
 
@@ -190,6 +189,7 @@
     <span id="toastIcon">📋</span> <span id="toastMsg">コピーしました！</span>
   </div>
 
+  <!-- JavaScript 開始 -->
   <script>
     // メンバーカラーのパレット定義
     const colorPalette = {
@@ -213,49 +213,49 @@
       "エメラルドグリーン": ["#34D399"]
     };
 
-    // メンバーデータ定義
+    // メンバーデータ定義 (＝LOVE、≠ME、≒JOY)
     const members = [
       // ＝LOVE (イコラブ)
-      { id: "emiri", group: "equal-love", name: "大谷 映美里", kana: "Emiri Otani", mColorName: "薄紫（ラベンダー）", pColorName: "白×紫", mColors: ["#E8D7FF"], pColors: ["#FFFFFF", "#BE79FF"], tags: ["purple", "lavender", "white"], imageUrl: "https://placehold.co/150x150/fdf2f8/db2777?text=EO", initials: "EO" },
-      { id: "hana", group: "equal-love", name: "大場 花菜", kana: "Hana Oba", mColorName: "オレンジ", pColorName: "オレンジ×青", mColors: ["#FFA23A"], pColors: ["#FFA23A", "#3B82F6"], tags: ["orange", "blue"], imageUrl: "https://placehold.co/150x150/fdf2f8/db2777?text=HO", initials: "HO" },
-      { id: "risa", group: "equal-love", name: "音嶋 莉沙", kana: "Risa Otoshima", mColorName: "水色", pColorName: "水色×ピンク", mColors: ["#60A5FA"], pColors: ["#60A5FA", "#FF7DA0"], tags: ["blue", "sky", "pink"], imageUrl: "https://placehold.co/150x150/fdf2f8/db2777?text=RO", initials: "RO" },
-      { id: "kiara", group: "equal-love", name: "齋藤 樹愛羅", kana: "Kiara Saito", mColorName: "ピンク", pColorName: "薄ピンク×薄ピンク", mColors: ["#FF7DA0"], pColors: ["#FFCCD5", "#FFCCD5"], tags: ["pink"], imageUrl: "https://placehold.co/150x150/fdf2f8/db2777?text=KS", initials: "KS" },
-      { id: "maika", group: "equal-love", name: "佐々木 舞香", kana: "Maika Sasaki", mColorName: "白", pColorName: "白", mColors: ["#FFFFFF"], pColors: ["#FFFFFF"], tags: ["white"], imageUrl: "https://placehold.co/150x150/fdf2f8/db2777?text=MS", initials: "MS" },
-      { id: "hitomi", group: "equal-love", name: "髙松 瞳", kana: "Hitomi Takamatsu", mColorName: "赤", pColorName: "赤", mColors: ["#EF4444"], pColors: ["#EF4444"], tags: ["red"], imageUrl: "https://placehold.co/150x150/fdf2f8/db2777?text=HT", initials: "HT" },
-      { id: "shoko", group: "equal-love", name: "瀧脇 笙古", kana: "Shoko Takiwaki", mColorName: "黄色", pColorName: "黄色×オレンジ×ピンク", mColors: ["#FBBF24"], pColors: ["#FBBF24", "#FFA23A", "#FF7DA0"], tags: ["yellow", "orange", "pink"], imageUrl: "https://placehold.co/150x150/fdf2f8/db2777?text=ST", initials: "ST" },
-      { id: "iori", group: "equal-love", name: "野口 衣織", kana: "Iori Noguchi", mColorName: "紫", pColorName: "紫", mColors: ["#BE79FF"], pColors: ["#BE79FF"], tags: ["purple"], imageUrl: "https://placehold.co/150x150/fdf2f8/db2777?text=IN", initials: "IN" },
-      { id: "sana", group: "equal-love", name: "諸橋 沙夏", kana: "Sana Morohashi", mColorName: "赤", pColorName: "赤", mColors: ["#EF4444"], pColors: ["#EF4444"], tags: ["red"], imageUrl: "https://placehold.co/150x150/fdf2f8/db2777?text=SM", initials: "SM" },
-      { id: "anna", group: "equal-love", name: "山本 杏奈", kana: "Anna Yamamoto", mColorName: "黄色×青", pColorName: "黄色×青", mColors: ["#FBBF24", "#3B82F6"], pColors: ["#FBBF24", "#3B82F6"], tags: ["yellow", "blue"], imageUrl: "https://placehold.co/150x150/fdf2f8/db2777?text=AY", initials: "AY" },
+      { id: "emiri", group: "equal-love", name: "大谷 映美里", kana: "Emiri Otani", mColorName: "薄紫（ラベンダー）", pColorName: "白×紫", mColors: ["#E8D7FF"], pColors: ["#FFFFFF", "#BE79FF"], tags: ["purple", "lavender", "white"], imageUrl: "https://pbs.twimg.com/profile_images/2028062877933056000/x_BEifWu_400x400.jpg", initials: "EO", sns: { twitter: "otani_emiri", instagram: "otani_emiri", tiktok: "emiri_otani" } },
+      { id: "hana", group: "equal-love", name: "大場 花菜", kana: "Hana Oba", mColorName: "オレンジ", pColorName: "オレンジ×青", mColors: ["#FFA23A"], pColors: ["#FFA23A", "#3B82F6"], tags: ["orange", "blue"], imageUrl: "https://pbs.twimg.com/profile_images/2028063088189276161/FxujOOZv_400x400.jpg", initials: "HO", sns: { twitter: "oba_hana_", instagram: "oba_hana_", tiktok: "" } },
+      { id: "risa", group: "equal-love", name: "音嶋 莉沙", kana: "Risa Otoshima", mColorName: "水色", pColorName: "水色×ピンク", mColors: ["#60A5FA"], pColors: ["#60A5FA", "#FF7DA0"], tags: ["blue", "sky", "pink"], imageUrl: "https://pbs.twimg.com/profile_images/2028063277323042816/RrNd_oi-.jpg", initials: "RO", sns: { twitter: "otoshima_risa", instagram: "otoshima_risa", tiktok: "" } },
+      { id: "kiara", group: "equal-love", name: "齋藤 樹愛羅", kana: "Kiara Saito", mColorName: "ピンク", pColorName: "薄ピンク×薄ピンク", mColors: ["#FF7DA0"], pColors: ["#FFCCD5", "#FFCCD5"], tags: ["pink"], imageUrl: "https://pbs.twimg.com/profile_images/2028063538485551105/rR5d9rYw_400x400.jpg", initials: "KS", sns: { twitter: "saitou_kiara", instagram: "saitou_kiara", tiktok: "kiara_saitou" } },
+      { id: "maika", group: "equal-love", name: "佐々木 舞香", kana: "Maika Sasaki", mColorName: "白", pColorName: "白", mColors: ["#FFFFFF"], pColors: ["#FFFFFF"], tags: ["white"], imageUrl: "https://pbs.twimg.com/profile_images/2028063703619489792/zVLhJ63f_400x400.jpg", initials: "MS", sns: { twitter: "sasaki_maika__", instagram: "", tiktok: "" } },
+      { id: "hitomi", group: "equal-love", name: "髙松 瞳", kana: "Hitomi Takamatsu", mColorName: "赤", pColorName: "赤", mColors: ["#EF4444"], pColors: ["#EF4444"], tags: ["red"], imageUrl: "https://pbs.twimg.com/profile_images/2028063869172850688/Gfr-yH3A_400x400.jpg", initials: "HT", sns: { twitter: "takamatsu_hitomi", instagram: "takamatsu_hitomi", tiktok: "" } },
+      { id: "shoko", group: "equal-love", name: "瀧脇 笙古", kana: "Shoko Takiwaki", mColorName: "黄色", pColorName: "黄色×オレンジ×ピンク", mColors: ["#FBBF24"], pColors: ["#FBBF24", "#FFA23A", "#FF7DA0"], tags: ["yellow", "orange", "pink"], imageUrl: "https://pbs.twimg.com/profile_images/2028064050656227328/qcq6CL6o_400x400.jpg", initials: "ST", sns: { twitter: "shoko_takiwaki", instagram: "shoko_takiwaki_", tiktok: "" } },
+      { id: "iori", group: "equal-love", name: "野口 衣織", kana: "Iori Noguchi", mColorName: "紫", pColorName: "紫", mColors: ["#BE79FF"], pColors: ["#BE79FF"], tags: ["purple"], imageUrl: "https://pbs.twimg.com/profile_images/2028064204025167872/51Nru4wc_400x400.jpg", initials: "IN", sns: { twitter: "noguchi_iori", instagram: "", tiktok: "" } },
+      { id: "sana", group: "equal-love", name: "諸橋 沙夏", kana: "Sana Morohashi", mColorName: "赤", pColorName: "赤", mColors: ["#EF4444"], pColors: ["#EF4444"], tags: ["red"], imageUrl: "https://pbs.twimg.com/profile_images/2028064408908554240/8CXjVrT6_400x400.jpg", initials: "SM", sns: { twitter: "morohashi_sana_", instagram: "morohashi_sana_", tiktok: "" } },
+      { id: "anna", group: "equal-love", name: "山本 杏奈", kana: "Anna Yamamoto", mColorName: "黄色×青", pColorName: "黄色×青", mColors: ["#FBBF24", "#3B82F6"], pColors: ["#FBBF24", "#3B82F6"], tags: ["yellow", "blue"], imageUrl: "https://pbs.twimg.com/profile_images/2028064556006912000/mJ9bSDsM_400x400.jpg", initials: "AY", sns: { twitter: "yamamoto_anna_", instagram: "yamamoto_anna_", tiktok: "yamamoto_anna_official" } },
 
       // ≠ME (ノイミー)
-      { id: "hana_o", group: "not-equal-me", name: "尾木 波菜", kana: "Hana Ogi", mColorName: "青×白", pColorName: "青×白", mColors: ["#3B82F6", "#FFFFFF"], pColors: ["#3B82F6", "#FFFFFF"], tags: ["blue", "white"], imageUrl: "https://placehold.co/150x150/ecfdf5/059669?text=HO", initials: "HO" },
-      { id: "kirari", group: "not-equal-me", name: "落合 希来里", kana: "Kirari Ochiai", mColorName: "黄×黄", pColorName: "黄×黄", mColors: ["#FBBF24", "#FBBF24"], pColors: ["#FBBF24", "#FBBF24"], tags: ["yellow"], imageUrl: "https://placehold.co/150x150/ecfdf5/059669?text=KO", initials: "KO" },
-      { id: "moeko", group: "not-equal-me", name: "蟹沢 萌子", kana: "Moeko Kanisawa", mColorName: "水色×赤", pColorName: "水色×赤", mColors: ["#60A5FA", "#EF4444"], pColors: ["#60A5FA", "#EF4444"], tags: ["blue", "sky", "red"], imageUrl: "https://placehold.co/150x150/ecfdf5/059669?text=MK", initials: "MK" },
-      { id: "natsune", group: "not-equal-me", name: "河口 夏音", kana: "Natsune Kawaguchi", mColorName: "オレンジ×白", pColorName: "オレンジ×白", mColors: ["#FFA23A", "#FFFFFF"], pColors: ["#FFA23A", "#FFFFFF"], tags: ["orange", "white"], imageUrl: "https://placehold.co/150x150/ecfdf5/059669?text=NK", initials: "NK" },
-      { id: "natsumi", group: "not-equal-me", name: "川中子 奈月心", kana: "Natsumi Kawanago", mColorName: "黒×ミントグリーン", pColorName: "黒×ミントグリーン", mColors: ["#1F2937", "#6EE7B7"], pColors: ["#1F2937", "#6EE7B7"], tags: ["black", "green"], imageUrl: "https://placehold.co/150x150/ecfdf5/059669?text=NK", initials: "NK" },
-      { id: "momo", group: "not-equal-me", name: "櫻井 もも", kana: "Momo Sakurai", mColorName: "ピンク×薄ピンク", pColorName: "ピンク×薄ピンク", mColors: ["#FF7DA0", "#FFCCD5"], pColors: ["#FF7DA0", "#FFCCD5"], tags: ["pink"], imageUrl: "https://placehold.co/150x150/ecfdf5/059669?text=MS", initials: "MS" },
-      { id: "hitomi_s", group: "not-equal-me", name: "鈴木 瞳美", kana: "Hitomi Suzuki", mColorName: "薄ピンク×薄ピンク", pColorName: "薄ピンク×薄ピンク", mColors: ["#FFCCD5", "#FFCCD5"], pColors: ["#FFCCD5", "#FFCCD5"], tags: ["pink"], imageUrl: "https://placehold.co/150x150/ecfdf5/059669?text=HS", initials: "HS" },
-      { id: "saya", group: "not-equal-me", name: "谷崎 早耶", kana: "Saya Tanizaki", mColorName: "ピンク×白", pColorName: "ピンク×白", mColors: ["#FF7DA0", "#FFFFFF"], pColors: ["#FF7DA0", "#FFFFFF"], tags: ["pink", "white"], imageUrl: "https://placehold.co/150x150/ecfdf5/059669?text=ST", initials: "ST" },
-      { id: "nanaka", group: "not-equal-me", name: "冨田 菜々風", kana: "Nanaka Tomita", mColorName: "黄×緑", pColorName: "黄×緑", mColors: ["#FBBF24", "#10B981"], pColors: ["#FBBF24", "#10B981"], tags: ["yellow", "green"], imageUrl: "https://placehold.co/150x150/ecfdf5/059669?text=NT", initials: "NT" },
-      { id: "shiori", group: "not-equal-me", name: "永田 詩央里", kana: "Shiori Nagata", mColorName: "青×青", pColorName: "青×青", mColors: ["#3B82F6", "#3B82F6"], pColors: ["#3B82F6", "#3B82F6"], tags: ["blue"], imageUrl: "https://placehold.co/150x150/ecfdf5/059669?text=SN", initials: "SN" },
-      { id: "miyuki", group: "not-equal-me", name: "本田 珠由記", kana: "Miyuki Honda", mColorName: "薄紫×水色", pColorName: "薄紫×水色", mColors: ["#E8D7FF", "#60A5FA"], pColors: ["#E8D7FF", "#60A5FA"], tags: ["purple", "lavender", "blue", "sky"], imageUrl: "https://placehold.co/150x150/ecfdf5/059669?text=MH", initials: "MH" },
+      { id: "hana_o", group: "not-equal-me", name: "尾木 波菜", kana: "Hana Ogi", mColorName: "青×白", pColorName: "青×白", mColors: ["#3B82F6", "#FFFFFF"], pColors: ["#3B82F6", "#FFFFFF"], tags: ["blue", "white"], imageUrl: "https://pbs.twimg.com/profile_images/2069616844550381571/tO7rYHos_400x400.jpg", initials: "HO", sns: { twitter: "ogi_hana_", instagram: "ogi_hana_", tiktok: "" } },
+      { id: "kirari", group: "not-equal-me", name: "落合 希来里", kana: "Kirari Ochiai", mColorName: "黄×黄", pColorName: "黄×黄", mColors: ["#FBBF24", "#FBBF24"], pColors: ["#FBBF24", "#FBBF24"], tags: ["yellow"], imageUrl: "https://pbs.twimg.com/profile_images/2069617011748229120/zqoxL-rF_400x400.jpg", initials: "KO", sns: { twitter: "ochiai_kirari", instagram: "ochiai_kirari", tiktok: "kirari_ochiai" } },
+      { id: "moeko", group: "not-equal-me", name: "蟹沢 萌子", kana: "Moeko Kanisawa", mColorName: "水色×赤", pColorName: "水色×赤", mColors: ["#60A5FA", "#EF4444"], pColors: ["#60A5FA", "#EF4444"], tags: ["blue", "sky", "red"], imageUrl: "https://pbs.twimg.com/profile_images/2069617148960632832/fGXHt6HI_400x400.jpg", initials: "MK", sns: { twitter: "kanisawa_moeko", instagram: "kanisawa_moeko", tiktok: "" } },
+      { id: "natsune", group: "not-equal-me", name: "河口 夏音", kana: "Natsune Kawaguchi", mColorName: "オレンジ×白", pColorName: "オレンジ×白", mColors: ["#FFA23A", "#FFFFFF"], pColors: ["#FFA23A", "#FFFFFF"], tags: ["orange", "white"], imageUrl: "https://pbs.twimg.com/profile_images/2069617275343372288/HW7uu3uN_400x400.jpg", initials: "NK", sns: { twitter: "kawaguchi_natsu", instagram: "kawaguchi_natsune_", tiktok: "natsune_kawaguchi" } },
+      { id: "natsumi", group: "not-equal-me", name: "川中子 奈月心", kana: "Natsumi Kawanago", mColorName: "黒×ミントグリーン", pColorName: "黒×ミントグリーン", mColors: ["#1F2937", "#6EE7B7"], pColors: ["#1F2937", "#6EE7B7"], tags: ["black", "green"], imageUrl: "https://pbs.twimg.com/profile_images/2069617404787949568/mTgPtHVY_400x400.jpg", initials: "NK", sns: { twitter: "kawanago_natsumi", instagram: "kawanago_natsumi", tiktok: "" } },
+      { id: "momo", group: "not-equal-me", name: "櫻井 もも", kana: "Momo Sakurai", mColorName: "ピンク×薄ピンク", pColorName: "ピンク×薄ピンク", mColors: ["#FF7DA0", "#FFCCD5"], pColors: ["#FF7DA0", "#FFCCD5"], tags: ["pink"], imageUrl: "https://pbs.twimg.com/profile_images/2069617538913193984/6SSmWcdX_400x400.jpg", initials: "MS", sns: { twitter: "sakurai_momo_", instagram: "sakurai_momo_", tiktok: "" } },
+      { id: "hitomi_s", group: "not-equal-me", name: "鈴木 瞳美", kana: "Hitomi Suzuki", mColorName: "薄ピンク×薄ピンク", pColorName: "薄ピンク×薄ピンク", mColors: ["#FFCCD5", "#FFCCD5"], pColors: ["#FFCCD5", "#FFCCD5"], tags: ["pink"], imageUrl: "https://pbs.twimg.com/profile_images/2069617660753752064/WcTC2GKm_400x400.jpg", initials: "HS", sns: { twitter: "suzuki_hitomi_m", instagram: "suzuki_hitomi_m", tiktok: "suzuki_hitomi_m" } },
+      { id: "saya", group: "not-equal-me", name: "谷崎 早耶", kana: "Saya Tanizaki", mColorName: "ピンク×白", pColorName: "ピンク×白", mColors: ["#FF7DA0", "#FFFFFF"], pColors: ["#FF7DA0", "#FFFFFF"], tags: ["pink", "white"], imageUrl: "https://pbs.twimg.com/profile_images/2069618206050840576/gyxYKAc2_400x400.jpg", initials: "ST", sns: { twitter: "tanizaki_saya_", instagram: "tanizaki_saya_", tiktok: "saya_tanizaki" } },
+      { id: "nanaka", group: "not-equal-me", name: "冨田 菜々風", kana: "Nanaka Tomita", mColorName: "黄×緑", pColorName: "黄×緑", mColors: ["#FBBF24", "#10B981"], pColors: ["#FBBF24", "#10B981"], tags: ["yellow", "green"], imageUrl: "https://pbs.twimg.com/profile_images/2069618322765938688/vSVbD5yn_400x400.jpg", initials: "NT", sns: { twitter: "tomita_nanaka", instagram: "tomita_nanaka", tiktok: "" } },
+      { id: "shiori", group: "not-equal-me", name: "永田 詩央里", kana: "Shiori Nagata", mColorName: "青×青", pColorName: "青×青", mColors: ["#3B82F6", "#3B82F6"], pColors: ["#3B82F6", "#3B82F6"], tags: ["blue"], imageUrl: "https://pbs.twimg.com/profile_images/2069618469797249024/yPfNQJ3m_400x400.jpg", initials: "SN", sns: { twitter: "nagata_shiori_", instagram: "nagata_shiori_", tiktok: "" } },
+      { id: "miyuki", group: "not-equal-me", name: "本田 珠由記", kana: "Miyuki Honda", mColorName: "薄紫×水色", pColorName: "薄紫×水色", mColors: ["#E8D7FF", "#60A5FA"], pColors: ["#E8D7FF", "#60A5FA"], tags: ["purple", "lavender", "blue", "sky"], imageUrl: "https://pbs.twimg.com/profile_images/2069618593218834432/catamWPA.jpg", initials: "MH", sns: { twitter: "honda_miyuki_", instagram: "honda_miyuki_", tiktok: "" } },
 
       // ≒JOY (ニアジョイ)
-      { id: "jurii", group: "nearly-equal-joy", name: "逢田 珠里依", kana: "Jurii Aida", mColorName: "赤", pColorName: "赤×赤", mColors: ["#EF4444"], pColors: ["#EF4444", "#EF4444"], tags: ["red"], imageUrl: "https://placehold.co/150x150/fef9c3/ca8a04?text=JA", initials: "JA" },
-      { id: "konoa", group: "nearly-equal-joy", name: "天野 香乃愛", kana: "Konoa Amano", mColorName: "薄ピンク", pColorName: "薄ピンク×薄ピンク", mColors: ["#FFCCD5"], pColors: ["#FFCCD5", "#FFCCD5"], tags: ["pink"], imageUrl: "https://placehold.co/150x150/fef9c3/ca8a04?text=KA", initials: "KA" },
-      { id: "ayumi", group: "nearly-equal-joy", name: "市原 愛弓", kana: "Ayumi Ichihara", mColorName: "紫", pColorName: "紫×紫", mColors: ["#BE79FF"], pColors: ["#BE79FF", "#BE79FF"], tags: ["purple"], imageUrl: "https://placehold.co/150x150/fef9c3/ca8a04?text=AI", initials: "AI" },
-      { id: "renn", group: "nearly-equal-joy", name: "江角 怜音", kana: "Renn Esumi", mColorName: "青", pColorName: "青×青", mColors: ["#3B82F6"], pColors: ["#3B82F6", "#3B82F6"], tags: ["blue"], imageUrl: "https://placehold.co/150x150/fef9c3/ca8a04?text=RE", initials: "RE" },
-      { id: "mitsuki", group: "nearly-equal-joy", name: "大信田 美月", kana: "Mitsuki Oshida", mColorName: "水色", pColorName: "水色×水色", mColors: ["#60A5FA"], pColors: ["#60A5FA", "#60A5FA"], tags: ["blue", "sky"], imageUrl: "https://placehold.co/150x150/fef9c3/ca8a04?text=MO", initials: "MO" },
-      { id: "aoi", group: "nearly-equal-joy", name: "大西 葵", kana: "Aoi Onishi", mColorName: "白", pColorName: "白×白", mColors: ["#FFFFFF"], pColors: ["#FFFFFF", "#FFFFFF"], tags: ["white"], imageUrl: "https://placehold.co/150x150/fef9c3/ca8a04?text=AO", initials: "AO" },
-      { id: "amimi", group: "nearly-equal-joy", name: "小澤 愛実", kana: "Manami Ozawa", mColorName: "黄色", pColorName: "黄×黄", mColors: ["#FBBF24"], pColors: ["#FBBF24", "#FBBF24"], tags: ["yellow"], imageUrl: "https://placehold.co/150x150/fef9c3/ca8a04?text=MO", initials: "MO" },
-      { id: "mai", group: "nearly-equal-joy", name: "高橋 舞", kana: "Mai Takahashi", mColorName: "ピンク", pColorName: "ピンク×ピンク", mColors: ["#FF7DA0"], pColors: ["#FF7DA0", "#FF7DA0"], tags: ["pink"], imageUrl: "https://placehold.co/150x150/fef9c3/ca8a04?text=MT", initials: "MT" },
-      { id: "riko", group: "nearly-equal-joy", name: "藤沢 莉子", kana: "Riko Fujisawa", mColorName: "オレンジ", pColorName: "オレンジ×オレンジ", mColors: ["#FFA23A"], pColors: ["#FFA23A", "#FFA23A"], tags: ["orange"], imageUrl: "https://placehold.co/150x150/fef9c3/ca8a04?text=RF", initials: "RF" },
-      { id: "yuika", group: "nearly-equal-joy", name: "村山 結香", kana: "Yuika Murayama", mColorName: "緑", pColorName: "緑×緑", mColors: ["#10B981"], pColors: ["#10B981", "#10B981"], tags: ["green"], imageUrl: "https://placehold.co/150x150/fef9c3/ca8a04?text=YM", initials: "YM" },
-      { id: "kyoka", group: "nearly-equal-joy", name: "山田 杏佳", kana: "Kyoka Yamada", mColorName: "薄黄色", pColorName: "薄黄色×薄黄色", mColors: ["#FEF08A"], pColors: ["#FEF08A", "#FEF08A"], tags: ["yellow"], imageUrl: "https://placehold.co/150x150/fef9c3/ca8a04?text=KY", initials: "KY" },
-      { id: "arisu", group: "nearly-equal-joy", name: "山野 愛月", kana: "Arisu Yamano", mColorName: "アイスエメラルドグリーン", pColorName: "エメラルドグリーン×エメラルドグリーン", mColors: ["#A7F3D0"], pColors: ["#34D399", "#34D399"], tags: ["green"], imageUrl: "https://placehold.co/150x150/fef9c3/ca8a04?text=AY", initials: "AY" }
+      { id: "jurii", group: "nearly-equal-joy", name: "逢田 珠里依", kana: "Jurii Aida", mColorName: "赤", pColorName: "赤×赤", mColors: ["#EF4444"], pColors: ["#EF4444", "#EF4444"], tags: ["red"], imageUrl: "https://pbs.twimg.com/profile_images/2023955780039569409/96brtvZA_400x400.jpg", initials: "JA", sns: { twitter: "aida_jurii", instagram: "aida_jurii", tiktok: "" } },
+      { id: "konoa", group: "nearly-equal-joy", name: "天野 香乃愛", kana: "Konoa Amano", mColorName: "薄ピンク", pColorName: "薄ピンク×薄ピンク", mColors: ["#FFCCD5"], pColors: ["#FFCCD5", "#FFCCD5"], tags: ["pink"], imageUrl: "https://pbs.twimg.com/profile_images/2023955976727224320/Ur66bkdb_400x400.jpg", initials: "KA", sns: { twitter: "amano_konoa", instagram: "amano_konoa", tiktok: "" } },
+      { id: "ayumi", group: "nearly-equal-joy", name: "市原 愛弓", kana: "Ayumi Ichihara", mColorName: "紫", pColorName: "紫×紫", mColors: ["#BE79FF"], pColors: ["#BE79FF", "#BE79FF"], tags: ["purple"], imageUrl: "https://pbs.twimg.com/profile_images/2023956424053977089/g2suWhie.jpg", initials: "AI", sns: { twitter: "ichihara_ayumi_", instagram: "ichihara_ayumi_", tiktok: "" } },
+      { id: "renn", group: "nearly-equal-joy", name: "江角 怜音", kana: "Renn Esumi", mColorName: "青", pColorName: "青×青", mColors: ["#3B82F6"], pColors: ["#3B82F6", "#3B82F6"], tags: ["blue"], imageUrl: "https://pbs.twimg.com/profile_images/2023956291878899712/Q2Y_wDUn_400x400.jpg", initials: "RE", sns: { twitter: "esumi_renn", instagram: "esumi_renn", tiktok: "" } },
+      { id: "mitsuki", group: "nearly-equal-joy", name: "大信田 美月", kana: "Mitsuki Oshida", mColorName: "水色", pColorName: "水色×水色", mColors: ["#60A5FA"], pColors: ["#60A5FA", "#60A5FA"], tags: ["blue", "sky"], imageUrl: "https://pbs.twimg.com/profile_images/2023956557801943042/KSGr4KbE_400x400.jpg", initials: "MO", sns: { twitter: "oshida_mitsuki", instagram: "oshida_mitsuki", tiktok: "" } },
+      { id: "aoi", group: "nearly-equal-joy", name: "大西 葵", kana: "Aoi Onishi", mColorName: "白", pColorName: "白×白", mColors: ["#FFFFFF"], pColors: ["#FFFFFF", "#FFFFFF"], tags: ["white"], imageUrl: "https://pbs.twimg.com/profile_images/2023956781744173057/OXggTR0h_400x400.jpg", initials: "AO", sns: { twitter: "onishi_aoi_", instagram: "onishi_aoi_", tiktok: "" } },
+      { id: "amimi", group: "nearly-equal-joy", name: "小澤 愛実", kana: "Aimi Ozawa", mColorName: "黄色", pColorName: "黄×黄", mColors: ["#FBBF24"], pColors: ["#FBBF24", "#FBBF24"], tags: ["yellow"], imageUrl: "https://pbs.twimg.com/profile_images/2023957004889550848/IaF-XmEb_400x400.jpg", initials: "AO", sns: { twitter: "ozawa_manami_", instagram: "ozawa_manami_", tiktok: "" } },
+      { id: "mai", group: "nearly-equal-joy", name: "高橋 舞", kana: "Mai Takahashi", mColorName: "ピンク", pColorName: "ピンク×ピンク", mColors: ["#FF7DA0"], pColors: ["#FF7DA0", "#FF7DA0"], tags: ["pink"], imageUrl: "https://pbs.twimg.com/profile_images/2023955993538031619/U7xz0eFA_400x400.jpg", initials: "MT", sns: { twitter: "takahashi_mai_", instagram: "takahashi_mai_", tiktok: "" } },
+      { id: "riko", group: "nearly-equal-joy", name: "藤沢 莉子", kana: "Riko Fujisawa", mColorName: "オレンジ", pColorName: "オレンジ×オレンジ", mColors: ["#FFA23A"], pColors: ["#FFA23A", "#FFA23A"], tags: ["orange"], imageUrl: "https://pbs.twimg.com/profile_images/2023956173649788928/wYuR4ocK_400x400.jpg", initials: "RF", sns: { twitter: "fujisawa_riko_", instagram: "fujisawa_riko_", tiktok: "" } },
+      { id: "yuika", group: "nearly-equal-joy", name: "村山 結香", kana: "Yuuka Murayama", mColorName: "緑", pColorName: "緑×緑", mColors: ["#10B981"], pColors: ["#10B981", "#10B981"], tags: ["green"], imageUrl: "https://pbs.twimg.com/profile_images/2023956494103048192/Txrf45sz_400x400.jpg", initials: "YM", sns: { twitter: "murayama_yuika", instagram: "murayama_yuika", tiktok: "" } },
+      { id: "kyoka", group: "nearly-equal-joy", name: "山田 杏佳", kana: "Momoka Yamada", mColorName: "薄黄色", pColorName: "薄黄色×薄黄色", mColors: ["#FEF08A"], pColors: ["#FEF08A", "#FEF08A"], tags: ["yellow"], imageUrl: "https://pbs.twimg.com/profile_images/2023962447099686914/nXOeJgpV_400x400.jpg", initials: "MY", sns: { twitter: "yamada_kyoka_", instagram: "yamada_kyoka_", tiktok: "" } },
+      { id: "arisu", group: "nearly-equal-joy", name: "山野 愛月", kana: "Arisu Yamano", mColorName: "アイスエメラルドグリーン", pColorName: "エメラルドグリーン×エメラルドグリーン", mColors: ["#A7F3D0"], pColors: ["#34D399", "#34D399"], tags: ["green"], imageUrl: "https://pbs.twimg.com/profile_images/2023955953889275905/z7u9my3l_400x400.jpg", initials: "AY", sns: { twitter: "yamano_arisu_", instagram: "yamano_arisu_", tiktok: "" } }
     ];
 
-    // グループ別のテーマカラー定義 (イコラブ＝ピンク、ノイミー＝エメラルド、ニアジョイ＝イエロー)
+    // グループ別のテーマカラー定義 (＝LOVE＝ピンク、≠ME＝エメラルドグリーン、≒JOY＝イエロー)
     const groupMeta = {
       "equal-love": { 
         name: "＝LOVE", 
@@ -273,7 +273,7 @@
         name: "≒JOY", 
         color: "from-yellow-50/60 to-yellow-100/30 dark:from-yellow-950/20 dark:to-yellow-900/10", 
         border: "border-yellow-200 dark:border-yellow-900/40", 
-        badge: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/40 dark:text-yellow-300" 
+        badge: "bg-yellow-100 text-yellow-850 dark:bg-yellow-900/40 dark:text-yellow-300" 
       }
     };
 
@@ -301,8 +301,8 @@
       { id: "black", name: "黒系", class: "bg-slate-800 dark:bg-slate-200 text-white dark:text-slate-900 shadow-sm hover:scale-105" }
     ];
 
-    // SVG構築ヘルパー (ハート) - 複数色時のスプリットカラー対応
-    function createHeartSvg(id, colors, isPinned = false) {
+    // SVG構築ヘルパー (グループ別の形状: イコラブ=ハート、ノイミー=ダイヤ、ニアジョイ=王冠)
+    function createMemberColorSvg(id, colors, group, isPinned = false) {
       let gradStr = '';
       const prefix = isPinned ? 'pin-' : '';
       if (colors.length === 1) {
@@ -317,14 +317,35 @@
       const strokeColor = isWhite ? '#cbd5e1' : '#f1f5f9';
       const glowVar = colors[0];
 
+      // グループに応じたマークパスの分岐
+      let shapePath = '';
+      if (group === 'equal-love') {
+        // ハート型 (＝LOVE)
+        shapePath = `<path d="M16,28.5 C16,28.5 3,20 3,11.5 C3,5.5 7,2.5 11.5,2.5 C14.5,2.5 16,4.5 16,4.5 C16,4.5 17.5,2.5 20.5,2.5 C25,2.5 29,5.5 29,11.5 C29,20 16,28.5 16,28.5 Z" fill="url(#${prefix}color-grad-${id})" stroke="${strokeColor}" stroke-width="1.5" />`;
+      } else if (group === 'not-equal-me') {
+        // ダイヤ型 (≠ME)
+        shapePath = `<path d="M16,2.5 L29.5,16 L16,29.5 L2.5,16 Z" fill="url(#${prefix}color-grad-${id})" stroke="${strokeColor}" stroke-width="1.5" stroke-linejoin="round" />`;
+      } else if (group === 'nearly-equal-joy') {
+        // 王冠型 (≒JOY)
+        shapePath = `
+          <path d="M2.5,26 L29.5,26 L29.5,22 L27.5,11 L21,17 L16,6 L11,17 L4.5,11 L2.5,22 Z" fill="url(#${prefix}color-grad-${id})" stroke="${strokeColor}" stroke-width="1.5" stroke-linejoin="round" />
+          <circle cx="16" cy="5" r="1.5" fill="${colors[0]}" stroke="${strokeColor}" stroke-width="0.7"/>
+          <circle cx="4.5" cy="10" r="1.5" fill="${colors[0]}" stroke="${strokeColor}" stroke-width="0.7"/>
+          <circle cx="27.5" cy="10" r="1.5" fill="${colors.length > 1 ? colors[colors.length - 1] : colors[0]}" stroke="${strokeColor}" stroke-width="0.7"/>
+        `;
+      } else {
+        // デフォルト（ハート）
+        shapePath = `<path d="M16,28.5 C16,28.5 3,20 3,11.5 C3,5.5 7,2.5 11.5,2.5 C14.5,2.5 16,4.5 16,4.5 C16,4.5 17.5,2.5 20.5,2.5 C25,2.5 29,5.5 29,11.5 C29,20 16,28.5 16,28.5 Z" fill="url(#${prefix}color-grad-${id})" stroke="${strokeColor}" stroke-width="1.5" />`;
+      }
+
       return `
         <svg viewBox="0 0 32 32" class="w-11 h-11 transition-transform duration-300 hover:scale-125 glow-effect" style="--glow-color: ${glowVar}">
           <defs>
-            <linearGradient id="${prefix}heart-grad-${id}" x1="0%" y1="100%" x2="100%" y2="0%">
+            <linearGradient id="${prefix}color-grad-${id}" x1="0%" y1="100%" x2="100%" y2="0%">
               ${gradStr}
             </linearGradient>
           </defs>
-          <path d="M16,28.5 C16,28.5 3,20 3,11.5 C3,5.5 7,2.5 11.5,2.5 C14.5,2.5 16,4.5 16,4.5 C16,4.5 17.5,2.5 20.5,2.5 C25,2.5 29,5.5 29,11.5 C29,20 16,28.5 16,28.5 Z" fill="url(#${prefix}heart-grad-${id})" stroke="${strokeColor}" stroke-width="1.5" />
+          ${shapePath}
         </svg>
       `;
     }
@@ -376,7 +397,7 @@
           <!-- 持ち手 -->
           <path d="M18,34 L22,34 L23,47 A3,3 0 0,1 17,47 Z" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1.2"/>
           <rect x="18" y="36" width="4" height="2" rx="0.5" fill="#94a3b8"/>
-          <!-- 发光部 -->
+          <!-- 発光部 -->
           <rect x="13" y="6" width="14" height="27" rx="7" fill="url(#${gradId})" stroke="${strokeColor}" stroke-width="1" />
           <!-- キャップ -->
           <rect x="12" y="32" width="16" height="2.5" fill="#cbd5e1" rx="0.5"/>
@@ -390,6 +411,50 @@
       pColors.forEach((color, index) => {
         html += createSinglePenlightSvg(color, id, index, pColors.length, isPinned);
       });
+      html += '</div>';
+      return html;
+    }
+
+    // 各アイドルのSNSリンクを生成するヘルパー関数 (インラインSVG使用)
+    function createSnsButtonsHtml(sns) {
+      if (!sns) return '';
+      let html = '<div class="flex items-center gap-2 mt-2">';
+      
+      // X (旧Twitter)
+      if (sns.twitter) {
+        html += `
+          <a href="https://x.com/${sns.twitter}" target="_blank" rel="noopener noreferrer" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black flex items-center justify-center transition-all duration-200" title="X (Twitter)">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+        `;
+      }
+      
+      // Instagram
+      if (sns.instagram) {
+        html += `
+          <a href="https://instagram.com/${sns.instagram}" target="_blank" rel="noopener noreferrer" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-gradient-to-tr hover:from-yellow-500 hover:via-pink-500 hover:to-purple-600 hover:text-white flex items-center justify-center transition-all duration-200" title="Instagram">
+            <svg class="w-3.5 h-3.5 stroke-current fill-none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+        `;
+      }
+
+      // TikTok
+      if (sns.tiktok) {
+        html += `
+          <a href="https://www.tiktok.com/@${sns.tiktok}" target="_blank" rel="noopener noreferrer" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-black hover:text-[#25f4ee] flex items-center justify-center transition-all duration-200" title="TikTok">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+              <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.01 1.62 4.17.94 1.09 2.27 1.8 3.71 1.95v3.91c-1.57-.16-3.05-.79-4.22-1.85-.2-.17-.39-.36-.56-.56-.06.74-.04 1.48-.04 2.22 0 3.23-.74 6.32-3.12 8.3-2.11 1.81-5.11 2.28-7.66 1.34-2.82-1.01-4.79-3.79-4.83-6.83-.07-3.41 2.31-6.65 5.67-7.23.97-.18 1.97-.18 2.94.02v3.95c-.86-.25-1.83-.16-2.61.35-.99.62-1.39 1.93-1 3 .36 1.05 1.51 1.7 2.61 1.47 1-.16 1.78-.99 1.83-2V.02z"/>
+            </svg>
+          </a>
+        `;
+      }
+      
       html += '</div>';
       return html;
     }
@@ -439,7 +504,7 @@
       }
     }
 
-    // お気に入りフィルターのトグル
+    // クイックお気に入りフィルター
     function toggleFavoritesOnly() {
       state.favoritesOnly = !state.favoritesOnly;
       const btn = document.getElementById("favToggleBtn");
@@ -478,12 +543,13 @@
     // カードテンプレート生成 (アバター丸画像とローマ字ふりがな付き)
     function createMemberCard(member, isPinned = false) {
       const meta = groupMeta[member.group];
-      const heartSvg = createHeartSvg(member.id, member.mColors, isPinned);
+      const heartSvg = createMemberColorSvg(member.id, member.mColors, member.group, isPinned);
       const penlightsHtml = createPenlightsHtml(member.pColors, member.id, isPinned);
+      const snsHtml = createSnsButtonsHtml(member.sns);
       const isFav = state.favorites.includes(member.id);
       
       return `
-        <div class="bg-gradient-to-br ${meta.color} bg-white dark:bg-slate-900/40 rounded-2xl border ${meta.border} p-5 shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-full min-h-[220px] group">
+        <div class="bg-gradient-to-br ${meta.color} bg-white dark:bg-slate-900/40 rounded-2xl border ${meta.border} p-5 shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-full min-h-[240px] group">
           
           <!-- お気に入り★ & グループバッジ -->
           <div class="absolute top-3.5 right-3.5 flex items-center gap-1.5 z-10">
@@ -495,8 +561,8 @@
             </span>
           </div>
 
-          <!-- メンバーヘッダー -->
-          <div class="flex items-center gap-3">
+          <!-- メンバーヘッダー (丸アバター画像 & ローマ字ふりがな & 名前 & SNSボタン) -->
+          <div class="flex items-start gap-3">
             <img 
               src="${member.imageUrl}" 
               alt="${member.name}" 
@@ -506,6 +572,7 @@
             <div class="min-w-0 pr-16">
               <span class="text-[10px] text-slate-400 dark:text-slate-500 font-bold block leading-tight tracking-wide font-mono uppercase">${member.kana}</span>
               <h3 class="text-base md:text-lg font-bold text-slate-800 dark:text-slate-100 tracking-wide mt-0.5 truncate">${member.name}</h3>
+              ${snsHtml}
             </div>
           </div>
 
