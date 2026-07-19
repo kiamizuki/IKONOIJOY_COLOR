@@ -804,8 +804,9 @@
     // ページシェア用関数
     function shareOnX() {
       const shareUrl = window.location.href;
-      const shareText = "＝LOVE、≠ME、≒JOYのメンバーカラーとペンライト色がすぐわかる！「イコノイジョイ メンカラ＆ペンライトカラー早見表」";
-      const xUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`;
+      const shareText = "＝LOVE、≠ME、≒JOYのメンバーカラーとペンライト色がすぐわかる！「イコノイジョイ メンカラ＆ペンライトカラー早見表」✨";
+      const hashtags = "イコノイジョイペンライトカラー早見表";
+      const xUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}&hashtags=${encodeURIComponent(hashtags)}`;
       window.open(xUrl, '_blank', 'noopener,noreferrer');
     }
 
