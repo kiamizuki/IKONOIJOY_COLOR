@@ -323,58 +323,73 @@
 
 
     /* ==========================================================================
-       【3】各メンバーの紹介・ペンライト設定 (49名)
+       【3】各メンバーの紹介・ペンライト設定 (49名・colors配列で1〜3本対応)
        ========================================================================== */
+    const COLOR_HEX = {
+      "赤": "#EF4444",
+      "ピンク": "#FF7DA0",
+      "濃ピンク": "#E11D48",
+      "薄ピンク": "#FBCFE8",
+      "白": "#FFFFFF",
+      "青": "#3B82F6",
+      "水色": "#38BDF8",
+      "黄": "#FBBF24",
+      "オレンジ": "#F97316",
+      "緑": "#10B981",
+      "黄緑": "#84CC16",
+      "紫": "#A855F7"
+    };
+
     const MEMBERS_INFO = [
-      { id: 1, name: "岩立 沙穂", kana: "いわたて さほ", enName: "Saho Iwatate", nickname: "さっほー", birth: "1994年10月4日", pref: "神奈川県", gen: "13期", note: "TRUSTAR所属", c1: "ピンク", c1Hex: "#FF7DA0", c2: "ピンク", c2Hex: "#FF7DA0" },
-      { id: 2, name: "福岡 聖菜", kana: "ふくおか せいな", enName: "Seina Fukuoka", nickname: "せいちゃん", birth: "2000年8月1日", pref: "神奈川県", gen: "15期", note: "トキエンタテインメント所属", c1: "青", c1Hex: "#3B82F6", c2: "青", c2Hex: "#3B82F6" },
-      { id: 3, name: "小栗 有以", kana: "おぐり ゆい", enName: "Yui Oguri", nickname: "ゆいゆい", birth: "2001年12月26日", pref: "東京都", gen: "チーム8", note: "ゼスト所属", c1: "ピンク", c1Hex: "#FF7DA0", c2: "ピンク", c2Hex: "#FF7DA0" },
-      { id: 4, name: "行天 優莉奈", kana: "ぎょうてん ゆりな", enName: "Yurina Gyoten", nickname: "ゆりな", birth: "1999年3月14日", pref: "香川県", gen: "チーム8", note: "MR8所属", c1: "黄", c1Hex: "#FBBF24", c2: "白", c2Hex: "#FFFFFF" },
-      { id: 5, name: "倉野尾 成美", kana: "くらのお なるみ", enName: "Narumi Kuranoo", nickname: "なる", birth: "2000年11月8日", pref: "熊本県", gen: "チーム8", note: "AKB48グループ総監督", c1: "赤", c1Hex: "#EF4444", c2: "緑", c2Hex: "#10B981" },
-      { id: 6, name: "坂川 陽香", kana: "さかがわ ひゆか", enName: "Hiyuka Sakagawa", nickname: "ひゆか", birth: "2006年10月7日", pref: "福井県", gen: "チーム8", note: "ALWAYS所属", c1: "赤", c1Hex: "#EF4444", c2: "水色", c2Hex: "#00bfff" },
-      { id: 7, name: "下尾 みう", kana: "したお みう", enName: "Miu Shitao", nickname: "みう", birth: "2001年4月3日", pref: "山口県", gen: "チーム8", note: "太田プロダクション所属", c1: "白", c1Hex: "#FFFFFF", c2: "紫", c2Hex: "#BE79FF" },
-      { id: 8, name: "髙橋 彩音", kana: "たかはし あやね", enName: "Ayane Takahashi", nickname: "あやねちゃん", birth: "1997年12月30日", pref: "埼玉県", gen: "チーム8", note: "アリゲーター所属", c1: "青", c1Hex: "#3B82F6", c2: "黄色", c2Hex: "#FBBF24" },
-      { id: 9, name: "徳永 羚海", kana: "とくなが れみ", enName: "Remi Tokunaga", nickname: "れみたん", birth: "2006年10月1日", pref: "鳥取県", gen: "チーム8", note: "", c1: "ピンク", c1Hex: "#FF7DA0", c2: "白", c2Hex: "#FFFFFF" },
-      { id: 10, name: "永野 芹佳", kana: "ながの せりか", enName: "Serika Nagano", nickname: "せりちゃん", birth: "2001年3月27日", pref: "大阪府", gen: "チーム8", note: "TRUSTAR所属", c1: "青", c1Hex: "#3B82F6", c2: "白", c2Hex: "#FFFFFF" },
-      { id: 11, name: "橋本 陽菜", kana: "はしもと はるな", enName: "Haruna Hashimoto", nickname: "はるpyon", birth: "2000年5月25日", pref: "富山県", gen: "チーム8", note: "ストロボエージェンシー所属", c1: "ピンク", c1Hex: "#FF7DA0", c2: "白", c2Hex: "#FFFFFF" },
-      { id: 12, name: "千葉 恵里", kana: "ちば えりい", enName: "Erii Chiba", nickname: "えりい", birth: "2003年10月27日", pref: "神奈川県", gen: "ドラフト2期", note: "NEXT LEAP所属", c1: "黄", c1Hex: "#FBBF24", c2: "青", c2Hex: "#3B82F6" },
-      { id: 13, name: "黒須 遥香", kana: "くろす はるか", enName: "Haruka Kurosu", nickname: "はーちゃん", birth: "2001年2月28日", pref: "埼玉県", gen: "16期", note: "", c1: "白", c1Hex: "#FFFFFF", c2: "青", c2Hex: "#3B82F6" },
-      { id: 14, name: "長友 彩海", kana: "ながとも あやみ", enName: "Ayami Nagatomo", nickname: "あやみん", birth: "2000年11月2日", pref: "神奈川県", gen: "16期", note: "", c1: "黄", c1Hex: "#FBBF24", c2: "赤", c2Hex: "#EF4444" },
-      { id: 15, name: "武藤 小麟", kana: "むとう おりん", enName: "Orin Muto", nickname: "おりん", birth: "2000年7月22日", pref: "東京都", gen: "16期", note: "姉は武藤十夢 / FIRST AGENT所属", c1: "赤", c1Hex: "#EF4444", c2: "緑", c2Hex: "#10B981" },
-      { id: 16, name: "山内 瑞葵", kana: "やまうち みずき", enName: "Mizuki Yamauchi", nickname: "ずっきー", birth: "2001年9月20日", pref: "東京都", gen: "16期", note: "エイベックス・AY・ファクトリー所属", c1: "ピンク", c1Hex: "#FF7DA0", c2: "黄", c2Hex: "#FBBF24" },
-      { id: 17, name: "山根 涼羽", kana: "やまね すずは", enName: "Suzuha Yamane", nickname: "ずんちゃん", birth: "2000年8月11日", pref: "兵庫県", gen: "16期", note: "", c1: "赤", c1Hex: "#EF4444", c2: "白", c2Hex: "#FFFFFF" },
-      { id: 18, name: "太田 有紀", kana: "おおた ゆき", enName: "Yuki Ota", nickname: "ゆきたん", birth: "2004年3月27日", pref: "神奈川県", gen: "17期", note: "", c1: "緑", c1Hex: "#10B981", c2: "白", c2Hex: "#FFFFFF" },
-      { id: 19, name: "佐藤 綺星", kana: "さとう あいり", enName: "Airi Sato", nickname: "あいちゃん", birth: "2004年6月24日", pref: "千葉県", gen: "17期", note: "姉は佐藤妃星 / ヴィーボ所属", c1: "赤", c1Hex: "#EF4444", c2: "白", c2Hex: "#FFFFFF" },
-      { id: 20, name: "橋本 恵理子", kana: "はしもと えりこ", enName: "Eriko Hashimoto", nickname: "えりちゃん", birth: "2006年4月16日", pref: "大阪府", gen: "17期", note: "", c1: "赤", c1Hex: "#EF4444", c2: "黄", c2Hex: "#FBBF24" },
-      { id: 21, name: "畠山 希美", kana: "はたけやま のぞみ", enName: "Nozomi Hatakeyama", nickname: "のんちゃん", birth: "2008年1月25日", pref: "埼玉県", gen: "17期", note: "", c1: "紫", c1Hex: "#BE79FF", c2: "白", c2Hex: "#FFFFFF" },
-      { id: 22, name: "平田 侑希", kana: "ひらた ゆき", enName: "Yuki Hirata", nickname: "ゆき", birth: "2002年9月3日", pref: "埼玉県", gen: "17期", note: "Mi-So所属", c1: "水色", c1Hex: "#00bfff", c2: "ピンク", c2Hex: "#FF7DA0" },
-      { id: 23, name: "布袋 百椛", kana: "ほてい もか", enName: "Moka Hotei", nickname: "ほてちゃん", birth: "2004年12月1日", pref: "兵庫県", gen: "17期", note: "", c1: "ピンク", c1Hex: "#FF7DA0", c2: "黄", c2Hex: "#FBBF24" },
-      { id: 24, name: "正鋳 真優", kana: "まさい まゆう", enName: "Mayuu Masai", nickname: "まゆうちゃん", birth: "2005年3月1日", pref: "埼玉県", gen: "17期", note: "", c1: "赤", c1Hex: "#EF4444", c2: "青", c2Hex: "#3B82F6" },
-      { id: 25, name: "水島 美結", kana: "みずしま みゆう", enName: "Miyuu Mizushima", nickname: "みずみん", birth: "2003年11月12日", pref: "北海道", gen: "17期", note: "", c1: "紫", c1Hex: "#BE79FF", c2: "ピンク", c2Hex: "#FF7DA0" },
-      { id: 26, name: "山﨑 空", kana: "やまざき そら", enName: "Sora Yamazaki", nickname: "そらら", birth: "2004年5月13日", pref: "東京都", gen: "17期", note: "", c1: "青", c1Hex: "#3B82F6", c2: "白", c2Hex: "#FFFFFF" },
-      { id: 27, name: "秋山 由奈", kana: "あきやま ゆな", enName: "Yuna Akiyama", nickname: "ゆなちゃん", birth: "2005年12月12日", pref: "千葉県", gen: "18期", note: "", c1: "水色", c1Hex: "#00bfff", c2: "ピンク", c2Hex: "#FF7DA0" },
-      { id: 28, name: "新井 彩永", kana: "あらい さえ", enName: "Sae Arai", nickname: "さえちゃん", birth: "2005年10月5日", pref: "東京都", gen: "18期", note: "", c1: "赤", c1Hex: "#EF4444", c2: "青", c2Hex: "#3B82F6" },
-      { id: 29, name: "工藤 華純", kana: "くどう かすみ", enName: "Kasumi Kudo", nickname: "かすみん", birth: "2005年6月15日", pref: "大分県", gen: "18期", note: "", c1: "紫", c1Hex: "#BE79FF", c2: "黄", c2Hex: "#FBBF24" },
-      { id: 30, name: "久保 姫菜乃", kana: "くぼ ひなの", enName: "Hinano Kubo", nickname: "ちゃんひな", birth: "2006年2月2日", pref: "長野県", gen: "18期", note: "", c1: "ピンク", c1Hex: "#FF7DA0", c2: "青", c2Hex: "#3B82F6" },
-      { id: 31, name: "迫 由芽実", kana: "さこ ゆめみ", enName: "Yumemi Sako", nickname: "ゆめみん", birth: "2006年2月5日", pref: "埼玉県", gen: "18期", note: "", c1: "ピンク", c1Hex: "#FF7DA0", c2: "白", c2Hex: "#FFFFFF" },
-      { id: 32, name: "成田 香姫奈", kana: "なりた こひな", enName: "Kohina Narita", nickname: "こひ", birth: "2004年3月3日", pref: "北海道", gen: "18期", note: "", c1: "水色", c1Hex: "#00bfff", c2: "黄", c2Hex: "#FBBF24" },
-      { id: 33, name: "八木 愛月", kana: "やぎ あづき", enName: "Azuki Yagi", nickname: "あづ", birth: "2005年3月22日", pref: "東京都", gen: "18期", note: "", c1: "ピンク", c1Hex: "#FF7DA0", c2: "紫", c2Hex: "#BE79FF" },
-      { id: 34, name: "山口 結愛", kana: "やまぐち ゆい", enName: "Yui Yamaguchi", nickname: "ゆいち", birth: "2009年3月8日", pref: "長崎県", gen: "18期", note: "", c1: "緑", c1Hex: "#10B981", c2: "黄色", c2Hex: "#FBBF24" },
-      { id: 35, name: "伊藤 百花", kana: "いとう ももか", enName: "Momoka Ito", nickname: "いともも", birth: "2003年12月6日", pref: "埼玉県", gen: "19期", note: "", c1: "ピンク", c1Hex: "#FF7DA0", c2: "白", c2Hex: "#FFFFFF" },
-      { id: 36, name: "奥本 カイリ", kana: "おくもと カイリ", enName: "Kairi Okumoto", nickname: "カイリ", birth: "2007年1月27日", pref: "東京都", gen: "19期", note: "", c1: "青", c1Hex: "#3B82F6", c2: "黄", c2Hex: "#FBBF24" },
-      { id: 37, name: "川村 結衣", kana: "かわむら ゆい", enName: "Yui Kawamura", nickname: "かわゆい", birth: "2006年6月18日", pref: "北海道", gen: "19期", note: "", c1: "水色", c1Hex: "#00bfff", c2: "白", c2Hex: "#FFFFFF" },
-      { id: 38, name: "大賀 彩姫", kana: "おおが さき", enName: "Saki Oga", nickname: "さーちゃん", birth: "2006年5月16日", pref: "福島県", gen: "20期研", note: "研究生", c1: "赤", c1Hex: "#EF4444", c2: "ピンク", c2Hex: "#FF7DA0" },
-      { id: 39, name: "近藤 沙樹", kana: "こんどう さき", enName: "Saki Kondo", nickname: "こさき", birth: "2012年2月23日", pref: "愛知県", gen: "20期研", note: "研究生", c1: "黄", c1Hex: "#FBBF24", c2: "水色", c2Hex: "#00bfff" },
-      { id: 40, name: "丸山 ひなた", kana: "まるやま ひなた", enName: "Hinata Maruyama", nickname: "まるちゃん", birth: "2008年7月11日", pref: "新潟県", gen: "20期研", note: "研究生", c1: "オレンジ", c1Hex: "#FFA23A", c2: "白", c2Hex: "#FFFFFF" },
-      { id: 41, name: "髙橋 舞桜", kana: "たかはし まお", enName: "Mao Takahashi", nickname: "まーたん", birth: "2010年6月25日", pref: "北海道", gen: "21期研", note: "研究生", c1: "ピンク", c1Hex: "#FF7DA0", c2: "緑", c2Hex: "#10B981" },
-      { id: 42, name: "田中 沙友利", kana: "たなか さゆり", enName: "Sayuri Tanaka", nickname: "さゆりん", birth: "2008年12月9日", pref: "埼玉県", gen: "21期研", note: "研究生", c1: "紫", c1Hex: "#BE79FF", c2: "ピンク", c2Hex: "#FF7DA0" },
-      { id: 43, name: "牧戸 愛茉", kana: "まきと えま", enName: "Ema Makito", nickname: "えまちゃん", birth: "2007年5月25日", pref: "愛知県", gen: "21期研", note: "研究生", c1: "黄", c1Hex: "#FBBF24", c2: "紫", c2Hex: "#BE79FF" },
-      { id: 44, name: "森川 優", kana: "もりかわ ゆう", enName: "Yuu Morikawa", nickname: "ゆーゆ", birth: "2008年6月24日", pref: "兵庫県", gen: "21期研", note: "研究生", c1: "青", c1Hex: "#3B82F6", c2: "白", c2Hex: "#FFFFFF" },
-      { id: 45, name: "渡邉 葵心", kana: "わたなべ きこ", enName: "Kiko Watanabe", nickname: "きこちゃん", birth: "2007年7月12日", pref: "秋田県", gen: "21期研", note: "研究生", c1: "水色", c1Hex: "#00bfff", c2: "紫", c2Hex: "#BE79FF" },
-      { id: 46, name: "大西 ゆな", kana: "おおにし ゆな", enName: "Yuna Onishi", nickname: "ゆーちゃん", birth: "2008年6月15日", pref: "長崎県", gen: "22期研", note: "研究生", c1: "ピンク", c1Hex: "#FF7DA0", c2: "白", c2Hex: "#FFFFFF" },
-      { id: 47, name: "長谷川 百々花", kana: "はせがわ ももか", enName: "Momoka Hasegawa", nickname: "はせもも", birth: "2006年12月14日", pref: "福島県", gen: "22期研", note: "研究生 / 元チーム8", c1: "ピンク", c1Hex: "#FF7DA0", c2: "黄", c2Hex: "#FBBF24" },
-      { id: 48, name: "前田 衣澄", kana: "まえだ いずみ", enName: "Izumi Maeda", nickname: "いず", birth: "2008年11月17日", pref: "東京都", gen: "22期研", note: "研究生", c1: "赤", c1Hex: "#EF4444", c2: "白", c2Hex: "#FFFFFF" },
-      { id: 49, name: "山内 利乃明", kana: "やまうち りのあ", enName: "Rinoa Yamauchi", nickname: "りのあ", birth: "2012年12月13日", pref: "愛媛県", gen: "22期研", note: "研究生", c1: "オレンジ", c1Hex: "#FFA23A", c2: "ピンク", c2Hex: "#FF7DA0" }
+      { id: 1, name: "岩立 沙穂", kana: "いわたて さほ", enName: "Saho Iwatate", nickname: "さっほー", birth: "1994年10月4日", pref: "神奈川県", gen: "13期", note: "TRUSTAR所属", colors: ["青", "白", "赤"] },
+      { id: 2, name: "福岡 聖菜", kana: "ふくおか せいな", enName: "Seina Fukuoka", nickname: "せいちゃん", birth: "2000年8月1日", pref: "神奈川県", gen: "15期", note: "トキエンタテインメント所属", colors: ["青", "白"] },
+      { id: 3, name: "小栗 有以", kana: "おぐり ゆい", enName: "Yui Oguri", nickname: "ゆいゆい", birth: "2001年12月26日", pref: "東京都", gen: "チーム8", note: "ゼスト所属", colors: ["黄", "ピンク"] },
+      { id: 4, name: "行天 優莉奈", kana: "ぎょうてん ゆりな", enName: "Yurina Gyoten", nickname: "ゆりな", birth: "1999年3月14日", pref: "香川県", gen: "チーム8", note: "MR8所属", colors: ["ピンク", "ピンク"] },
+      { id: 5, name: "倉野尾 成美", kana: "くらのお なるみ", enName: "Narumi Kuranoo", nickname: "なるちゃん", birth: "2000年11月8日", pref: "熊本県", gen: "チーム8", note: "AKB48グループ総監督", colors: ["赤", "緑"] },
+      { id: 6, name: "坂川 陽香", kana: "さかがわ ひゆか", enName: "Hiyuka Sakagawa", nickname: "ひゆか", birth: "2006年10月7日", pref: "福井県", gen: "チーム8", note: "ALWAYS所属", colors: ["赤", "オレンジ"] },
+      { id: 7, name: "下尾 みう", kana: "したお みう", enName: "Miu Shitao", nickname: "みうちゃん", birth: "2001年4月3日", pref: "山口県", gen: "チーム8", note: "太田プロダクション所属", colors: ["白", "紫"] },
+      { id: 8, name: "髙橋 彩音", kana: "たかはし あやね", enName: "Ayane Takahashi", nickname: "あやね", birth: "1997年12月30日", pref: "埼玉県", gen: "チーム8", note: "アリゲーター所属", colors: ["水色", "赤"] },
+      { id: 9, name: "徳永 羚海", kana: "とくなが れみ", enName: "Remi Tokunaga", nickname: "れみたん", birth: "2006年10月1日", pref: "鳥取県", gen: "チーム8", note: "", colors: ["ピンク", "青"] },
+      { id: 10, name: "永野 芹佳", kana: "ながの せりか", enName: "Serika Nagano", nickname: "せりか", birth: "2001年3月27日", pref: "大阪府", gen: "チーム8", note: "TRUSTAR所属", colors: ["白", "白", "白"] },
+      { id: 11, name: "橋本 陽菜", kana: "はしもと はるな", enName: "Haruna Hashimoto", nickname: "はるpyon", birth: "2000年5月25日", pref: "富山県", gen: "チーム8", note: "ストロボエージェンシー所属", colors: ["ピンク", "白"] },
+      { id: 12, name: "千葉 恵里", kana: "ちば えりい", enName: "Erii Chiba", nickname: "えりい", birth: "2003年10月27日", pref: "神奈川県", gen: "ドラフト2期", note: "NEXT LEAP所属", colors: ["黄", "青"] },
+      { id: 13, name: "黒須 遥香", kana: "くろす はるか", enName: "Haruka Kurosu", nickname: "はーちゃん", birth: "2001年2月28日", pref: "埼玉県", gen: "16期", note: "", colors: ["黄"] },
+      { id: 14, name: "長友 彩海", kana: "ながとも あやみ", enName: "Ayami Nagatomo", nickname: "あやみん", birth: "2000年11月2日", pref: "神奈川県", gen: "16期", note: "", colors: ["黄", "水色"] },
+      { id: 15, name: "武藤 小麟", kana: "むとう おりん", enName: "Orin Muto", nickname: "おりん", birth: "2000年7月22日", pref: "東京都", gen: "16期", note: "姉は武藤十夢 / FIRST AGENT所属", colors: ["水色", "濃ピンク"] },
+      { id: 16, name: "山内 瑞葵", kana: "やまうち みずき", enName: "Mizuki Yamauchi", nickname: "ずっきー", birth: "2001年9月20日", pref: "東京都", gen: "16期", note: "エイベックス・AY・ファクトリー所属", colors: ["ピンク", "黄"] },
+      { id: 17, name: "山根 涼羽", kana: "やまね すずは", enName: "Suzuha Yamane", nickname: "ずんちゃん", birth: "2000年8月11日", pref: "兵庫県", gen: "16期", note: "", colors: ["ピンク", "緑"] },
+      { id: 18, name: "太田 有紀", kana: "おおた ゆき", enName: "Yuki Ota", nickname: "ゆきたん", birth: "2004年3月27日", pref: "神奈川県", gen: "17期", note: "", colors: ["水色", "紫"] },
+      { id: 19, name: "佐藤 綺星", kana: "さとう あいり", enName: "Airi Sato", nickname: "あいちゃん", birth: "2004年6月24日", pref: "千葉県", gen: "17期", note: "姉は佐藤妃星 / ヴィーボ所属", colors: ["赤", "白"] },
+      { id: 20, name: "橋本 恵理子", kana: "はしもと えりこ", enName: "Eriko Hashimoto", nickname: "えりこ", birth: "2006年4月16日", pref: "大阪府", gen: "17期", note: "", colors: ["赤", "黄"] },
+      { id: 21, name: "畠山 希美", kana: "はたけやま のぞみ", enName: "Nozomi Hatakeyama", nickname: "のんちゃん", birth: "2008年1月25日", pref: "埼玉県", gen: "17期", note: "", colors: ["紫", "青"] },
+      { id: 22, name: "平田 侑希", kana: "ひらた ゆき", enName: "Yuki Hirata", nickname: "ゆきちゃん", birth: "2002年9月3日", pref: "埼玉県", gen: "17期", note: "Mi-So所属", colors: ["白", "紫"] },
+      { id: 23, name: "布袋 百椛", kana: "ほてい もか", enName: "Moka Hotei", nickname: "ほてちゃん", birth: "2004年12月1日", pref: "兵庫県", gen: "17期", note: "", colors: ["ピンク", "赤"] },
+      { id: 24, name: "正鋳 真優", kana: "まさい まゆう", enName: "Mayuu Masai", nickname: "まゆう", birth: "2005年3月1日", pref: "埼玉県", gen: "17期", note: "", colors: ["白", "白"] },
+      { id: 25, name: "水島 美結", kana: "みずしま みゆう", enName: "Miyuu Mizushima", nickname: "みずみん", birth: "2003年11月12日", pref: "北海道", gen: "17期", note: "", colors: ["水色", "ピンク"] },
+      { id: 26, name: "山﨑 空", kana: "やまざき そら", enName: "Sora Yamazaki", nickname: "そらら", birth: "2004年5月13日", pref: "東京都", gen: "17期", note: "", colors: ["紫", "ピンク"] },
+      { id: 27, name: "秋山 由奈", kana: "あきやま ゆな", enName: "Yuna Akiyama", nickname: "ゆなちゃん", birth: "2005年12月12日", pref: "千葉県", gen: "18期", note: "", colors: ["水色", "水色"] },
+      { id: 28, name: "新井 彩永", kana: "あらい さえ", enName: "Sae Arai", nickname: "さえちゃん", birth: "2005年10月5日", pref: "東京都", gen: "18期", note: "", colors: ["黄", "黄"] },
+      { id: 29, name: "工藤 華純", kana: "くどう かすみ", enName: "Kasumi Kudo", nickname: "かすみん", birth: "2005年6月15日", pref: "大分県", gen: "18期", note: "", colors: ["赤", "緑"] },
+      { id: 30, name: "久保 姫菜乃", kana: "くぼ ひなの", enName: "Hinano Kubo", nickname: "ひなちゃん", birth: "2006年2月2日", pref: "長野県", gen: "18期", note: "", colors: ["濃ピンク", "薄ピンク"] },
+      { id: 31, name: "迫 由芽実", kana: "さこ ゆめみ", enName: "Yumemi Sako", nickname: "ゆめみん", birth: "2006年2月5日", pref: "埼玉県", gen: "18期", note: "", colors: ["白", "水色"] },
+      { id: 32, name: "成田 香姫奈", kana: "なりた こひな", enName: "Kohina Narita", nickname: "こひな", birth: "2004年3月3日", pref: "北海道", gen: "18期", note: "", colors: ["紫", "黄"] },
+      { id: 33, name: "八木 愛月", kana: "やぎ あづき", enName: "Azuki Yagi", nickname: "あづちゃん", birth: "2005年3月22日", pref: "東京都", gen: "18期", note: "", colors: ["ピンク", "黄"] },
+      { id: 34, name: "山口 結愛", kana: "やまぐち ゆい", enName: "Yui Yamaguchi", nickname: "ゆいち", birth: "2009年3月8日", pref: "長崎県", gen: "18期", note: "", colors: ["赤", "オレンジ"] },
+      { id: 35, name: "伊藤 百花", kana: "いとう ももか", enName: "Momoka Ito", nickname: "ももか", birth: "2003年12月6日", pref: "埼玉県", gen: "19期", note: "", colors: ["薄ピンク", "薄ピンク"] },
+      { id: 36, name: "奥本 カイリ", kana: "おくもと カイリ", enName: "Kairi Okumoto", nickname: "カイリ", birth: "2007年1月27日", pref: "東京都", gen: "19期", note: "", colors: ["水色", "青"] },
+      { id: 37, name: "川村 結衣", kana: "かわむら ゆい", enName: "Yui Kawamura", nickname: "かわゆい", birth: "2006年6月18日", pref: "北海道", gen: "19期", note: "", colors: ["赤", "紫"] },
+      { id: 38, name: "大賀 彩姫", kana: "おおが さき", enName: "Saki Oga", nickname: "さーちゃん", birth: "2006年5月16日", pref: "福島県", gen: "20期研", note: "研究生", colors: ["青", "黄緑"] },
+      { id: 39, name: "近藤 沙樹", kana: "こんどう さき", enName: "Saki Kondo", nickname: "こさき", birth: "2012年2月23日", pref: "愛知県", gen: "20期研", note: "研究生", colors: ["オレンジ", "緑"] },
+      { id: 40, name: "丸山 ひなた", kana: "まるやま ひなた", enName: "Hinata Maruyama", nickname: "まるちゃん", birth: "2008年7月11日", pref: "新潟県", gen: "20期研", note: "研究生", colors: ["濃ピンク", "青"] },
+      { id: 41, name: "髙橋 舞桜", kana: "たかはし まお", enName: "Mao Takahashi", nickname: "まーたん", birth: "2010年6月25日", pref: "北海道", gen: "21期研", note: "研究生", colors: ["紫", "紫"] },
+      { id: 42, name: "田中 沙友利", kana: "たなか さゆり", enName: "Sayuri Tanaka", nickname: "さゆりん", birth: "2008年12月9日", pref: "埼玉県", gen: "21期研", note: "研究生", colors: ["水色", "黄緑"] },
+      { id: 43, name: "牧戸 愛茉", kana: "まきと えま", enName: "Ema Makito", nickname: "えまちゃん", birth: "2007年5月25日", pref: "愛知県", gen: "21期研", note: "研究生", colors: ["濃ピンク", "濃ピンク"] },
+      { id: 44, name: "森川 優", kana: "もりかわ ゆう", enName: "Yuu Morikawa", nickname: "ゆーゆ", birth: "2008年6月24日", pref: "兵庫県", gen: "21期研", note: "研究生", colors: ["水色", "オレンジ"] },
+      { id: 45, name: "渡邉 葵心", kana: "わたなべ きこ", enName: "Kiko Watanabe", nickname: "きこちゃん", birth: "2007年7月12日", pref: "秋田県", gen: "21期研", note: "研究生", colors: ["青", "青"] },
+      { id: 46, name: "大西 ゆな", kana: "おおにし ゆな", enName: "Yuna Onishi", nickname: "ゆーちゃん", birth: "2008年6月15日", pref: "長崎県", gen: "22期研", note: "研究生", colors: ["紫", "黄緑"] },
+      { id: 47, name: "長谷川 百々花", kana: "はせがわ ももか", enName: "Momoka Hasegawa", nickname: "はせもも", birth: "2006年12月14日", pref: "福島県", gen: "22期研", note: "研究生 / 元チーム8", colors: ["オレンジ", "オレンジ"] },
+      { id: 48, name: "前田 衣澄", kana: "まえだ いずみ", enName: "Izumi Maeda", nickname: "いず", birth: "2008年11月17日", pref: "東京都", gen: "22期研", note: "研究生", colors: ["黄緑", "黄緑"] },
+      { id: 49, name: "山内 利乃明", kana: "やまうち りのあ", enName: "Rinoa Yamauchi", nickname: "りのあ", birth: "2012年12月13日", pref: "愛媛県", gen: "22期研", note: "研究生", colors: ["薄ピンク", "黄緑"] }
     ];
 
 
@@ -382,17 +397,21 @@
        【4】システムロジック＆UIレンダリング
        ========================================================================== */
     
-    // 色名からフィルタータグを自動生成するヘルパー
-    function getColorTags(c1, c2) {
-      const combined = `${c1} ${c2}`;
+    // 色名配列からフィルタータグを自動生成するヘルパー
+    function getColorTags(colors) {
+      const combined = colors.join(" ");
       const tags = [];
       if (combined.includes("ピンク")) tags.push("pink");
       if (combined.includes("赤")) tags.push("red");
       if (combined.includes("白")) tags.push("white");
       if (combined.includes("青") || combined.includes("水色")) tags.push("blue");
-      if (combined.includes("黄")) tags.push("yellow");
+      if (combined.includes("黄") && !combined.includes("黄緑")) tags.push("yellow");
+      // 「黄×黄緑」のように両方含む場合の処理
+      if (colors.some(c => c === "黄")) {
+        if (!tags.includes("yellow")) tags.push("yellow");
+      }
       if (combined.includes("オレンジ")) tags.push("orange");
-      if (combined.includes("緑")) tags.push("green");
+      if (combined.includes("緑") || combined.includes("黄緑")) tags.push("green");
       if (combined.includes("紫")) tags.push("purple");
       return tags;
     }
@@ -402,14 +421,16 @@
       const sns = MEMBER_SNS[m.id] || {};
       const img = MEMBER_IMAGES[m.id] || DEFAULT_IMAGE;
       const initials = m.enName.split(' ').map(n => n[0]).join('').toUpperCase();
+      const hexList = m.colors.map(c => COLOR_HEX[c] || "#FFFFFF");
       return {
         ...m,
         imageUrl: img,
         initials: initials,
         sns: sns,
-        pColorName: `${m.c1}×${m.c2}`,
-        pColors: [m.c1Hex, m.c2Hex],
-        tags: getColorTags(m.c1, m.c2)
+        pColorName: m.colors.join("×"),
+        pColors: hexList,
+        penCount: m.colors.length,
+        tags: getColorTags(m.colors)
       };
     });
 
@@ -437,7 +458,7 @@
       { id: "blue", name: "青・水色", class: "bg-blue-400 text-white shadow-sm hover:scale-105" },
       { id: "yellow", name: "黄色系", class: "bg-yellow-300 text-slate-800 dark:bg-yellow-400 shadow-sm hover:scale-105" },
       { id: "orange", name: "オレンジ系", class: "bg-orange-400 text-white shadow-sm hover:scale-105" },
-      { id: "green", name: "緑系", class: "bg-emerald-400 text-white shadow-sm hover:scale-105" },
+      { id: "green", name: "緑・黄緑系", class: "bg-emerald-400 text-white shadow-sm hover:scale-105" },
       { id: "purple", name: "紫系", class: "bg-purple-400 text-white shadow-sm hover:scale-105" },
       { id: "white", name: "白系", class: "bg-white text-slate-700 dark:bg-slate-100 border border-slate-200 dark:border-slate-700 shadow-sm hover:scale-105" }
     ];
@@ -475,11 +496,12 @@
       theme: localStorage.getItem('akb48_theme') || 'light'
     };
 
-    // 単色ペンライトSVGを生成する関数
+    // 単色ペンライトSVGを生成する関数（1本〜3本対応）
     function createSinglePenlightSvg(color, id, index, total, isPinned = false) {
       const prefix = isPinned ? 'pin-' : '';
       const gradId = `${prefix}pen-grad-${id}-${index}`;
       const isWhite = color.toUpperCase() === '#FFFFFF';
+      const isLightPink = color.toUpperCase() === '#FBCFE8';
       
       let gradHtml = `
         <linearGradient id="${gradId}" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -499,21 +521,27 @@
         `;
       }
 
-      const strokeColor = isWhite ? '#cbd5e1' : '#f8fafc';
+      const strokeColor = isWhite ? '#cbd5e1' : (isLightPink ? '#f472b6' : '#f8fafc');
       
       let transformStyle = '';
       let marginStyle = '';
-      if (total > 1) {
-        const angle = -12 + (index * (24 / (total - 1)));
+      if (total === 2) {
+        const angle = -12 + (index * 24);
         const tx = -4 + (index * 4);
         transformStyle = `transform: rotate(${angle}deg) translateX(${tx}px);`;
         marginStyle = index > 0 ? 'margin-left: -14px;' : '';
+      } else if (total === 3) {
+        const angle = -16 + (index * 16);
+        const tx = -3 + (index * 3);
+        transformStyle = `transform: rotate(${angle}deg) translateX(${tx}px);`;
+        marginStyle = index > 0 ? 'margin-left: -18px;' : '';
       }
 
       const glowColor = isWhite ? '#e2e8f0' : color;
+      const widthClass = total === 3 ? 'w-9 h-12' : 'w-10 h-12';
 
       return `
-        <svg viewBox="0 0 40 52" class="w-10 h-12 transition-all duration-300 hover:scale-110 hover:z-20 glow-effect" style="--glow-color: ${glowColor}; ${transformStyle} ${marginStyle} z-index: ${index + 1}; position: relative;">
+        <svg viewBox="0 0 40 52" class="${widthClass} transition-all duration-300 hover:scale-110 hover:z-20 glow-effect" style="--glow-color: ${glowColor}; ${transformStyle} ${marginStyle} z-index: ${index + 1}; position: relative;">
           <defs>
             ${gradHtml}
           </defs>
@@ -525,7 +553,7 @@
       `;
     }
 
-    // ペンライト2本を描画するラッパー
+    // ペンライト本数分を描画するラッパー
     function createPenlightsHtml(pColors, id, isPinned = false) {
       let html = '<div class="flex items-center relative h-12 pr-1">';
       pColors.forEach((color, index) => {
@@ -756,7 +784,7 @@
                   ${penlightsHtml}
                 </div>
                 <div class="min-w-0">
-                  <span class="text-[8px] text-slate-400 dark:text-slate-500 font-black tracking-wider uppercase block leading-none">PENLIGHT (2本)</span>
+                  <span class="text-[8px] text-slate-400 dark:text-slate-500 font-black tracking-wider uppercase block leading-none">PENLIGHT (${member.penCount}本)</span>
                   <span class="text-xs md:text-sm font-bold text-slate-800 dark:text-slate-200 mt-1 block truncate">
                     ${member.pColorName}
                   </span>
