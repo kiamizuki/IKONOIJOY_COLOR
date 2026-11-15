@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="ja" class="transition-colors duration-300">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WHITE SCOPION ＆ Rain Tree メンカラ＆ペンライト早見表</title>
+
+  <!-- ========================================== -->
+  <!-- SNSシェア用リンクカード設定 (OGP / Twitter Card) -->
+  <!-- ========================================== -->
+  <meta property="og:title" content="WHITE SCOPION ＆ Rain Tree メンカラ＆ペンライト早見表">
+  <meta property="og:description" content="WHITE SCOPIONとRain Treeのメンバーカラー、ペンライトカラーが一目でわかる非公式早見表ツール！">
+  <meta property="og:url" ontent="https://kiamizuki.github.io/IKONOIJOY_COLOR/
+/index.html">
+  <meta property="og:image" content="https://kiamizuki.github.io/IKONOIJOY_COLOR/og-image3.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="WHITE SCOPION ＆ Rain Tree ペンライトアシスタント">
+  <meta property="og:locale" content="ja_JP">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WHITE SCOPION ＆ Rain Tree メンカラ＆ペンライト早見表">
+  <meta name="twitter:description" content="WHITE SCOPIONとRain Treeのメンバーカラー、ペンライトカラーが一目でわかる非公式早見表ツール！">
+  <meta name="twitter:image"  content="https://kiamizuki.github.io/IKONOIJOY_COLOR/og-image3.png">
+  <!-- ========================================== -->
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Noto Sans JP & M PLUS Rounded 1c -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Noto Sans JP', 'sans-serif'],
+            rounded: ['M PLUS Rounded 1c', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Noto Sans JP', 'M PLUS Rounded 1c', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :focus-visible {
+      outline: 3px solid #0284c7;
+      outline-offset: 2px;
+    }
+    
+    @keyframes glow {
+      0%, 100% { filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.45)) drop-shadow(0 0 10px var(--glow-color, #38bdf8)); }
+      50% { filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7)) drop-shadow(0 0 18px var(--glow-color, #38bdf8)); }
+    }
+    
+    .glow-effect {
+      animation: glow 3s infinite ease-in-out;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .glow-effect {
+        animation: none;
+        filter: drop-shadow(0 0 6px var(--glow-color, #38bdf8));
+      }
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+
+    .safe-pb {
+      padding-bottom: max(6rem, env(safe-area-inset-bottom));
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen safe-pb transition-colors duration-300 antialiased">
+
+  <div id="srAnnouncer" class="sr-only" aria-live="polite"></div>
+
+  <!-- ヘッダー -->
+  <header class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm sticky top-0 z-40 transition-colors duration-300">
+    <div class="max-w-6xl mx-auto px-4 py-3.5 flex flex-col md:flex-row items-center justify-between gap-3.5">
+      
+      <div class="flex items-center justify-between w-full md:w-auto gap-2">
+        <div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <h1 class="text-base sm:text-lg md:text-xl font-black font-rounded bg-gradient-to-r from-slate-700 via-sky-600 to-indigo-600 dark:from-slate-200 dark:via-sky-400 dark:to-indigo-300 bg-clip-text text-transparent">
+              WHITE SCOPION ＆ Rain Tree 早見表
+            </h1>
+            <span class="bg-slate-100 dark:bg-slate-800 text-xs text-slate-700 dark:text-slate-300 font-bold px-2.5 py-0.5 rounded-md border border-slate-300 dark:border-slate-700">非公式</span>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">メンバーカラー・ペンライト・プロフィールまとめ</p>
+        </div>
+        
+        <button type="button" onclick="toggleDarkMode()" class="md:hidden min-w-[44px] min-h-[44px] flex items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-amber-300 shadow-xs active:scale-95 transition-all" aria-label="テーマ切り替え">
+          <span id="themeIconMobile" class="text-xl" aria-hidden="true">🌙</span>
+        </button>
+      </div>
+      
+      <div class="w-full md:w-auto flex items-center gap-2.5">
+        <div class="relative flex-1 md:w-80">
+          <label for="searchInput" class="sr-only">メンバー検索</label>
+          <input 
+            type="search" 
+            id="searchInput" 
+            placeholder="名前、出身地、MBTI、趣味、特技などで検索..." 
+            class="w-full min-h-[44px] pl-11 pr-11 py-2 text-base md:text-sm bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-full text-slate-900 dark:text-slate-100 transition-all placeholder:text-slate-500 dark:placeholder:text-slate-400"
+          >
+          <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 dark:text-slate-400 text-base pointer-events-none" aria-hidden="true">🔍</span>
+          <button type="button" id="clearSearchBtn" onclick="clearSearch()" aria-label="検索クリア" class="hidden absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-sm font-bold flex items-center justify-center hover:bg-slate-300 dark:hover:bg-slate-600">✕</button>
+        </div>
+        
+        <button type="button" onclick="toggleDarkMode()" class="hidden md:flex min-w-[44px] min-h-[44px] items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-amber-300 hover:scale-105 active:scale-95 transition-all shadow-xs" aria-label="テーマ切り替え" title="テーマ切り替え">
+          <span id="themeIconPC" class="text-xl" aria-hidden="true">🌙</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 mt-6">
+    
+    <!-- グループ切り替えタブ -->
+    <div role="tablist" aria-label="グループ絞り込み" class="grid grid-cols-3 gap-1.5 p-1.5 bg-slate-200/80 dark:bg-slate-900 rounded-2xl max-w-md mx-auto mb-5 border border-slate-300/70 dark:border-slate-800 shadow-inner">
+      <button type="button" role="tab" aria-selected="true" onclick="filterGroup('all')" id="tab-all" class="min-h-[44px] py-2 px-2 text-xs sm:text-sm font-black rounded-xl transition-all duration-200 bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm">ALL (27)</button>
+      <button type="button" role="tab" aria-selected="false" onclick="filterGroup('white-scorpion')" id="tab-white-scorpion" class="min-h-[44px] py-2 px-2 text-xs sm:text-sm font-black rounded-xl text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all duration-200">WHITE SCORPION</button>
+      <button type="button" role="tab" aria-selected="false" onclick="filterGroup('rain-tree')" id="tab-rain-tree" class="min-h-[44px] py-2 px-2 text-xs sm:text-sm font-black rounded-xl text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all duration-200">Rain Tree</button>
+    </div>
+
+    <!-- お気に入りトグル -->
+    <div class="flex justify-center mb-6">
+      <button type="button" aria-pressed="false" onclick="toggleFavoritesOnly()" id="favToggleBtn" class="min-h-[44px] flex items-center gap-2 px-5 py-2 rounded-full text-xs sm:text-sm font-bold border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 shadow-xs transition-all">
+        <span id="favToggleIcon" class="text-lg leading-none text-sky-600 dark:text-sky-400" aria-hidden="true">☆</span>
+        <span>お気に入りメンバーのみ表示</span>
+      </button>
+    </div>
+
+    <!-- カラー系統フィルター -->
+    <section aria-label="カラー系統フィルター" class="mb-8">
+      <p class="text-xs font-black text-slate-600 dark:text-slate-400 text-center mb-3 tracking-wider">カラー系統で絞り込む</p>
+      <div class="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto px-1" id="colorFilterContainer"></div>
+    </section>
+
+    <!-- ピン留めセクション -->
+    <section id="pinnedSection" aria-labelledby="pinnedHeading" class="hidden mb-10">
+      <div class="flex items-center gap-2 mb-4 border-b-2 border-sky-200 dark:border-sky-900/70 pb-2.5">
+        <span class="text-xl" aria-hidden="true">💖</span>
+        <h2 id="pinnedHeading" class="text-base font-black font-rounded text-sky-600 dark:text-sky-400 tracking-wider">マイ推し（お気に入りピン留め）</h2>
+      </div>
+      <div id="pinnedGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+
+    <!-- メイン一覧 -->
+    <section aria-labelledby="gridTitle">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-4 px-1">
+        <h2 id="gridTitle" class="text-base font-black tracking-wider text-slate-800 dark:text-slate-200">メンバー一覧</h2>
+        <span id="resultCount" class="text-xs sm:text-sm font-black px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200">0人</span>
+      </div>
+      <div id="memberGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+
+    <!-- 該当なし -->
+    <div id="noResults" class="hidden text-center py-16 px-4 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 mt-4">
+      <div class="text-5xl mb-4" aria-hidden="true">🧐</div>
+      <p class="text-base text-slate-800 dark:text-slate-200 font-bold">条件に合うメンバーが見つかりませんでした</p>
+      <p class="text-sm text-slate-600 dark:text-slate-400 mt-1.5">検索ワードを変えるか、フィルターをリセットしてください</p>
+      <button type="button" onclick="resetFilters()" class="mt-6 min-h-[44px] px-6 py-2.5 text-sm font-bold text-white bg-sky-600 hover:bg-sky-700 rounded-full transition-all shadow-sm">
+        すべての条件をクリアする
+      </button>
+    </div>
+  </main>
+
+  <!-- フッター -->
+  <footer class="mt-20 text-center text-xs text-slate-600 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 py-10 px-4">
+    <div class="flex flex-wrap justify-center items-center gap-3 mb-6 px-5 py-3.5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs max-w-md mx-auto">
+      <span class="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-200 flex items-center gap-1.5">
+        <span aria-hidden="true">📣</span> この早見表をシェア：
+      </span>
+      <div class="flex items-center gap-3">
+        <button type="button" onclick="shareOnX()" class="w-11 h-11 rounded-full bg-black hover:bg-slate-800 text-white flex items-center justify-center transition-all duration-200 shadow-xs hover:scale-105" aria-label="Xでシェア" title="Xでシェア">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </button>
+        <button type="button" onclick="shareOnLine()" class="w-11 h-11 rounded-full bg-[#06C755] hover:bg-[#05b04b] text-white flex items-center justify-center transition-all duration-200 shadow-xs hover:scale-105" aria-label="LINEでシェア" title="LINEでシェア">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 10.3c0-4.7-4.8-8.5-10.7-8.5S2.6 5.6 2.6 10.3c0 4.2 3.8 7.7 9 8.4.3.1.8.2 1 .5.2.2.2.6.1.8l-.4 2.6c-.1.6.2.2.5-.1l3.5-3.5c2.4-1.2 5.3-3.9 7.7-8.7zm-14.7 2.4c0 .3-.2.5-.5.5h-1.5c-.3 0-.5-.2-.5-.5V8.5c0-.3.2-.5.5-.5h.5c.3 0 .5.2.5.5v3.2H8.8c.3 0 .5.2.5.5zm2.8 0c0 .3-.2.5-.5.5h-.5c-.3 0-.5-.2-.5-.5V8.5c0-.3.2-.5.5-.5h.5c.3 0 .5.2.5.5zm4.1 0c0 .3-.2.5-.5.5h-.5c-.3 0-.5-.2-.5-.5V9.4l-1.3 3.3c-.1.2-.3.3-.5.3h-.1c-.2 0-.4-.1-.5-.3L12 9.4v2.9c0 .3-.2.5-.5.5h-.5c-.3 0-.5-.2-.5-.5V8.5c0-.3.2-.5.5-.5h.8c.2 0 .4.1.5.3l1.2 3 1.2-3c.1-.2.3-.3.5-.3h.8c.3 0 .5.2.5.5zm4.1-3.7c0 .3-.2.5-.5.5h-1.5v1.1h1.5c.3 0 .5.2.5.5v.5c0 .3-.2.5-.5.5h-1.5v1.1h1.5c.3 0 .5.2.5.5v.5c0 .3-.2.5-.5.5h-2.5c-.3 0-.5-.2-.5-.5V8.5c0-.3.2-.5.5-.5h2.5c.3 0 .5.2.5.5z"/></svg>
+        </button>
+        <button type="button" onclick="copyPageUrl()" class="w-11 h-11 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 flex items-center justify-center transition-all duration-200 shadow-xs hover:scale-105" aria-label="URLコピー" title="URLコピー">
+          <span class="text-base" aria-hidden="true">🔗</span>
+        </button>
+      </div>
+    </div>
+    <p class="font-rounded font-bold text-sm bg-gradient-to-r from-slate-700 via-sky-600 to-indigo-600 dark:from-slate-200 dark:via-sky-400 dark:to-indigo-300 bg-clip-text text-transparent inline-block mb-1.5">WHITE SCOPION ＆ Rain Tree ペンライトアシスタント</p>
+    <p>© 2026 WHITE SCOPION & Rain Tree Penlight Assistant</p>
+    <p class="mt-1.5 text-[11px] leading-relaxed max-w-xl mx-auto">
+      本アプリはファン有志が制作した非公式のファンツールです。<br>@kiamizuki1201
+    </p>
+  </footer>
+
+  <!-- トースト通知 -->
+  <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 left-1/2 -translate-x-1/2 transform bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-950 text-xs sm:text-sm px-5 py-3 rounded-full shadow-2xl opacity-0 translate-y-3 pointer-events-none transition-all duration-300 z-50 flex items-center gap-2 font-bold whitespace-nowrap">
+    <span id="toastIcon" class="text-base" aria-hidden="true">💖</span> <span id="toastMsg">登録しました！</span>
+  </div>
+
+  <script>
+    // =========================================================================
+    // 1. メンバー基本データ定義（WHITE SCOPION 11名、Rain Tree 16名）
+    // =========================================================================
+    const memberProfiles = [
+      // WHITE SCOPION (11名)
+      { id: "ace", group: "white-scorpion", name: "ACE", kana: "エース", role: "", birthday: "11月6日", birthplace: "福岡県", hobby: "スノボー、ゲーム、寝ること", skill: "料理、字を書くこと、キメ顔", profileType: "ws" },
+      { id: "aco", group: "white-scorpion", name: "ACO", kana: "アコ", role: "", birthday: "5月30日", birthplace: "岡山県", hobby: "スイーツめぐり、旅、ドラマと映画鑑賞", skill: "クラシックバレエ、ランニング、耳を動かせる", profileType: "ws" },
+      { id: "ally", group: "white-scorpion", name: "ALLY", kana: "アリー", role: "副キャプテン", birthday: "4月17日", birthplace: "京都府", hobby: "カメラ（動画編集とかも好き）、ネットショッピング、バラエティ番組鑑賞", skill: "ドラム、謎解き、スマホのリズムゲーム", profileType: "ws" },
+      { id: "aoi_ws", group: "white-scorpion", name: "AOI", kana: "アオイ", role: "キャプテン", birthday: "10月13日", birthplace: "東京都", hobby: "散歩、アニメとドラマ鑑賞、舞台鑑賞", skill: "ローリング、まつ毛を二重幅に食い込ませること、似ている人を探すこと", profileType: "ws" },
+      { id: "choco", group: "white-scorpion", name: "CHOCO", kana: "チョコ", role: "", birthday: "12月27日", birthplace: "東京都", hobby: "アニメ鑑賞、ゲーム、チラちゃんを愛でること", skill: "自作PC、乗馬、ピアノ", profileType: "ws" },
+      { id: "coco", group: "white-scorpion", name: "COCO", kana: "ココ", role: "副キャプテン", birthday: "3月18日", birthplace: "北海道", hobby: "ドラマと映画鑑賞、バレエ、鉄棒", skill: "コンテンポラリーダンス、やると決めたら諦めない、努力ができること", profileType: "ws" },
+      { id: "hanna", group: "white-scorpion", name: "HANNA", kana: "ハンナ", role: "", birthday: "12月17日", birthplace: "兵庫県", hobby: "ゲーム、ダンス動画鑑賞、ラーメンを食べること", skill: "新体操、走高跳、大食い", profileType: "ws" },
+      { id: "momo_ws", group: "white-scorpion", name: "MOMO", kana: "モモ", role: "", birthday: "12月7日", birthplace: "東京都", hobby: "映画鑑賞、食べ歩き、可愛い子探し", skill: "アクション、スキーとスノーボード、フルート", profileType: "ws" },
+      { id: "natsu", group: "white-scorpion", name: "NATSU", kana: "ナツ", role: "", birthday: "7月16日", birthplace: "神奈川県", hobby: "カラオケ、読書、UFOキャッチャー", skill: "楽曲制作、10秒キャッチフレーズ、猫についての知識を言うこと", profileType: "ws" },
+      { id: "navi", group: "white-scorpion", name: "NAVI", kana: "ナビ", role: "", birthday: "3月20日", birthplace: "岡山県", hobby: "コスメ集め、写真撮影、即興で踊ること", skill: "韓国語、服のコーディネート、ずっと元気", profileType: "ws" },
+      { id: "nico", group: "white-scorpion", name: "NICO", kana: "ニコ", role: "", birthday: "5月23日", birthplace: "富山県", hobby: "カフェ巡り、食べ歩き、自然巡り", skill: "なんでも食べること、麻辣湯を食べること、赤ちゃんと仲良くなる速度", profileType: "ws" },
+
+      // Rain Tree (16名)
+      { id: "asamiyahinata", group: "rain-tree", name: "朝宮 日向", kana: "あさみや ひなた", role: "", birthday: "2001年12月25日", birthplace: "千葉県", height: "163cm", zodiac: "山羊座", bloodType: "AB型", mbti: "INTJ（建築家）", profileType: "rt" },
+      { id: "ayasekotori", group: "rain-tree", name: "綾瀬 ことり", kana: "あやせ ことり", role: "", birthday: "2006年6月12日", birthplace: "愛知県", height: "166cm", zodiac: "双子座", bloodType: "O型", mbti: "ISTP（巨匠）", profileType: "rt" },
+      { id: "ichiharatsumugi", group: "rain-tree", name: "市原 紬希", kana: "いちはら つむぎ", role: "", birthday: "2004年11月17日", birthplace: "千葉県", height: "158cm", zodiac: "蠍座", bloodType: "B型", mbti: "INTP（論理学者）", profileType: "rt" },
+      { id: "endorino", group: "rain-tree", name: "遠藤 莉乃", kana: "えんどう りの", role: "", birthday: "2006年12月1日", birthplace: "埼玉県", height: "163cm", zodiac: "射手座", bloodType: "A型", mbti: "ESFP（エンターテイナー）", profileType: "rt" },
+      { id: "katasemanaka", group: "rain-tree", name: "片瀬 真花", kana: "かたせ まなか", role: "", birthday: "2006年2月2日", birthplace: "東京都", height: "158cm", zodiac: "水瓶座", bloodType: "A型(O型)", mbti: "ENFJ（主人公）", profileType: "rt" },
+      { id: "katoshu", group: "rain-tree", name: "加藤 柊", kana: "かとう しゅう", role: "", birthday: "2005年7月13日", birthplace: "北海道", height: "156cm", zodiac: "蟹座", bloodType: "O型", mbti: "INFJ（提唱者）", profileType: "rt" },
+      { id: "satorica", group: "rain-tree", name: "佐藤 莉華", kana: "さとう りか", role: "", birthday: "2002年7月9日", birthplace: "茨城県", height: "162cm", zodiac: "蟹座", bloodType: "AB型", mbti: "INFP（仲介者）", profileType: "rt" },
+      { id: "suzunomio", group: "rain-tree", name: "鈴野 みお", kana: "すずの みお", role: "", birthday: "2009年1月21日", birthplace: "熊本県", height: "154cm", zodiac: "水瓶座", bloodType: "A型", mbti: "ESFJ（領事）", profileType: "rt" },
+      { id: "nagasemari", group: "rain-tree", name: "永瀬 真梨", kana: "ながせ まり", role: "", birthday: "2005年4月27日", birthplace: "千葉県", height: "164cm", zodiac: "牡牛座", bloodType: "O型", mbti: "INFP（仲介者）", profileType: "rt" },
+      { id: "nakamatamiki", group: "rain-tree", name: "仲俣 美希", kana: "なかまた みき", role: "", birthday: "2000年12月22日", birthplace: "東京都", height: "158cm", zodiac: "山羊座", bloodType: "O型", mbti: "ENFP（運動家）", profileType: "rt" },
+      { id: "niinofuka", group: "rain-tree", name: "新野 楓果", kana: "にいの ふうか", role: "キャプテン", birthday: "2000年10月8日", birthplace: "茨城県", height: "167cm", zodiac: "天秤座", bloodType: "B型", mbti: "ESFJ（領事）", profileType: "rt" },
+      { id: "hashimotomaki", group: "rain-tree", name: "橋本 真希", kana: "はしもと まき", role: "", birthday: "1998年4月30日", birthplace: "埼玉県", height: "159cm", zodiac: "牡牛座", bloodType: "A型", mbti: "ENFJ（主人公）", profileType: "rt" },
+      { id: "hayamarico", group: "rain-tree", name: "葉山 莉瑚", kana: "はやま りこ", role: "", birthday: "2005年3月17日", birthplace: "神奈川県", height: "160cm", zodiac: "魚座", bloodType: "B型", mbti: "INFP（仲介者）", profileType: "rt" },
+      { id: "mizuno_noa", group: "rain-tree", name: "水野 乃愛", kana: "みずの のあ", role: "", birthday: "2005年8月8日", birthplace: "広島県", height: "155cm", zodiac: "獅子座", bloodType: "O型", mbti: "ISFP（冒険家）", profileType: "rt" },
+      { id: "momosesuzuna", group: "rain-tree", name: "百瀬 紗菜", kana: "ももせ すずな", role: "", birthday: "2002年8月15日", birthplace: "奈良県", height: "157cm", zodiac: "獅子座", bloodType: "O型", mbti: "ENFP（運動家）", profileType: "rt" },
+      { id: "yoshikawaumi", group: "rain-tree", name: "吉川 海未", kana: "よしかわ うみ", role: "", birthday: "2001年2月22日", birthplace: "福岡県生まれ神奈川県育ち", height: "161cm", zodiac: "魚座", bloodType: "O型", mbti: "ISFP（冒険家）", profileType: "rt" }
+    ];
+
+    // =========================================================================
+    // 2. メンバー別アイコン設定
+    // =========================================================================
+    const memberIcons = {
+      ace:          { imageUrl: "https://pbs.twimg.com/media/HUwauBza0AACh69?format=jpg&name=large", initials: "AC" },
+      aco:          { imageUrl: "https://pbs.twimg.com/media/HVPVGXvaEAAaf6i?format=jpg&name=large", initials: "AC" },
+      ally:         { imageUrl: "https://pbs.twimg.com/media/HW7RPRhbwAAFh0L?format=jpg&name=4096x4096", initials: "AL" },
+      aoi_ws:       { imageUrl: "https://pbs.twimg.com/media/HXFQKfaawAAYof0?format=jpg&name=4096x4096", initials: "AO" },
+      choco:        { imageUrl: "https://pbs.twimg.com/media/HXFS_8IbQAE4NrQ?format=jpg&name=4096x4096", initials: "CH" },
+      coco:         { imageUrl: "https://pbs.twimg.com/media/HG05i6QaUAAReXy?format=jpg&name=large", initials: "CO" },
+      hanna:        { imageUrl: "https://pbs.twimg.com/media/HWhY_5Yb0AAftP-?format=jpg&name=4096x4096", initials: "HA" },
+      momo_ws:      { imageUrl: "https://pbs.twimg.com/media/HXFUecBaQAACghb?format=jpg&name=4096x4096", initials: "MO" },
+      natsu:        { imageUrl: "https://pbs.twimg.com/media/HWfarTfawAASj_N?format=jpg&name=large", initials: "NA" },
+      navi:         { imageUrl: "https://pbs.twimg.com/media/HWheY8MaUAAHCnR?format=jpg&name=4096x4096", initials: "NA" },
+      nico:         { imageUrl: "https://pbs.twimg.com/media/HWNQPDgbgAA1bvN?format=jpg&name=4096x4096", initials: "NI" },
+
+      asamiyahinata: { imageUrl: "https://pbs.twimg.com/media/HXAwnNkacAAtAwg?format=jpg&name=large", initials: "AH" },
+      ayasekotori:   { imageUrl: "https://pbs.twimg.com/media/HW12IVXbIAAN1v8?format=jpg&name=large", initials: "AK" },
+      ichiharatsumugi:{ imageUrl: "https://pbs.twimg.com/media/HWh6EPTbsAE6s1q?format=jpg&name=large", initials: "IT" },
+      endorino:      { imageUrl: "https://pbs.twimg.com/media/HW4-tGlaYAAE68W?format=jpg&name=large", initials: "ER" },
+      katasemanaka:  { imageUrl: "https://pbs.twimg.com/media/HXFg7zka8AA6OnI?format=jpg&name=large", initials: "KM" },
+      katoshu:       { imageUrl: "https://pbs.twimg.com/media/HWp0ZF9asAA4Htf?format=jpg&name=large", initials: "KS" },
+      satorica:      { imageUrl: "https://pbs.twimg.com/media/HV9M8IfaUAAjvLP?format=jpg&name=large", initials: "SR" },
+      suzunomio:     { imageUrl: "https://pbs.twimg.com/media/HWg1ISfbIAERiPi?format=jpg&name=4096x4096", initials: "SM" },
+      nagasemari:    { imageUrl: "https://pbs.twimg.com/media/HWR-kLmbYAAHwry?format=jpg&name=large", initials: "NM" },
+      nakamatamiki:  { imageUrl: "https://pbs.twimg.com/media/HXFia00bsAAObR2?format=jpg&name=large", initials: "NM" },
+      niinofuka:     { imageUrl: "https://pbs.twimg.com/media/HXFi2LWaoAABWhe?format=jpg&name=large", initials: "NF" },
+      hashimotomaki: { imageUrl: "https://pbs.twimg.com/media/HAzJbGTaIAAs8Jk?format=jpg&name=large", initials: "HM" },
+      hayamarico:    { imageUrl: "https://pbs.twimg.com/media/HXF68A9aMAAd38-?format=jpg&name=large", initials: "HR" },
+      mizuno_noa:    { imageUrl: "https://pbs.twimg.com/media/HW198coaIAErNJr?format=jpg&name=large", initials: "MN" },
+      momosesuzuna:  { imageUrl: "https://pbs.twimg.com/media/HV4FlPRbcAAU1pA?format=jpg&name=large", initials: "MS" },
+      yoshikawaumi:  { imageUrl: "https://pbs.twimg.com/media/HXFhFYCaEAAg5nW?format=jpg&name=large", initials: "YU" }
+    };
+
+    // =========================================================================
+    // 3. メンバー別 SNSリンク設定
+    // =========================================================================
+    const memberSnsLinks = {
+      ace:           { twitter: "ACE_whsp", instagram: "ACE_whsp_IG", tiktok: "su.___.uu" },
+      aco:           { twitter: "ACO_whsp", instagram: "ACO_whsp_IG", tiktok: "aco_whsp" },
+      ally:          { twitter: "ALLY_whsp_", instagram: "ALLY_whsp_IG", tiktok: "ally_whsp" },
+      aoi_ws:        { twitter: "AOI_whsp", instagram: "AOI_whsp_IG", tiktok: "___aoi_s2" },
+      choco:         { twitter: "CHOCO_whsp", instagram: "CHOCO_whsp_IG", tiktok: "choco._.nyan" },
+      coco:          { twitter: "COCO_whsp", instagram: "COCO_whsp_IG", tiktok: "ohayo_cocodayo" },
+      hanna:         { twitter: "HANNA_whsp", instagram: "HANNA_whsp_IG", tiktok: "usagi._.93" },
+      momo_ws:       { twitter: "MOMO_whsp", instagram: "MOMO_whsp_IG", tiktok: "momo_whsp_" },
+      natsu:         { twitter: "NATSU_whsp", instagram: "NATSU_whsp_IG", tiktok: "imnatsuwhsp" },
+      navi:          { twitter: "NAVI_whsp", instagram: "NAVI_whsp_IG", tiktok: "your_naviiii" },
+      nico:          { twitter: "NICO_whsp", instagram: "NICO_whsp_IG", tiktok: "smile_.nico" },
+
+      asamiyahinata: { twitter: "asamiya_hinata_", instagram: "asamiya_hinata_", tiktok: "asamiya_hinata_319" },
+      ayasekotori:   { twitter: "ayase_kotori_", instagram: "ayase_kotori_", tiktok: "chimakotori" },
+      ichiharatsumugi:{ twitter: "ichiharatsumugi", instagram: "ichiharatsumugi", tiktok: "1hara_tumug1" },
+      endorino:      { twitter: "endo_rino_", instagram: "endo_rino", tiktok: "endo_rino" },
+      katasemanaka:  { twitter: "katase_manaka", instagram: "katase_manaka", tiktok: "katase_manaka" },
+      katoshu:       { twitter: "kato_shu_", instagram: "kato_shu_", tiktok: "kato_shu_" },
+      satorica:      { twitter: "_satorica", instagram: "_satorica", tiktok: "_satorica" },
+      suzunomio:     { twitter: "suzuno_mio", instagram: "suzuno_mio", tiktok: "raintree_mio_0129" },
+      nagasemari:    { twitter: "nagase_mari_", instagram: "nagase_mari_", tiktok: "nagasemari_" },
+      nakamatamiki:  { twitter: "nakamata_miki", instagram: "nakamata_miki", tiktok: "miki_can_do_it" },
+      niinofuka:     { twitter: "niino_fuka", instagram: "niino_fuka", tiktok: "niino_fuka" },
+      hashimotomaki: { twitter: "hashimoto_maki_", instagram: "hashimoto_maki_", tiktok: "_maki_430" },
+      hayamarico:    { twitter: "hayama_rico_", instagram: "hayama_rico", tiktok: "hayama._.rico" },
+      mizuno_noa:    { twitter: "mizuno_noa_", instagram: "mizuno_noa_", tiktok: "noachan_u._.u" },
+      momosesuzuna:  { twitter: "momose_suzuna", instagram: "momose_suzuna", tiktok: "momose__suzuna" },
+      yoshikawaumi:  { twitter: "yoshikawa_umi", instagram: "yoshikawa_umi", tiktok: "yoshikawa_umi" }
+    };
+
+    // =========================================================================
+    // 4. カラー設定（メンバーカラー・ペンライトカラー・検索タグ）
+    // =========================================================================
+    const memberColors = {
+      ace:           { mColorName: "ライトブルー", pColorName: "ライトブルー", mColors: ["#38bdf8"], pColors: ["#38bdf8"], tags: ["blue"] },
+      aco:           { mColorName: "オレンジ", pColorName: "オレンジ", mColors: ["#f97316"], pColors: ["#f97316"], tags: ["orange"] },
+      ally:          { mColorName: "ブルー", pColorName: "ブルー", mColors: ["#3b82f6"], pColors: ["#3b82f6"], tags: ["blue"] },
+      aoi_ws:        { mColorName: "グリーン", pColorName: "グリーン", mColors: ["#10b981"], pColors: ["#10b981"], tags: ["green"] },
+      choco:         { mColorName: "ライトピンク", pColorName: "ライトピンク", mColors: ["#f472b6"], pColors: ["#f472b6"], tags: ["pink"] },
+      coco:          { mColorName: "イエロー", pColorName: "イエロー", mColors: ["#eab308"], pColors: ["#eab308"], tags: ["yellow"] },
+      hanna:         { mColorName: "レッド", pColorName: "赤", mColors: ["#ef4444"], pColors: ["#ef4444"], tags: ["red"] },
+      momo_ws:       { mColorName: "ライトグリーン", pColorName: "ライトグリーン", mColors: ["#6ee7b7"], pColors: ["#6ee7b7"], tags: ["green"] },
+      natsu:         { mColorName: "パープル", pColorName: "パープル×ホワイト", mColors: ["#a855f7"], pColors: ["#a855f7", "#ffffff"], tags: ["purple", "white"] },
+      navi:          { mColorName: "バイオレット", pColorName: "バイオレット", mColors: ["#8b5cf6"], pColors: ["#8b5cf6"], tags: ["purple"] },
+      nico:          { mColorName: "ピンク", pColorName: "ピンク", mColors: ["#ec4899"], pColors: ["#ec4899"], tags: ["pink"] },
+
+      asamiyahinata: { mColorName: "緑×緑", pColorName: "緑×緑", mColors: ["#10b981"], pColors: ["#10b981", "#10b981"], tags: ["green"] },
+      ayasekotori:   { mColorName: "紫×紫", pColorName: "紫×紫", mColors: ["#a855f7"], pColors: ["#a855f7", "#a855f7"], tags: ["purple"] },
+      ichiharatsumugi:{ mColorName: "黄×白", pColorName: "黄×白", mColors: ["#eab308"], pColors: ["#eab308", "#ffffff"], tags: ["yellow", "white"] },
+      endorino:      { mColorName: "ピンク×水色", pColorName: "ピンク×水色", mColors: ["#ec4899"], pColors: ["#ec4899", "#38bdf8"], tags: ["pink", "blue"] },
+      katasemanaka:  { mColorName: "ピンク×オレンジ", pColorName: "ピンク×オレンジ", mColors: ["#ec4899"], pColors: ["#ec4899", "#f97316"], tags: ["pink", "orange"] },
+      katoshu:       { mColorName: "赤×赤", pColorName: "赤×赤", mColors: ["#ef4444"], pColors: ["#ef4444", "#ef4444"], tags: ["red"] },
+      satorica:      { mColorName: "白×白", pColorName: "白×白", mColors: ["#ffffff"], pColors: ["#ffffff", "#ffffff"], tags: ["white"] },
+      suzunomio:     { mColorName: "薄ピンク×白", pColorName: "薄ピンク×白", mColors: ["#fbcfe8"], pColors: ["#fbcfe8", "#ffffff"], tags: ["pink", "white"] },
+      nagasemari:    { mColorName: "薄ピンク×赤", pColorName: "薄ピンク×赤", mColors: ["#fbcfe8"], pColors: ["#fbcfe8", "#ef4444"], tags: ["pink", "red"] },
+      nakamatamiki:  { mColorName: "黄×オレンジ", pColorName: "黄×オレンジ", mColors: ["#eab308"], pColors: ["#eab308", "#f97316"], tags: ["yellow", "orange"] },
+      niinofuka:     { mColorName: "赤×水色", pColorName: "赤×水色", mColors: ["#ef4444"], pColors: ["#ef4444", "#38bdf8"], tags: ["red", "blue"] },
+      hashimotomaki: { mColorName: "水色", pColorName: "水色", mColors: ["#38bdf8"], pColors: ["#38bdf8"], tags: ["blue"] },
+      hayamarico:    { mColorName: "緑×白", pColorName: "緑×白", mColors: ["#10b981"], pColors: ["#10b981", "#ffffff"], tags: ["green", "white"] },
+      mizuno_noa:    { mColorName: "ピンク×ピンク", pColorName: "ピンク×ピンク", mColors: ["#ec4899"], pColors: ["#ec4899", "#ec4899"], tags: ["pink"] },
+      momosesuzuna:  { mColorName: "薄ピンク", pColorName: "薄ピンク", mColors: ["#fbcfe8"], pColors: ["#fbcfe8"], tags: ["pink"] },
+      yoshikawaumi:  { mColorName: "青×紫", pColorName: "青×紫", mColors: ["#3b82f6"], pColors: ["#3b82f6", "#a855f7"], tags: ["blue", "purple"] }
+    };
+
+    // =========================================================================
+    // 5. データ統合
+    // =========================================================================
+    const members = memberProfiles.map(profile => ({
+      ...profile,
+      ...(memberIcons[profile.id] || { imageUrl: "", initials: "" }),
+      sns: memberSnsLinks[profile.id] || { twitter: "", instagram: "", tiktok: "" },
+      ...(memberColors[profile.id] || { mColorName: "", pColorName: "", mColors: ["#CBD5E1"], pColors: ["#CBD5E1"], tags: [] })
+    }));
+
+    const groupMeta = {
+      "white-scorpion": { 
+        name: "WHITE SCOPION", 
+        color: "from-slate-50/80 via-white to-slate-200/40 dark:from-slate-900/40 dark:via-slate-900 dark:to-slate-800/30", 
+        border: "border-slate-200 dark:border-slate-800", 
+        badge: "bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 border border-slate-700 dark:border-slate-200",
+        accentText: "text-slate-700 dark:text-slate-300"
+      },
+      "rain-tree": { 
+        name: "Rain Tree", 
+        color: "from-sky-50/80 via-white to-sky-100/40 dark:from-sky-950/30 dark:via-slate-900 dark:to-sky-900/20", 
+        border: "border-sky-200 dark:border-sky-800/70", 
+        badge: "bg-sky-500 text-white dark:bg-sky-900/60 dark:text-sky-200 border border-sky-300 dark:border-sky-700/60",
+        accentText: "text-sky-700 dark:text-sky-300"
+      }
+    };
+
+    const systemColors = [
+      { id: "all", name: "ALL", class: "bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 text-slate-900 dark:text-slate-100 border border-slate-300 dark:border-slate-700" },
+      { id: "red", name: "赤系", class: "bg-red-600 text-white shadow-sm hover:scale-105" },
+      { id: "pink", name: "ピンク系", class: "bg-pink-600 text-white shadow-sm hover:scale-105" },
+      { id: "blue", name: "青・水色", class: "bg-blue-600 text-white shadow-sm hover:scale-105" },
+      { id: "purple", name: "紫・バイオレット", class: "bg-purple-600 text-white shadow-sm hover:scale-105" },
+      { id: "yellow", name: "黄・オレンジ", class: "bg-yellow-400 text-slate-950 border border-yellow-500 shadow-sm hover:scale-105" },
+      { id: "orange", name: "オレンジ系", class: "bg-orange-600 text-white shadow-sm hover:scale-105" },
+      { id: "green", name: "緑系", class: "bg-emerald-600 text-white shadow-sm hover:scale-105" },
+      { id: "white", name: "白系", class: "bg-white text-slate-900 border border-slate-300 shadow-sm hover:scale-105" }
+    ];
+
+    const state = {
+      group: "all",
+      colorTag: "all",
+      searchQuery: "",
+      favorites: JSON.parse(localStorage.getItem('ws_rt_favorites') || '[]'),
+      favoritesOnly: false,
+      theme: localStorage.getItem('ws_rt_theme') || 'light'
+    };
+
+    function announceToScreenReader(message) {
+      const announcer = document.getElementById('srAnnouncer');
+      if (announcer) {
+        announcer.textContent = '';
+        setTimeout(() => { announcer.textContent = message; }, 50);
+      }
+    }
+
+    function createShapeSvg(id, colors, group, isPinned = false, sizeClass = "w-10 h-10") {
+      let gradStr = '';
+      const prefix = isPinned ? 'pin-' : '';
+      if (colors.length === 1) {
+        gradStr = `<stop offset="0%" stop-color="${colors[0]}" /><stop offset="100%" stop-color="${colors[0]}" />`;
+      } else if (colors.length === 2) {
+        gradStr = `<stop offset="0%" stop-color="${colors[0]}" /><stop offset="50%" stop-color="${colors[0]}" /><stop offset="50%" stop-color="${colors[1]}" /><stop offset="100%" stop-color="${colors[1]}" />`;
+      } else {
+        gradStr = `<stop offset="0%" stop-color="${colors[0]}" /><stop offset="50%" stop-color="${colors[1]}" /><stop offset="100%" stop-color="${colors[2]}" />`;
+      }
+
+      const isWhite = colors.every(c => c.toUpperCase() === '#FFFFFF');
+      const strokeColor = isWhite ? '#64748b' : '#cbd5e1';
+      const glowVar = colors[0] === '#FFFFFF' ? '#94a3b8' : colors[0];
+      const gradId = `${prefix}color-grad-${id}-${sizeClass.replace(/\s+/g, '')}`;
+
+      let shapePath = '';
+      if (group === 'rain-tree') {
+        // Rain Tree（水色）用：リーフ・滴形
+        shapePath = `<path d="M16,3 C24,3 29,9 29,16 C29,23 23,29 16,29 C9,29 3,23 3,16 C3,9 8,3 16,3 Z" fill="url(#${gradId})" stroke="${strokeColor}" stroke-width="1.5" />`;
+      } else {
+        // WHITE SCOPION用：シャープな多角形・シールド形
+        shapePath = `<polygon points="16,2 29,9 29,23 16,30 3,23 3,9" fill="url(#${gradId})" stroke="${strokeColor}" stroke-width="1.5" stroke-linejoin="round" />`;
+      }
+
+      return `
+        <svg viewBox="0 0 32 32" aria-hidden="true" class="${sizeClass} transition-transform duration-300 glow-effect" style="--glow-color: ${glowVar}">
+          <defs><linearGradient id="${gradId}" x1="0%" y1="100%" x2="100%" y2="0%">${gradStr}</linearGradient></defs>
+          ${shapePath}
+        </svg>
+      `;
+    }
+
+    function createSinglePenlightSvg(color, id, index, total, isPinned = false, sizeClass = "w-8 h-10") {
+      const prefix = isPinned ? 'pin-' : '';
+      const gradId = `${prefix}pen-grad-${id}-${index}-${sizeClass.replace(/\s+/g, '')}`;
+      const isWhite = color.toUpperCase() === '#FFFFFF';
+      
+      let gradHtml = isWhite ? `
+        <linearGradient id="${gradId}" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#CBD5E1" /><stop offset="50%" stop-color="#FFFFFF" /><stop offset="100%" stop-color="#94A3B8" />
+        </linearGradient>
+      ` : `
+        <linearGradient id="${gradId}" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="${color}" /><stop offset="35%" stop-color="#FFFFFF" /><stop offset="70%" stop-color="${color}" /><stop offset="100%" stop-color="${color}" />
+        </linearGradient>
+      `;
+
+      const strokeColor = isWhite ? '#64748b' : '#cbd5e1';
+      let transformStyle = '';
+      let marginStyle = '';
+      if (total > 1) {
+        const angle = -14 + (index * (28 / (total - 1)));
+        const tx = -3 + (index * 3);
+        transformStyle = `transform: rotate(${angle}deg) translateX(${tx}px);`;
+        marginStyle = index > 0 ? 'margin-left: -14px;' : '';
+      }
+
+      const glowColor = color === '#FFFFFF' ? '#94a3b8' : color;
+
+      return `
+        <svg viewBox="0 0 40 52" aria-hidden="true" class="${sizeClass} transition-all duration-300 glow-effect" style="--glow-color: ${glowColor}; ${transformStyle} ${marginStyle} z-index: ${index + 1}; position: relative;">
+          <defs>${gradHtml}</defs>
+          <path d="M18,34 L22,34 L23,47 A3,3 0 0,1 17,47 Z" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.2"/>
+          <rect x="18" y="36" width="4" height="2" rx="0.5" fill="#64748b"/>
+          <rect x="13" y="6" width="14" height="27" rx="7" fill="url(#${gradId})" stroke="${strokeColor}" stroke-width="1.2" />
+          <rect x="12" y="32" width="16" height="2.5" fill="#94a3b8" rx="0.5"/>
+        </svg>
+      `;
+    }
+
+    function createPenlightsHtml(pColors, id, isPinned = false, sizeClass = "w-8 h-10") {
+      let html = '<div class="flex items-center justify-center relative">';
+      pColors.forEach((color, index) => {
+        html += createSinglePenlightSvg(color, id, index, pColors.length, isPinned, sizeClass);
+      });
+      html += '</div>';
+      return html;
+    }
+
+    function createSnsButtonsHtml(member) {
+      const sns = member.sns;
+      if (!sns) return '';
+      let html = '<div class="flex items-center gap-1.5 mt-2">';
+      if (sns.twitter) {
+        html += `<a href="https://x.com/${sns.twitter}" target="_blank" rel="noopener noreferrer" aria-label="${member.name}のX" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-black hover:text-white flex items-center justify-center transition-all shadow-2xs"><svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>`;
+      }
+      if (sns.instagram) {
+        html += `<a href="https://instagram.com/${sns.instagram}" target="_blank" rel="noopener noreferrer" aria-label="${member.name}のInstagram" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-gradient-to-tr hover:from-yellow-500 hover:via-pink-500 hover:to-purple-600 hover:text-white flex items-center justify-center transition-all shadow-2xs"><svg class="w-3.5 h-3.5 stroke-current fill-none" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>`;
+      }
+      if (sns.tiktok) {
+        html += `<a href="https://www.tiktok.com/@${sns.tiktok}" target="_blank" rel="noopener noreferrer" aria-label="${member.name}のTikTok" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-black hover:text-[#25f4ee] flex items-center justify-center transition-all shadow-2xs"><svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.01 1.62 4.17.94 1.09 2.27 1.8 3.71 1.95v3.91c-1.57-.16-3.05-.79-4.22-1.85-.2-.17-.39-.36-.56-.56-.06.74-.04 1.48-.04 2.22 0 3.23-.74 6.32-3.12 8.3-2.11 1.81-5.11 2.28-7.66 1.34-2.82-1.01-4.79-3.79-4.83-6.83-.07-3.41 2.31-6.65 5.67-7.23.97-.18 1.97-.18 2.94.02v3.95c-.86-.25-1.83-.16-2.61.35-.99.62-1.39 1.93-1 3 .36 1.05 1.51 1.7 2.61 1.47 1-.16 1.78-.99 1.83-2V.02z"/></svg></a>`;
+      }
+      html += '</div>';
+      return html;
+    }
+
+    function toggleFavorite(id, event) {
+      if (event) event.stopPropagation();
+      const member = members.find(m => m.id === id);
+      const memberName = member ? member.name : 'メンバー';
+      const index = state.favorites.indexOf(id);
+      if (index > -1) {
+        state.favorites.splice(index, 1);
+        showToast(`${memberName}をお気に入りから解除しました`, "☆");
+      } else {
+        state.favorites.push(id);
+        showToast(`${memberName}をお気に入りに登録しました！`, "💖");
+      }
+      localStorage.setItem('ws_rt_favorites', JSON.stringify(state.favorites));
+      renderGrid();
+    }
+
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        state.theme = 'light';
+        document.getElementById('themeIconMobile').innerText = '🌙';
+        document.getElementById('themeIconPC').innerText = '🌙';
+        announceToScreenReader('ライトモードに切り替えました');
+      } else {
+        html.classList.add('dark');
+        state.theme = 'dark';
+        document.getElementById('themeIconMobile').innerText = '☀️';
+        document.getElementById('themeIconPC').innerText = '☀️';
+        announceToScreenReader('ダークモードに切り替えました');
+      }
+      localStorage.setItem('ws_rt_theme', state.theme);
+    }
+
+    function loadTheme() {
+      if (state.theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.getElementById('themeIconMobile').innerText = '☀️';
+        document.getElementById('themeIconPC').innerText = '☀️';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.getElementById('themeIconMobile').innerText = '🌙';
+        document.getElementById('themeIconPC').innerText = '🌙';
+      }
+    }
+
+    function toggleFavoritesOnly() {
+      state.favoritesOnly = !state.favoritesOnly;
+      const btn = document.getElementById("favToggleBtn");
+      const icon = document.getElementById("favToggleIcon");
+      btn.setAttribute("aria-pressed", String(state.favoritesOnly));
+      if (state.favoritesOnly) {
+        btn.classList.add("bg-sky-600", "text-white", "border-sky-600", "hover:bg-sky-700");
+        btn.classList.remove("bg-white", "dark:bg-slate-900", "text-slate-800", "dark:text-slate-200");
+        icon.classList.remove("text-sky-600", "dark:text-sky-400");
+        icon.innerText = "★";
+      } else {
+        btn.classList.remove("bg-sky-600", "text-white", "border-sky-600", "hover:bg-sky-700");
+        btn.classList.add("bg-white", "dark:bg-slate-900", "text-slate-800", "dark:text-slate-200");
+        icon.classList.add("text-sky-600", "dark:text-sky-400");
+        icon.innerText = "☆";
+      }
+      renderGrid();
+    }
+
+    function renderColorFilters() {
+      const container = document.getElementById("colorFilterContainer");
+      container.innerHTML = systemColors.map(color => {
+        const isActive = state.colorTag === color.id;
+        const activeClass = isActive 
+          ? 'ring-2 ring-offset-2 ring-sky-600 dark:ring-sky-400 dark:ring-offset-slate-950 scale-105 font-black z-10' 
+          : 'opacity-90 hover:opacity-100 scale-100';
+        return `
+          <button 
+            type="button"
+            aria-pressed="${isActive}"
+            onclick="filterColor('${color.id}')"
+            class="min-h-[40px] px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 ${color.class} ${activeClass}"
+          >
+            ${color.name}
+          </button>
+        `;
+      }).join('');
+    }
+
+    // =========================================================================
+    // グループ別・異なるプロフィール項目（WS vs Rain Tree）を出し分けるカードテンプレート
+    // =========================================================================
+    function createMemberCard(member, isPinned = false) {
+      const meta = groupMeta[member.group];
+      const shapeSvg = createShapeSvg(member.id, member.mColors, member.group, isPinned, "w-10 h-10");
+      const penlightsHtml = createPenlightsHtml(member.pColors, member.id, isPinned, "w-8 h-10");
+      const snsHtml = createSnsButtonsHtml(member);
+      const isFav = state.favorites.includes(member.id);
+      
+      const roleBadge = member.role 
+        ? `<span class="inline-flex items-center gap-1 text-[11px] font-black px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-900/60 text-amber-900 dark:text-amber-200 border border-amber-300 dark:border-amber-700/70">👑 ${member.role}</span>` 
+        : '';
+
+      // プロフィール項目の分岐（WHITE SCOPION と Rain Tree で内容が異なる）
+      let profileDetailsHtml = '';
+      if (member.profileType === 'ws') {
+        // WHITE SCOPION: 誕生日・出身地・趣味・特技
+        profileDetailsHtml = `
+          <div class="mt-3 grid grid-cols-2 gap-1.5 text-xs bg-white/80 dark:bg-slate-800/60 rounded-2xl p-2.5 border border-slate-200/70 dark:border-slate-700/70">
+            <div class="flex items-center gap-1 text-slate-700 dark:text-slate-300 truncate">
+              <span class="text-xs" aria-hidden="true">🎂</span>
+              <span class="font-medium">${member.birthday}</span>
+            </div>
+            <div class="flex items-center gap-1 text-slate-700 dark:text-slate-300 truncate">
+              <span class="text-xs" aria-hidden="true">📍</span>
+              <span class="font-medium">${member.birthplace}</span>
+            </div>
+          </div>
+          ${(member.hobby || member.skill) ? `
+            <div class="mt-2.5 space-y-1 text-xs bg-slate-50/70 dark:bg-slate-800/40 rounded-2xl p-3 border border-slate-200/50 dark:border-slate-800">
+              ${member.hobby ? `<p class="text-slate-700 dark:text-slate-300 leading-relaxed"><strong class="text-sky-600 dark:text-sky-400 font-bold mr-1">趣味:</strong>${member.hobby}</p>` : ''}
+              ${member.skill ? `<p class="text-slate-700 dark:text-slate-300 leading-relaxed"><strong class="text-emerald-600 dark:text-emerald-400 font-bold mr-1">特技:</strong>${member.skill}</p>` : ''}
+            </div>
+          ` : ''}
+        `;
+      } else {
+        // Rain Tree: 誕生日・出身地・身長・星座・血液型・MBTI
+        profileDetailsHtml = `
+          <div class="mt-3 grid grid-cols-2 gap-1.5 text-xs bg-white/80 dark:bg-slate-800/60 rounded-2xl p-2.5 border border-slate-200/70 dark:border-slate-700/70">
+            <div class="flex items-center gap-1 text-slate-700 dark:text-slate-300 truncate">
+              <span class="text-xs" aria-hidden="true">🎂</span>
+              <span class="font-medium">${member.birthday}</span>
+            </div>
+            <div class="flex items-center gap-1 text-slate-700 dark:text-slate-300 truncate">
+              <span class="text-xs" aria-hidden="true">📍</span>
+              <span class="font-medium">${member.birthplace}</span>
+            </div>
+            <div class="flex items-center gap-1 text-slate-700 dark:text-slate-300 truncate">
+              <span class="text-xs" aria-hidden="true">📏</span>
+              <span class="font-medium">${member.height}</span>
+            </div>
+            <div class="flex items-center gap-1 text-slate-700 dark:text-slate-300 truncate">
+              <span class="text-xs" aria-hidden="true">🩸</span>
+              <span class="font-medium">${member.bloodType} / ${member.zodiac}</span>
+            </div>
+          </div>
+          ${member.mbti ? `
+            <div class="mt-2.5 text-xs bg-slate-50/70 dark:bg-slate-800/40 rounded-2xl p-2.5 border border-slate-200/50 dark:border-slate-800">
+              <span class="text-slate-700 dark:text-slate-300"><strong class="text-indigo-600 dark:text-indigo-400 font-bold mr-1">MBTI:</strong>${member.mbti}</span>
+            </div>
+          ` : ''}
+        `;
+      }
+
+      return `
+        <article class="bg-gradient-to-br ${meta.color} bg-white dark:bg-slate-900 rounded-3xl border ${meta.border} p-5 shadow-sm hover:shadow-md transition-all duration-300 relative flex flex-col justify-between h-full group">
+          
+          <!-- お気に入り★ & グループバッジ -->
+          <div class="absolute top-4 right-4 flex items-center gap-2 z-10">
+            <button 
+              type="button"
+              aria-pressed="${isFav}"
+              aria-label="${isFav ? member.name + 'をお気に入りから解除' : member.name + 'をお気に入りに登録'}"
+              onclick="toggleFavorite('${member.id}', event)" 
+              class="w-10 h-10 flex items-center justify-center rounded-full bg-white/95 dark:bg-slate-800/95 border border-slate-300 dark:border-slate-700 shadow-xs text-base hover:scale-105 active:scale-95 transition-all text-sky-600 dark:text-sky-400" 
+              title="${isFav ? 'お気に入り解除' : 'お気に入り登録'}"
+            >
+              ${isFav ? '★' : '☆'}
+            </button>
+            <span class="text-[11px] font-black tracking-wider ${meta.badge} px-2.5 py-1 rounded-full uppercase shadow-2xs">
+              ${meta.name}
+            </span>
+          </div>
+
+          <div>
+            <!-- ヘッダー（画像＋名前＋SNS） -->
+            <div class="flex items-start gap-3 pr-24">
+              <img 
+                src="${member.imageUrl}" 
+                alt="${member.name}" 
+                loading="lazy"
+                onerror="this.src='https://placehold.co/150x150/cbd5e1/1e293b?text=${member.initials}'"
+                class="w-14 h-14 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm flex-shrink-0"
+              />
+              <div class="min-w-0">
+                <span class="text-[10px] text-slate-500 dark:text-slate-400 font-bold block leading-tight tracking-wider font-mono uppercase">${member.kana}</span>
+                <h3 class="text-base font-black text-slate-900 dark:text-white tracking-wide mt-0.5 leading-snug truncate">${member.name}</h3>
+                ${snsHtml}
+              </div>
+            </div>
+
+            <!-- キャプテン・副キャプテンバッジ -->
+            ${roleBadge ? `
+              <div class="flex flex-wrap items-center gap-1.5 mt-3">
+                ${roleBadge}
+              </div>
+            ` : ''}
+
+            <!-- プロフィール詳細（WS / Rain Tree 分岐） -->
+            ${profileDetailsHtml}
+          </div>
+
+          <!-- 下部：カラー情報エリア -->
+          <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800">
+            <div class="grid grid-cols-2 gap-2">
+              
+              <!-- メンバーカラー -->
+              <div class="flex flex-col items-center justify-center text-center p-2 rounded-2xl bg-white/90 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
+                <span class="text-[9px] text-slate-500 dark:text-slate-400 font-black tracking-wider uppercase mb-0.5">MEMBER</span>
+                <div class="h-10 flex items-center justify-center">${shapeSvg}</div>
+                <span class="text-[11px] font-black text-slate-900 dark:text-white mt-1 block whitespace-nowrap truncate max-w-full">
+                  ${member.mColorName}
+                </span>
+              </div>
+
+              <!-- ペンライトカラー -->
+              <div class="flex flex-col items-center justify-center text-center p-2 rounded-2xl bg-white/90 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
+                <span class="text-[9px] text-slate-500 dark:text-slate-400 font-black tracking-wider uppercase mb-0.5">PENLIGHT</span>
+                <div class="h-10 flex items-center justify-center">${penlightsHtml}</div>
+                <span class="text-[10px] font-bold text-slate-700 dark:text-slate-200 mt-1 block whitespace-nowrap truncate max-w-full" title="${member.pColorName}">
+                  ${member.pColorName}
+                </span>
+              </div>
+
+            </div>
+          </div>
+
+        </article>
+      `;
+    }
+
+    // グリッド描画エンジン
+    function renderGrid() {
+      const grid = document.getElementById("memberGrid");
+      const pinnedGrid = document.getElementById("pinnedGrid");
+      const pinnedSection = document.getElementById("pinnedSection");
+      const noResults = document.getElementById("noResults");
+      const resultCount = document.getElementById("resultCount");
+      
+      const filtered = members.filter(member => {
+        if (state.group !== "all" && member.group !== state.group) return false;
+        if (state.colorTag !== "all" && !member.tags.includes(state.colorTag)) return false;
+        if (state.favoritesOnly && !state.favorites.includes(member.id)) return false;
+        
+        if (state.searchQuery) {
+          const query = state.searchQuery.toLowerCase().trim();
+          const searchableFields = [
+            member.name, member.kana, member.role,
+            member.mColorName, member.pColorName,
+            member.birthplace, member.birthday, member.hobby, member.skill,
+            member.zodiac, member.bloodType, member.mbti
+          ];
+          const isMatch = searchableFields.some(field => field && field.toLowerCase().includes(query));
+          if (!isMatch) return false;
+        }
+        return true;
+      });
+
+      resultCount.innerText = `${filtered.length}人`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = "";
+        noResults.classList.remove("hidden");
+        pinnedSection.classList.add("hidden");
+        return;
+      }
+
+      noResults.classList.add("hidden");
+
+      const favMembers = filtered.filter(m => state.favorites.includes(m.id));
+      if (favMembers.length > 0 && !state.favoritesOnly) {
+        pinnedSection.classList.remove("hidden");
+        pinnedGrid.innerHTML = favMembers.map(m => createMemberCard(m, true)).join('');
+      } else {
+        pinnedSection.classList.add("hidden");
+      }
+
+      grid.innerHTML = filtered.map(m => createMemberCard(m, false)).join('');
+    }
+
+    function filterGroup(groupName) {
+      state.group = groupName;
+      ['all', 'white-scorpion', 'rain-tree'].forEach(tabId => {
+        const tab = document.getElementById(`tab-${tabId}`);
+        const isSelected = tabId === groupName;
+        tab.setAttribute('aria-selected', String(isSelected));
+        if (isSelected) {
+          if (tabId === 'all') tab.className = "min-h-[44px] py-2 px-2 text-xs sm:text-sm font-black rounded-xl bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm";
+          else if (tabId === 'white-scorpion') tab.className = "min-h-[44px] py-2 px-2 text-xs sm:text-sm font-black rounded-xl bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 shadow-sm";
+          else if (tabId === 'rain-tree') tab.className = "min-h-[44px] py-2 px-2 text-xs sm:text-sm font-black rounded-xl bg-sky-500 text-white shadow-sm";
+        } else {
+          tab.className = "min-h-[44px] py-2 px-2 text-xs sm:text-sm font-black rounded-xl text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white";
+        }
+      });
+      renderGrid();
+    }
+
+    function filterColor(colorId) {
+      state.colorTag = colorId;
+      renderColorFilters();
+      renderGrid();
+    }
+
+    function clearSearch() {
+      state.searchQuery = "";
+      const input = document.getElementById("searchInput");
+      input.value = "";
+      document.getElementById("clearSearchBtn").classList.add("hidden");
+      renderGrid();
+      input.focus();
+    }
+
+    function resetFilters() {
+      state.group = "all";
+      state.colorTag = "all";
+      state.searchQuery = "";
+      state.favoritesOnly = false;
+      document.getElementById("searchInput").value = "";
+      document.getElementById("clearSearchBtn").classList.add("hidden");
+      
+      const favBtn = document.getElementById("favToggleBtn");
+      favBtn.setAttribute("aria-pressed", "false");
+      favBtn.classList.remove("bg-sky-600", "text-white", "border-sky-600");
+      favBtn.classList.add("bg-white", "dark:bg-slate-900", "text-slate-800", "dark:text-slate-200");
+      document.getElementById("favToggleIcon").innerText = "☆";
+
+      filterGroup("all");
+      renderColorFilters();
+      renderGrid();
+    }
+
+    let toastTimer = null;
+    function showToast(message, icon = "💖") {
+      const toast = document.getElementById("toast");
+      document.getElementById("toastMsg").innerText = message;
+      document.getElementById("toastIcon").innerText = icon;
+      toast.classList.remove("opacity-0", "translate-y-3", "pointer-events-none");
+      toast.classList.add("opacity-100", "translate-y-0");
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove("opacity-100", "translate-y-0");
+        toast.classList.add("opacity-0", "translate-y-3", "pointer-events-none");
+      }, 2200);
+    }
+
+    document.getElementById("searchInput").addEventListener("input", (e) => {
+      state.searchQuery = e.target.value;
+      const clearBtn = document.getElementById("clearSearchBtn");
+      if (state.searchQuery.length > 0) clearBtn.classList.remove("hidden");
+      else clearBtn.classList.add("hidden");
+      renderGrid();
+    });
+
+    function shareOnX() {
+      const shareUrl = window.location.href;
+      const shareText = "WHITE SCOPION ＆ Rain Treeのメンカラ・ペンライト・全プロフィールがすぐわかる早見表！✨";
+      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`, '_blank', 'noopener,noreferrer');
+    }
+
+    function shareOnLine() {
+      window.open(`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(window.location.href)}`, '_blank', 'noopener,noreferrer');
+    }
+
+    function copyPageUrl() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        showToast("ページのURLをコピーしました！", "🔗");
+      }).catch(() => {});
+    }
+
+    window.onload = () => {
+      loadTheme();
+      renderColorFilters();
+      renderGrid();
+    };
+  </script>
+</body>
+</html>
