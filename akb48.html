@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="ja" class="transition-colors duration-300">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AKB48 ペンライトカラー早見表</title>
+
+  <!-- ========================================== -->
+  <!-- SNSシェア用リンクカード設定 (OGP / Twitter Card) -->
+  <!-- ========================================== -->
+  <meta property="og:title" content="AKB48 ペンライトカラー早見表">
+  <meta property="og:description" content="AKB48現役メンバー49名のペンライトカラーが一目でわかる！期別・色系統フィルターやお気に入りピン留め機能付きの非公式便利ツール。">
+  <meta property="og:url" content="https://kiamizuki.github.io/IKONOIJOY_COLOR/index.html">
+  <meta property="og:image" content="https://kiamizuki.github.io/IKONOIJOY_COLOR/og-image2.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AKB48 ペンライトアシスタント">
+  <meta property="og:locale" content="ja_JP">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AKB48 ペンライトカラー早見表">
+  <meta name="twitter:description" content="AKB48現役メンバー49名のペンライトカラーが一目でわかるファン専用早見表ツール！">
+  <meta name="twitter:image"  content="https://kiamizuki.github.io/IKONOIJOY_COLOR/og-image2.png">
+  <!-- ========================================== -->
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Noto Sans JP & M PLUS Rounded 1c -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Noto Sans JP', 'sans-serif'],
+            rounded: ['M PLUS Rounded 1c', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Noto Sans JP', 'M PLUS Rounded 1c', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* ライブ感のある発光グラデーションアニメーション */
+    @keyframes glow {
+      0%, 100% { filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 10px var(--glow-color, #ff69b4)); }
+      50% { filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 16px var(--glow-color, #ff69b4)); }
+    }
+    
+    .glow-effect {
+      animation: glow 3s infinite ease-in-out;
+    }
+
+    /* スクロールバー非表示（横スクロールタブ用） */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen pb-24 transition-colors duration-300">
+
+  <!-- ヘッダー -->
+  <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 shadow-sm sticky top-0 z-40 transition-colors duration-300">
+    <div class="max-w-6xl mx-auto px-4 py-3.5 flex flex-col md:flex-row items-center justify-between gap-4">
+      
+      <!-- タイトル & 非公式バッジ -->
+      <div class="text-center md:text-left flex items-center justify-between w-full md:w-auto">
+        <div>
+          <div class="flex items-center justify-center md:justify-start gap-2">
+            <h1 class="text-xl md:text-2xl font-bold font-rounded bg-gradient-to-r from-pink-500 via-rose-500 to-purple-500 bg-clip-text text-transparent flex items-center gap-2">
+              AKB48 ペンライト早見表
+            </h1>
+            <span class="bg-slate-100 dark:bg-slate-800 text-[9px] text-slate-500 dark:text-slate-400 font-bold px-1.5 py-0.5 rounded border border-slate-200/60 dark:border-slate-700/60">非公式</span>
+          </div>
+          <p class="text-[10px] text-slate-400 dark:text-slate-500 mt-0.5 text-center md:text-left">現役メンバー49名のペンライトカラーまとめファンアプリ</p>
+        </div>
+        
+        <!-- モバイル用ダークモード切り替えボタン -->
+        <button onclick="toggleDarkMode()" class="md:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-amber-400 transition-colors" aria-label="テーマ切り替え">
+          <span id="themeIconMobile" class="text-lg">🌙</span>
+        </button>
+      </div>
+      
+      <!-- 検索・システムコントロール -->
+      <div class="w-full md:w-auto flex items-center gap-2">
+        <div class="relative flex-1 md:w-72">
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="名前・愛称・出身地・期・色で検索..." 
+            class="w-full pl-10 pr-4 py-2 text-sm border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400 dark:focus:ring-pink-500 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600"
+          >
+          <span class="absolute left-3.5 top-2.5 text-slate-400 dark:text-slate-600 text-sm">🔍</span>
+        </div>
+        
+        <!-- PC用ダークモード切り替えボタン -->
+        <button onclick="toggleDarkMode()" class="hidden md:flex p-2.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-amber-400 hover:scale-105 transition-all" title="ダークモード切り替え">
+          <span id="themeIconPC" class="text-md">🌙</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 mt-6">
+    
+    <!-- 期別切り替えピルタブ（横スクロール対応） -->
+    <div class="mb-5">
+      <div id="genFilterContainer" class="flex overflow-x-auto no-scrollbar gap-1.5 p-1.5 bg-slate-200/60 dark:bg-slate-900/60 rounded-2xl border border-slate-100 dark:border-slate-800/80 justify-start md:justify-center">
+        <!-- JSで動的に構築 -->
+      </div>
+    </div>
+
+    <!-- お気に入り/推しメンのみ表示トグル -->
+    <div class="flex justify-center mb-5">
+      <button onclick="toggleFavoritesOnly()" id="favToggleBtn" class="flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+        <span id="favToggleIcon">☆</span>
+        <span>お気に入りメンバーのみ表示</span>
+      </button>
+    </div>
+
+    <!-- 色系統クイックフィルター -->
+    <div class="mb-8">
+      <p class="text-[10px] font-black text-slate-400 dark:text-slate-500 text-center mb-2.5 uppercase tracking-widest">カラー系統で絞り込む</p>
+      <div class="flex flex-wrap justify-center gap-1.5 max-w-2xl mx-auto px-2" id="colorFilterContainer">
+        <!-- JSで動的に構築 -->
+      </div>
+    </div>
+
+    <!-- 「お気に入り・推し」セクション（ピン留め） -->
+    <div id="pinnedSection" class="hidden mb-10">
+      <div class="flex items-center gap-2 mb-4 border-b border-pink-100 dark:border-pink-950/40 pb-2">
+        <span class="text-lg">💖</span>
+        <h2 class="text-sm font-bold font-rounded text-pink-500 tracking-wider">マイ推し（お気に入りピン留め）</h2>
+      </div>
+      <div id="pinnedGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- お気に入りメンバーがここに複製されます -->
+      </div>
+    </div>
+
+    <!-- メインメンバー一覧グリッド -->
+    <div>
+      <div class="flex items-center justify-between mb-4">
+        <h2 id="gridTitle" class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">メンバー一覧</h2>
+        <span id="resultCount" class="text-xs font-bold text-slate-400">0人</span>
+      </div>
+      <div id="memberGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- JSでカードを動的にレンダリング -->
+      </div>
+    </div>
+
+    <!-- 該当なし表示 -->
+    <div id="noResults" class="hidden text-center py-20">
+      <div class="text-5xl mb-4">🧐</div>
+      <p class="text-slate-500 dark:text-slate-400 font-bold">条件に合うメンバーが見つかりませんでした</p>
+      <p class="text-xs text-slate-400 mt-1">検索ワードを変えるか、フィルターをリセットしてください</p>
+      <button onclick="resetFilters()" class="mt-5 px-5 py-2.5 text-xs font-bold text-pink-500 hover:text-white border border-pink-400 dark:border-pink-800 hover:bg-pink-400 dark:hover:bg-pink-900 rounded-full transition-all shadow-sm">
+        すべての条件をクリアする
+      </button>
+    </div>
+  </main>
+
+  <!-- フッター -->
+  <footer class="mt-20 text-center text-xs text-slate-400 dark:text-slate-600 border-t border-slate-100 dark:border-slate-900 py-10 px-4">
+    <p class="font-rounded font-bold bg-gradient-to-r from-pink-400 via-rose-400 to-purple-400 bg-clip-text text-transparent inline-block mb-2">AKB48 ペンライトアシスタント</p>
+    <p>© 2026 AKB48 Penlight Assistant</p>
+    <p class="mt-1.5 text-[11px] leading-relaxed max-w-xl mx-auto mb-6">
+      本アプリはファン有志が制作した非公式のファンツールです。<br>@kiamizuki920
+    </p>
+    <!-- ページをシェアするボタンセクション -->
+    <div class="flex flex-wrap justify-center items-center gap-2.5 px-4 py-3 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800/80 shadow-xs max-w-md mx-auto">
+      <span class="text-xs font-bold text-slate-500 dark:text-slate-400 flex items-center gap-1">📣 この早見表をシェア：</span>
+      <div class="flex items-center gap-2">
+        <!-- X (Twitter) -->
+        <button onclick="shareOnX()" class="w-8 h-8 rounded-full bg-black hover:bg-slate-800 text-white flex items-center justify-center transition-all duration-200" title="X (Twitter) でシェア">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </button>
+        <!-- LINE -->
+        <button onclick="shareOnLine()" class="w-8 h-8 rounded-full bg-[#06C755] hover:bg-[#05b04b] text-white flex items-center justify-center transition-all duration-200" title="LINE でシェア">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M24 10.3c0-4.7-4.8-8.5-10.7-8.5S2.6 5.6 2.6 10.3c0 4.2 3.8 7.7 9 8.4.3.1.8.2 1 .5.2.2.2.6.1.8l-.4 2.6c-.1.6.2.2.5-.1l3.5-3.5c2.4-1.2 5.3-3.9 7.7-8.7zm-14.7 2.4c0 .3-.2.5-.5.5h-1.5c-.3 0-.5-.2-.5-.5V8.5c0-.3.2-.5.5-.5h.5c.3 0 .5.2.5.5v3.2H8.8c.3 0 .5.2.5.5zm2.8 0c0 .3-.2.5-.5.5h-.5c-.3 0-.5-.2-.5-.5V8.5c0-.3.2-.5.5-.5h.5c.3 0 .5.2.5.5zm4.1 0c0 .3-.2.5-.5.5h-.5c-.3 0-.5-.2-.5-.5V9.4l-1.3 3.3c-.1.2-.3.3-.5.3h-.1c-.2 0-.4-.1-.5-.3L12 9.4v2.9c0 .3-.2.5-.5.5h-.5c-.3 0-.5-.2-.5-.5V8.5c0-.3.2-.5.5-.5h.8c.2 0 .4.1.5.3l1.2 3 1.2-3c.1-.2.3-.3.5-.3h.8c.3 0 .5.2.5.5zm4.1-3.7c0 .3-.2.5-.5.5h-1.5v1.1h1.5c.3 0 .5.2.5.5v.5c0 .3-.2.5-.5.5h-1.5v1.1h1.5c.3 0 .5.2.5.5v.5c0 .3-.2.5-.5.5h-2.5c-.3 0-.5-.2-.5-.5V8.5c0-.3.2-.5.5-.5h2.5c.3 0 .5.2.5.5z"/>
+          </svg>
+        </button>
+        <!-- コピー -->
+        <button onclick="copyPageUrl()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center transition-all duration-200" title="ページURLをコピー">
+          <span class="text-xs">🔗</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- トースト通知 -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 transform bg-slate-900/95 dark:bg-slate-100/95 text-white dark:text-slate-950 text-xs px-5 py-3 rounded-full shadow-2xl opacity-0 translate-y-3 pointer-events-none transition-all duration-300 z-50 flex items-center gap-2 font-bold">
+    <span id="toastIcon">📋</span> <span id="toastMsg">コピーしました！</span>
+  </div>
+
+  <script>
+    /* ==========================================================================
+       【1】アイコン・画像設定 (IDごとに管理)
+       ========================================================================== */
+    const MEMBER_IMAGES = {
+      1: "https://48pedia.org/images/thumb/b/b6/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%B2%A9%E7%AB%8B%E6%B2%99%E7%A9%82.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%B2%A9%E7%AB%8B%E6%B2%99%E7%A9%82.jpg",
+      2: "https://48pedia.org/images/thumb/a/a8/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E7%A6%8F%E5%B2%A1%E8%81%96%E8%8F%9C.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E7%A6%8F%E5%B2%A1%E8%81%96%E8%8F%9C.jpg",
+      3: "https://48pedia.org/images/thumb/9/97/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%B0%8F%E6%A0%97%E6%9C%89%E4%BB%A5.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%B0%8F%E6%A0%97%E6%9C%89%E4%BB%A5.jpg",
+      4: "https://48pedia.org/images/thumb/0/09/2026%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E8%A1%8C%E5%A4%A9%E5%84%AA%E8%8E%89%E5%A5%88.jpg/100px-2026%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E8%A1%8C%E5%A4%A9%E5%84%AA%E8%8E%89%E5%A5%88.jpg",
+      5: "https://48pedia.org/images/thumb/c/cc/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%80%89%E9%87%8E%E5%B0%BE%E6%88%90%E7%BE%8E.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%80%89%E9%87%8E%E5%B0%BE%E6%88%90%E7%BE%8E.jpg",
+      6: "https://48pedia.org/images/thumb/a/a9/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%9D%82%E5%B7%9D%E9%99%BD%E9%A6%99.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%9D%82%E5%B7%9D%E9%99%BD%E9%A6%99.jpg",
+      7: "https://48pedia.org/images/thumb/0/0b/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E4%B8%8B%E5%B0%BE%E3%81%BF%E3%81%86.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E4%B8%8B%E5%B0%BE%E3%81%BF%E3%81%86.jpg",
+      8: "https://48pedia.org/images/thumb/e/ea/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E9%AB%99%E6%A9%8B%E5%BD%A9%E9%9F%B3.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E9%AB%99%E6%A9%8B%E5%BD%A9%E9%9F%B3.jpg",
+      9: "https://48pedia.org/images/thumb/e/ec/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%BE%B3%E6%B0%B8%E7%BE%9A%E6%B5%B7.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%BE%B3%E6%B0%B8%E7%BE%9A%E6%B5%B7.jpg",
+      10:"https://48pedia.org/images/thumb/f/f9/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E6%B0%B8%E9%87%8E%E8%8A%B9%E4%BD%B3.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E6%B0%B8%E9%87%8E%E8%8A%B9%E4%BD%B3.jpg",
+      11:"https://48pedia.org/images/thumb/9/9f/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E6%A9%8B%E6%9C%AC%E9%99%BD%E8%8F%9C.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E6%A9%8B%E6%9C%AC%E9%99%BD%E8%8F%9C.jpg",
+      12:"https://48pedia.org/images/thumb/a/ae/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%8D%83%E8%91%89%E6%81%B5%E9%87%8C.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%8D%83%E8%91%89%E6%81%B5%E9%87%8C.jpg",
+      13:"https://48pedia.org/images/thumb/5/51/2026%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E9%BB%92%E9%A0%88%E9%81%A5%E9%A6%99.jpg/100px-2026%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E9%BB%92%E9%A0%88%E9%81%A5%E9%A6%99.jpg",
+      14:"https://48pedia.org/images/thumb/7/78/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E9%95%B7%E5%8F%8B%E5%BD%A9%E6%B5%B7.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E9%95%B7%E5%8F%8B%E5%BD%A9%E6%B5%B7.jpg",
+      15:"https://48pedia.org/images/thumb/d/d5/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E6%AD%A6%E8%97%A4%E5%B0%8F%E9%BA%9F.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E6%AD%A6%E8%97%A4%E5%B0%8F%E9%BA%9F.jpg",
+      16:"https://48pedia.org/images/thumb/6/6f/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%B1%B1%E5%86%85%E7%91%9E%E8%91%B5.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%B1%B1%E5%86%85%E7%91%9E%E8%91%B5.jpg",
+      17:"https://48pedia.org/images/thumb/d/dd/2026%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%B1%B1%E6%A0%B9%E6%B6%BC%E7%BE%BD.jpg/100px-2026%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%B1%B1%E6%A0%B9%E6%B6%BC%E7%BE%BD.jpg",
+      18:"https://48pedia.org/images/thumb/7/73/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%A4%AA%E7%94%B0%E6%9C%89%E7%B4%80.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%A4%AA%E7%94%B0%E6%9C%89%E7%B4%80.jpg",
+      19:"https://48pedia.org/images/thumb/a/a1/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E4%BD%90%E8%97%A4%E7%B6%BA%E6%98%9F.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E4%BD%90%E8%97%A4%E7%B6%BA%E6%98%9F.jpg",
+      20:"https://48pedia.org/images/thumb/1/13/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E6%A9%8B%E6%9C%AC%E6%81%B5%E7%90%86%E5%AD%90.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E6%A9%8B%E6%9C%AC%E6%81%B5%E7%90%86%E5%AD%90.jpg",
+      21:"https://48pedia.org/images/thumb/6/6f/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E7%95%A0%E5%B1%B1%E5%B8%8C%E7%BE%8E.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E7%95%A0%E5%B1%B1%E5%B8%8C%E7%BE%8E.jpg",
+      22:"https://48pedia.org/images/thumb/0/03/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%B9%B3%E7%94%B0%E4%BE%91%E5%B8%8C.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%B9%B3%E7%94%B0%E4%BE%91%E5%B8%8C.jpg",
+      23:"https://48pedia.org/images/thumb/3/3c/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%B8%83%E8%A2%8B%E7%99%BE%E6%A4%9B.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%B8%83%E8%A2%8B%E7%99%BE%E6%A4%9B.jpg",
+      24:"https://48pedia.org/images/thumb/b/b9/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E6%AD%A3%E9%8B%B3%E7%9C%9F%E5%84%AA.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E6%AD%A3%E9%8B%B3%E7%9C%9F%E5%84%AA.jpg",
+      25:"https://48pedia.org/images/thumb/f/fd/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E6%B0%B4%E5%B3%B6%E7%BE%8E%E7%B5%90.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E6%B0%B4%E5%B3%B6%E7%BE%8E%E7%B5%90.jpg",
+      26:"https://48pedia.org/images/thumb/0/08/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%B1%B1%EF%A8%91%E7%A9%BA.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%B1%B1%EF%A8%91%E7%A9%BA.jpg",
+      27:"https://48pedia.org/images/thumb/3/3c/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E7%A7%8B%E5%B1%B1%E7%94%B1%E5%A5%88_2.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E7%A7%8B%E5%B1%B1%E7%94%B1%E5%A5%88_2.jpg",
+      28:"https://48pedia.org/images/thumb/9/94/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E6%96%B0%E4%BA%95%E5%BD%A9%E6%B0%B8_2.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E6%96%B0%E4%BA%95%E5%BD%A9%E6%B0%B8_2.jpg",
+      29:"https://48pedia.org/images/thumb/5/58/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%B7%A5%E8%97%A4%E8%8F%AF%E7%B4%94_2.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%B7%A5%E8%97%A4%E8%8F%AF%E7%B4%94_2.jpg",
+      30:"https://48pedia.org/images/thumb/2/20/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E4%B9%85%E4%BF%9D%E5%A7%AB%E8%8F%9C%E4%B9%83_2.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E4%B9%85%E4%BF%9D%E5%A7%AB%E8%8F%9C%E4%B9%83_2.jpg",
+      31:"https://48pedia.org/images/thumb/2/23/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E8%BF%AB%E7%94%B1%E8%8A%BD%E5%AE%9F_2.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E8%BF%AB%E7%94%B1%E8%8A%BD%E5%AE%9F_2.jpg",
+      32:"https://48pedia.org/images/thumb/9/95/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E6%88%90%E7%94%B0%E9%A6%99%E5%A7%AB%E5%A5%88_2.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E6%88%90%E7%94%B0%E9%A6%99%E5%A7%AB%E5%A5%88_2.jpg",
+      33:"https://48pedia.org/images/thumb/1/17/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%85%AB%E6%9C%A8%E6%84%9B%E6%9C%88_2.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%85%AB%E6%9C%A8%E6%84%9B%E6%9C%88_2.jpg",
+      34:"https://48pedia.org/images/thumb/4/4e/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%B1%B1%E5%8F%A3%E7%B5%90%E6%84%9B_2.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%B1%B1%E5%8F%A3%E7%B5%90%E6%84%9B_2.jpg",
+      35:"https://48pedia.org/images/thumb/9/96/2026%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E4%BC%8A%E8%97%A4%E7%99%BE%E8%8A%B1.jpg/100px-2026%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E4%BC%8A%E8%97%A4%E7%99%BE%E8%8A%B1.jpg",
+      36:"https://48pedia.org/images/thumb/5/51/2026%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%A5%A5%E6%9C%AC%E3%82%AB%E3%82%A4%E3%83%AA.jpg/100px-2026%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%A5%A5%E6%9C%AC%E3%82%AB%E3%82%A4%E3%83%AA.jpg",
+      37:"https://48pedia.org/images/thumb/b/b6/2026%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%B7%9D%E6%9D%91%E7%B5%90%E8%A1%A3.jpg/100px-2026%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%B7%9D%E6%9D%91%E7%B5%90%E8%A1%A3.jpg",
+      38:"https://48pedia.org/images/thumb/a/a2/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%A4%A7%E8%B3%80%E5%BD%A9%E5%A7%AB.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%A4%A7%E8%B3%80%E5%BD%A9%E5%A7%AB.jpg",
+      39:"https://48pedia.org/images/thumb/6/61/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E8%BF%91%E8%97%A4%E6%B2%99%E6%A8%B9.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E8%BF%91%E8%97%A4%E6%B2%99%E6%A8%B9.jpg",
+      40:"https://48pedia.org/images/thumb/0/04/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E4%B8%B8%E5%B1%B1%E3%81%B2%E3%81%AA%E3%81%9F.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E4%B8%B8%E5%B1%B1%E3%81%B2%E3%81%AA%E3%81%9F.jpg",
+      41:"https://48pedia.org/images/thumb/a/a7/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E9%AB%99%E6%A9%8B%E8%88%9E%E6%A1%9C.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E9%AB%99%E6%A9%8B%E8%88%9E%E6%A1%9C.jpg",
+      42:"https://48pedia.org/images/thumb/4/43/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E7%94%B0%E4%B8%AD%E6%B2%99%E5%8F%8B%E5%88%A9.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E7%94%B0%E4%B8%AD%E6%B2%99%E5%8F%8B%E5%88%A9.jpg",
+      43:"https://48pedia.org/images/thumb/7/79/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E7%89%A7%E6%88%B8%E6%84%9B%E8%8C%89.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E7%89%A7%E6%88%B8%E6%84%9B%E8%8C%89.jpg",
+      44:"https://48pedia.org/images/thumb/d/dd/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E6%A3%AE%E5%B7%9D%E5%84%AA.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E6%A3%AE%E5%B7%9D%E5%84%AA.jpg",
+      45:"https://48pedia.org/images/thumb/c/c2/2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E6%B8%A1%E9%82%89%E8%91%B5%E5%BF%83.jpg/100px-2025%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E6%B8%A1%E9%82%89%E8%91%B5%E5%BF%83.jpg",
+      46:"https://48pedia.org/images/thumb/e/ee/2026%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%A4%A7%E8%A5%BF%E3%82%86%E3%81%AA.jpg/100px-2026%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%A4%A7%E8%A5%BF%E3%82%86%E3%81%AA.jpg",
+      47:"https://48pedia.org/images/thumb/2/27/2026%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E9%95%B7%E8%B0%B7%E5%B7%9D%E7%99%BE%E3%80%85%E8%8A%B1.jpg/100px-2026%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E9%95%B7%E8%B0%B7%E5%B7%9D%E7%99%BE%E3%80%85%E8%8A%B1.jpg",
+      48:"https://48pedia.org/images/thumb/8/8a/2026%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%89%8D%E7%94%B0%E8%A1%A3%E6%BE%84.jpg/100px-2026%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%89%8D%E7%94%B0%E8%A1%A3%E6%BE%84.jpg",
+      49:"https://48pedia.org/images/thumb/0/0e/2026%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%B1%B1%E5%86%85%E5%88%A9%E4%B9%83%E6%98%8E.jpg/100px-2026%E5%B9%B4AKB48%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB_%E5%B1%B1%E5%86%85%E5%88%A9%E4%B9%83%E6%98%8E.jpg",
+    };
+    const DEFAULT_IMAGE = "https://pbs.twimg.com/profile_images/2006521178165489664/qJdp9-PR.jpg";
+
+
+    /* ==========================================================================
+       【2】各メンバーのSNS設定 (複数アカウント対応・未開設は空配列)
+       ========================================================================== */
+    const MEMBER_SNS = {
+      1: { x: ["https://x.com/yahho_sahho"], tiktok: ["https://www.tiktok.com/@1004sahho"], insta: ["https://www.instagram.com/saho_iwatate104"], youtube: ["https://youtube.com/@sahotatebiyori0730"] },
+      2: { x: ["https://x.com/seina_fuku48"], tiktok: ["https://www.tiktok.com/@seina_fukuoka"], insta: ["https://www.instagram.com/seina___ff"], youtube: [] },
+      3: { x: ["https://x.com/yuiyui_maromaro"], tiktok: ["https://www.tiktok.com/@yuioguri.akb48"], insta: ["https://www.instagram.com/yuioguri_1226"], youtube: [] },
+      4: { x: ["https://x.com/tenten_yurina"], tiktok: ["https://www.tiktok.com/@yurina_gyoten0314"], insta: ["https://www.instagram.com/Yurina.0314"], youtube: [] },
+      5: { x: ["https://x.com/Kuranoo_Narumi_"], tiktok: [], insta: ["https://www.instagram.com/noochan_1108", "https://www.instagram.com/noochan_kakigori"], youtube: ["https://www.youtube.com/@narutaochannel"] },
+      6: { x: ["https://x.com/Hiyuka_1007"], tiktok: ["https://www.tiktok.com/@hiyuka_sakagawa"], insta: ["https://www.instagram.com/hiyuka_sakagawa.1007"], youtube: [] },
+      7: { x: ["https://x.com/miumiu_0403"], tiktok: ["https://www.tiktok.com/@miumiu_1343"], insta: ["https://www.instagram.com/miumiu1343"], youtube: ["https://www.youtube.com/@narutaochannel"] },
+      8: { x: ["https://x.com/__ayn1230__"], tiktok: ["https://www.tiktok.com/@takahashi_ayane"], insta: ["https://www.instagram.com/aayyaannee811"], youtube: [] },
+      9: { x: ["https://x.com/48_RemiTokunaga"], tiktok: ["https://www.tiktok.com/@remi_tokunaga1001"], insta: ["https://www.instagram.com/remi_tokunaga1001"], youtube: [] },
+      10: { x: ["https://x.com/akb48serika"], tiktok: ["https://www.tiktok.com/@serika888"], insta: ["https://www.instagram.com/iroziro_serika"], youtube: ["https://www.youtube.com/@seritube0327"] },
+      11: { x: ["https://x.com/harupyon_0525"], tiktok: ["https://www.tiktok.com/@48pyonz_toyama"], insta: ["https://www.instagram.com/48pyonz_toyama"], youtube: [] },
+      12: { x: ["https://x.com/erii_20031027"], tiktok: ["https://www.tiktok.com/@eriierii1027a"], insta: ["https://www.instagram.com/eriierii_1027"], youtube: ["https://www.youtube.com/channel/UCWmBEZYVtoFvfrNO0lS8dJA", "https://www.youtube.com/@eriithm0101nl"] },
+      13: { x: ["https://x.com/kurooosu_48_16"], tiktok: ["https://www.tiktok.com/@haachan_xxx"], insta: ["https://www.instagram.com/hachan_haruka"], youtube: [] },
+      14: { x: ["https://x.com/ayamin_112"], tiktok: [], insta: ["https://www.instagram.com/ayami.n_48"], youtube: [] },
+      15: { x: ["https://x.com/muto_orin"], tiktok: ["https://www.tiktok.com/@mutosisters_official"], insta: ["https://www.instagram.com/muto_orin"], youtube: ["https://www.youtube.com/@muto_orin"] },
+      16: { x: ["https://x.com/MizukiYamauchi"], tiktok: ["https://www.tiktok.com/@zukky_48"], insta: ["https://www.instagram.com/zukky_48"], youtube: [] },
+      17: { x: ["https://x.com/zunchan_2010", "https://x.com/48Suzuha_16LOVE"], tiktok: ["https://www.tiktok.com/@zunchan48"], insta: ["https://www.instagram.com/suzuha48yamane16"], youtube: [] },
+      18: { x: ["https://x.com/yuki_ota0327"], tiktok: ["https://www.tiktok.com/@yuki_ota0327"], insta: ["https://www.instagram.com/yuki_ota0327"], youtube: [] },
+      19: { x: ["https://x.com/airi_sato0624"], tiktok: ["https://www.tiktok.com/@17aichaaan"], insta: ["https://www.instagram.com/__aiichan.17"], youtube: [] },
+      20: { x: ["https://x.com/erichan_akb48"], tiktok: ["https://www.tiktok.com/@eriko.hashimoto"], insta: ["https://www.instagram.com/eriko_hashimoto_"], youtube: [] },
+      21: { x: ["https://x.com/nonchan_akb48"], tiktok: ["https://www.tiktok.com/@nozomi1748"], insta: ["https://www.instagram.com/Nozomi_akb4817"], youtube: [] },
+      22: { x: ["https://x.com/yuki_hirata0903"], tiktok: ["https://www.tiktok.com/@yuki__hirata"], insta: ["https://www.instagram.com/yuki__hirata"], youtube: [] },
+      23: { x: ["https://x.com/moka_hotei1201"], tiktok: ["https://www.tiktok.com/@hotei_moka48"], insta: ["https://www.instagram.com/hotei_moka48"], youtube: [] },
+      24: { x: ["https://x.com/mayuu_masai0301"], tiktok: ["https://www.tiktok.com/@yuruyurumayuu"], insta: ["https://www.instagram.com/ma3_1mayuu"], youtube: [] },
+      25: { x: ["https://x.com/miyuu_mizushima"], tiktok: ["https://www.tiktok.com/@17_miyuu_1112"], insta: ["https://www.instagram.com/miyuu_mizushima"], youtube: [] },
+      26: { x: ["https://x.com/sorara_akb48"], tiktok: ["https://www.tiktok.com/@sora.yamazaki_17"], insta: ["https://www.instagram.com/sora_yamazaki17"], youtube: [] },
+      27: { x: ["https://x.com/yunachan_akb48"], tiktok: ["https://www.tiktok.com/@yuna_akb48"], insta: ["https://www.instagram.com/yuna.a_1212"], youtube: [] },
+      28: { x: ["https://x.com/saechan_akb48"], tiktok: ["https://www.tiktok.com/@saechan_akb48"], insta: ["https://www.instagram.com/saechan_akb48"], youtube: [] },
+      29: { x: ["https://x.com/kasumin_akb48"], tiktok: ["https://www.tiktok.com/@akb48.18"], insta: ["https://www.instagram.com/kasumin_akb48"], youtube: [] },
+      30: { x: ["https://x.com/hinano_kubo0202"], tiktok: ["https://www.tiktok.com/@hinyano22_akb"], insta: ["https://www.instagram.com/hiinachan_akb48"], youtube: [] },
+      31: { x: ["https://x.com/yumemi_sako0205"], tiktok: ["https://www.tiktok.com/@yumemi_sako0205"], insta: ["https://www.instagram.com/yumemi_sako0205"], youtube: [] },
+      32: { x: ["https://x.com/kohina_narita"], tiktok: ["https://www.tiktok.com/@kohina_akb48"], insta: ["https://www.instagram.com/k0hina_33"], youtube: [] },
+      33: { x: ["https://x.com/azuki_yagi0322"], tiktok: ["https://www.tiktok.com/@azuki.azu_akb48"], insta: ["https://www.instagram.com/azuki_yagi0322"], youtube: [] },
+      34: { x: ["https://x.com/yuichi_akb48"], tiktok: ["https://www.tiktok.com/@yuichi_akb48"], insta: ["https://www.instagram.com/yuichi_akb48"], youtube: [] },
+      35: { x: ["https://x.com/momoka_ito1206"], tiktok: ["https://www.tiktok.com/@ito_momoka1206"], insta: ["https://www.instagram.com/momoka_ito1206"], youtube: [] },
+      36: { x: ["https://x.com/kairi_okumoto"], tiktok: ["https://www.tiktok.com/@basashi_kairi_guitar"], insta: ["https://www.instagram.com/kairi_okumoto"], youtube: [] },
+      37: { x: ["https://x.com/yui_kawamura"], tiktok: ["https://www.tiktok.com/@kawayui_akb48"], insta: ["https://www.instagram.com/yui_kawamura0618"], youtube: [] },
+      38: { x: ["https://x.com/Saki_Oga0516"], tiktok: ["https://www.tiktok.com/@saki_oga"], insta: ["https://www.instagram.com/saki_oga.0516"], youtube: [] },
+      39: { x: ["https://x.com/Saki_kondo0223"], tiktok: ["https://www.tiktok.com/@saki.kondo223"], insta: ["https://www.instagram.com/saki_kondo223"], youtube: [] },
+      40: { x: ["https://x.com/Hinata_Maruyama"], tiktok: ["https://www.tiktok.com/@hinata.maruyama"], insta: ["https://www.instagram.com/hinata_maruyama"], youtube: [] },
+      41: { x: ["https://x.com/Mao_Takahashi25"], tiktok: ["https://www.tiktok.com/@mao_takahashi0625"], insta: ["https://www.instagram.com/mao_takahashi0625"], youtube: [] },
+      42: { x: ["https://x.com/Sayuri_Tanaka09"], tiktok: ["https://www.tiktok.com/@sayuri_tanaka1209"], insta: ["https://www.instagram.com/sayuri_tanaka1209"], youtube: [] },
+      43: { x: ["https://x.com/Ema_Makito"], tiktok: ["https://www.tiktok.com/@ema_makito0525"], insta: ["https://www.instagram.com/ema_makito0525"], youtube: [] },
+      44: { x: ["https://x.com/Yu_Morikawa"], tiktok: ["https://www.tiktok.com/@yu_morikawa0624"], insta: ["https://www.instagram.com/yu_morikawa0624"], youtube: [] },
+      45: { x: ["https://x.com/Kiko_Watanabe07"], tiktok: ["https://www.tiktok.com/@kiko_watanabe0712"], insta: ["https://www.instagram.com/kiko_watanabe0712"], youtube: [] },
+      46: { x: ["https://x.com/yuna_oonishi"], tiktok: [], insta: [], youtube: [] },
+      47: { x: ["https://x.com/Momo_Hasegawa12"], tiktok: [], insta: [], youtube: [] },
+      48: { x: ["https://x.com/izumi_maeda1117"], tiktok: [], insta: [], youtube: [] },
+      49: { x: ["https://x.com/rinoa_yamauchi"], tiktok: [], insta: [], youtube: [] }
+    };
+
+
+    /* ==========================================================================
+       【3】各メンバーの紹介・ペンライト設定 (49名)
+       ========================================================================== */
+    const MEMBERS_INFO = [
+      { id: 1, name: "岩立 沙穂", kana: "いわたて さほ", enName: "Saho Iwatate", nickname: "さっほー", birth: "1994年10月4日", pref: "神奈川県", gen: "13期", note: "TRUSTAR所属", c1: "ピンク", c1Hex: "#FF7DA0", c2: "ピンク", c2Hex: "#FF7DA0" },
+      { id: 2, name: "福岡 聖菜", kana: "ふくおか せいな", enName: "Seina Fukuoka", nickname: "せいちゃん", birth: "2000年8月1日", pref: "神奈川県", gen: "15期", note: "トキエンタテインメント所属", c1: "青", c1Hex: "#3B82F6", c2: "青", c2Hex: "#3B82F6" },
+      { id: 3, name: "小栗 有以", kana: "おぐり ゆい", enName: "Yui Oguri", nickname: "ゆいゆい", birth: "2001年12月26日", pref: "東京都", gen: "チーム8", note: "ゼスト所属", c1: "ピンク", c1Hex: "#FF7DA0", c2: "ピンク", c2Hex: "#FF7DA0" },
+      { id: 4, name: "行天 優莉奈", kana: "ぎょうてん ゆりな", enName: "Yurina Gyoten", nickname: "ゆりな", birth: "1999年3月14日", pref: "香川県", gen: "チーム8", note: "MR8所属", c1: "黄", c1Hex: "#FBBF24", c2: "白", c2Hex: "#FFFFFF" },
+      { id: 5, name: "倉野尾 成美", kana: "くらのお なるみ", enName: "Narumi Kuranoo", nickname: "なる", birth: "2000年11月8日", pref: "熊本県", gen: "チーム8", note: "AKB48グループ総監督", c1: "赤", c1Hex: "#EF4444", c2: "緑", c2Hex: "#10B981" },
+      { id: 6, name: "坂川 陽香", kana: "さかがわ ひゆか", enName: "Hiyuka Sakagawa", nickname: "ひゆか", birth: "2006年10月7日", pref: "福井県", gen: "チーム8", note: "ALWAYS所属", c1: "赤", c1Hex: "#EF4444", c2: "水色", c2Hex: "#00bfff" },
+      { id: 7, name: "下尾 みう", kana: "したお みう", enName: "Miu Shitao", nickname: "みう", birth: "2001年4月3日", pref: "山口県", gen: "チーム8", note: "太田プロダクション所属", c1: "白", c1Hex: "#FFFFFF", c2: "紫", c2Hex: "#BE79FF" },
+      { id: 8, name: "髙橋 彩音", kana: "たかはし あやね", enName: "Ayane Takahashi", nickname: "あやねちゃん", birth: "1997年12月30日", pref: "埼玉県", gen: "チーム8", note: "アリゲーター所属", c1: "青", c1Hex: "#3B82F6", c2: "黄色", c2Hex: "#FBBF24" },
+      { id: 9, name: "徳永 羚海", kana: "とくなが れみ", enName: "Remi Tokunaga", nickname: "れみたん", birth: "2006年10月1日", pref: "鳥取県", gen: "チーム8", note: "", c1: "ピンク", c1Hex: "#FF7DA0", c2: "白", c2Hex: "#FFFFFF" },
+      { id: 10, name: "永野 芹佳", kana: "ながの せりか", enName: "Serika Nagano", nickname: "せりちゃん", birth: "2001年3月27日", pref: "大阪府", gen: "チーム8", note: "TRUSTAR所属", c1: "青", c1Hex: "#3B82F6", c2: "白", c2Hex: "#FFFFFF" },
+      { id: 11, name: "橋本 陽菜", kana: "はしもと はるな", enName: "Haruna Hashimoto", nickname: "はるpyon", birth: "2000年5月25日", pref: "富山県", gen: "チーム8", note: "ストロボエージェンシー所属", c1: "ピンク", c1Hex: "#FF7DA0", c2: "白", c2Hex: "#FFFFFF" },
+      { id: 12, name: "千葉 恵里", kana: "ちば えりい", enName: "Erii Chiba", nickname: "えりい", birth: "2003年10月27日", pref: "神奈川県", gen: "ドラフト2期", note: "NEXT LEAP所属", c1: "黄", c1Hex: "#FBBF24", c2: "青", c2Hex: "#3B82F6" },
+      { id: 13, name: "黒須 遥香", kana: "くろす はるか", enName: "Haruka Kurosu", nickname: "はーちゃん", birth: "2001年2月28日", pref: "埼玉県", gen: "16期", note: "", c1: "白", c1Hex: "#FFFFFF", c2: "青", c2Hex: "#3B82F6" },
+      { id: 14, name: "長友 彩海", kana: "ながとも あやみ", enName: "Ayami Nagatomo", nickname: "あやみん", birth: "2000年11月2日", pref: "神奈川県", gen: "16期", note: "", c1: "黄", c1Hex: "#FBBF24", c2: "赤", c2Hex: "#EF4444" },
+      { id: 15, name: "武藤 小麟", kana: "むとう おりん", enName: "Orin Muto", nickname: "おりん", birth: "2000年7月22日", pref: "東京都", gen: "16期", note: "姉は武藤十夢 / FIRST AGENT所属", c1: "赤", c1Hex: "#EF4444", c2: "緑", c2Hex: "#10B981" },
+      { id: 16, name: "山内 瑞葵", kana: "やまうち みずき", enName: "Mizuki Yamauchi", nickname: "ずっきー", birth: "2001年9月20日", pref: "東京都", gen: "16期", note: "エイベックス・AY・ファクトリー所属", c1: "ピンク", c1Hex: "#FF7DA0", c2: "黄", c2Hex: "#FBBF24" },
+      { id: 17, name: "山根 涼羽", kana: "やまね すずは", enName: "Suzuha Yamane", nickname: "ずんちゃん", birth: "2000年8月11日", pref: "兵庫県", gen: "16期", note: "", c1: "赤", c1Hex: "#EF4444", c2: "白", c2Hex: "#FFFFFF" },
+      { id: 18, name: "太田 有紀", kana: "おおた ゆき", enName: "Yuki Ota", nickname: "ゆきたん", birth: "2004年3月27日", pref: "神奈川県", gen: "17期", note: "", c1: "緑", c1Hex: "#10B981", c2: "白", c2Hex: "#FFFFFF" },
+      { id: 19, name: "佐藤 綺星", kana: "さとう あいり", enName: "Airi Sato", nickname: "あいちゃん", birth: "2004年6月24日", pref: "千葉県", gen: "17期", note: "姉は佐藤妃星 / ヴィーボ所属", c1: "赤", c1Hex: "#EF4444", c2: "白", c2Hex: "#FFFFFF" },
+      { id: 20, name: "橋本 恵理子", kana: "はしもと えりこ", enName: "Eriko Hashimoto", nickname: "えりちゃん", birth: "2006年4月16日", pref: "大阪府", gen: "17期", note: "", c1: "赤", c1Hex: "#EF4444", c2: "黄", c2Hex: "#FBBF24" },
+      { id: 21, name: "畠山 希美", kana: "はたけやま のぞみ", enName: "Nozomi Hatakeyama", nickname: "のんちゃん", birth: "2008年1月25日", pref: "埼玉県", gen: "17期", note: "", c1: "紫", c1Hex: "#BE79FF", c2: "白", c2Hex: "#FFFFFF" },
+      { id: 22, name: "平田 侑希", kana: "ひらた ゆき", enName: "Yuki Hirata", nickname: "ゆき", birth: "2002年9月3日", pref: "埼玉県", gen: "17期", note: "Mi-So所属", c1: "水色", c1Hex: "#00bfff", c2: "ピンク", c2Hex: "#FF7DA0" },
+      { id: 23, name: "布袋 百椛", kana: "ほてい もか", enName: "Moka Hotei", nickname: "ほてちゃん", birth: "2004年12月1日", pref: "兵庫県", gen: "17期", note: "", c1: "ピンク", c1Hex: "#FF7DA0", c2: "黄", c2Hex: "#FBBF24" },
+      { id: 24, name: "正鋳 真優", kana: "まさい まゆう", enName: "Mayuu Masai", nickname: "まゆうちゃん", birth: "2005年3月1日", pref: "埼玉県", gen: "17期", note: "", c1: "赤", c1Hex: "#EF4444", c2: "青", c2Hex: "#3B82F6" },
+      { id: 25, name: "水島 美結", kana: "みずしま みゆう", enName: "Miyuu Mizushima", nickname: "みずみん", birth: "2003年11月12日", pref: "北海道", gen: "17期", note: "", c1: "紫", c1Hex: "#BE79FF", c2: "ピンク", c2Hex: "#FF7DA0" },
+      { id: 26, name: "山﨑 空", kana: "やまざき そら", enName: "Sora Yamazaki", nickname: "そらら", birth: "2004年5月13日", pref: "東京都", gen: "17期", note: "", c1: "青", c1Hex: "#3B82F6", c2: "白", c2Hex: "#FFFFFF" },
+      { id: 27, name: "秋山 由奈", kana: "あきやま ゆな", enName: "Yuna Akiyama", nickname: "ゆなちゃん", birth: "2005年12月12日", pref: "千葉県", gen: "18期", note: "", c1: "水色", c1Hex: "#00bfff", c2: "ピンク", c2Hex: "#FF7DA0" },
+      { id: 28, name: "新井 彩永", kana: "あらい さえ", enName: "Sae Arai", nickname: "さえちゃん", birth: "2005年10月5日", pref: "東京都", gen: "18期", note: "", c1: "赤", c1Hex: "#EF4444", c2: "青", c2Hex: "#3B82F6" },
+      { id: 29, name: "工藤 華純", kana: "くどう かすみ", enName: "Kasumi Kudo", nickname: "かすみん", birth: "2005年6月15日", pref: "大分県", gen: "18期", note: "", c1: "紫", c1Hex: "#BE79FF", c2: "黄", c2Hex: "#FBBF24" },
+      { id: 30, name: "久保 姫菜乃", kana: "くぼ ひなの", enName: "Hinano Kubo", nickname: "ちゃんひな", birth: "2006年2月2日", pref: "長野県", gen: "18期", note: "", c1: "ピンク", c1Hex: "#FF7DA0", c2: "青", c2Hex: "#3B82F6" },
+      { id: 31, name: "迫 由芽実", kana: "さこ ゆめみ", enName: "Yumemi Sako", nickname: "ゆめみん", birth: "2006年2月5日", pref: "埼玉県", gen: "18期", note: "", c1: "ピンク", c1Hex: "#FF7DA0", c2: "白", c2Hex: "#FFFFFF" },
+      { id: 32, name: "成田 香姫奈", kana: "なりた こひな", enName: "Kohina Narita", nickname: "こひ", birth: "2004年3月3日", pref: "北海道", gen: "18期", note: "", c1: "水色", c1Hex: "#00bfff", c2: "黄", c2Hex: "#FBBF24" },
+      { id: 33, name: "八木 愛月", kana: "やぎ あづき", enName: "Azuki Yagi", nickname: "あづ", birth: "2005年3月22日", pref: "東京都", gen: "18期", note: "", c1: "ピンク", c1Hex: "#FF7DA0", c2: "紫", c2Hex: "#BE79FF" },
+      { id: 34, name: "山口 結愛", kana: "やまぐち ゆい", enName: "Yui Yamaguchi", nickname: "ゆいち", birth: "2009年3月8日", pref: "長崎県", gen: "18期", note: "", c1: "緑", c1Hex: "#10B981", c2: "黄色", c2Hex: "#FBBF24" },
+      { id: 35, name: "伊藤 百花", kana: "いとう ももか", enName: "Momoka Ito", nickname: "いともも", birth: "2003年12月6日", pref: "埼玉県", gen: "19期", note: "", c1: "ピンク", c1Hex: "#FF7DA0", c2: "白", c2Hex: "#FFFFFF" },
+      { id: 36, name: "奥本 カイリ", kana: "おくもと カイリ", enName: "Kairi Okumoto", nickname: "カイリ", birth: "2007年1月27日", pref: "東京都", gen: "19期", note: "", c1: "青", c1Hex: "#3B82F6", c2: "黄", c2Hex: "#FBBF24" },
+      { id: 37, name: "川村 結衣", kana: "かわむら ゆい", enName: "Yui Kawamura", nickname: "かわゆい", birth: "2006年6月18日", pref: "北海道", gen: "19期", note: "", c1: "水色", c1Hex: "#00bfff", c2: "白", c2Hex: "#FFFFFF" },
+      { id: 38, name: "大賀 彩姫", kana: "おおが さき", enName: "Saki Oga", nickname: "さーちゃん", birth: "2006年5月16日", pref: "福島県", gen: "20期研", note: "研究生", c1: "赤", c1Hex: "#EF4444", c2: "ピンク", c2Hex: "#FF7DA0" },
+      { id: 39, name: "近藤 沙樹", kana: "こんどう さき", enName: "Saki Kondo", nickname: "こさき", birth: "2012年2月23日", pref: "愛知県", gen: "20期研", note: "研究生", c1: "黄", c1Hex: "#FBBF24", c2: "水色", c2Hex: "#00bfff" },
+      { id: 40, name: "丸山 ひなた", kana: "まるやま ひなた", enName: "Hinata Maruyama", nickname: "まるちゃん", birth: "2008年7月11日", pref: "新潟県", gen: "20期研", note: "研究生", c1: "オレンジ", c1Hex: "#FFA23A", c2: "白", c2Hex: "#FFFFFF" },
+      { id: 41, name: "髙橋 舞桜", kana: "たかはし まお", enName: "Mao Takahashi", nickname: "まーたん", birth: "2010年6月25日", pref: "北海道", gen: "21期研", note: "研究生", c1: "ピンク", c1Hex: "#FF7DA0", c2: "緑", c2Hex: "#10B981" },
+      { id: 42, name: "田中 沙友利", kana: "たなか さゆり", enName: "Sayuri Tanaka", nickname: "さゆりん", birth: "2008年12月9日", pref: "埼玉県", gen: "21期研", note: "研究生", c1: "紫", c1Hex: "#BE79FF", c2: "ピンク", c2Hex: "#FF7DA0" },
+      { id: 43, name: "牧戸 愛茉", kana: "まきと えま", enName: "Ema Makito", nickname: "えまちゃん", birth: "2007年5月25日", pref: "愛知県", gen: "21期研", note: "研究生", c1: "黄", c1Hex: "#FBBF24", c2: "紫", c2Hex: "#BE79FF" },
+      { id: 44, name: "森川 優", kana: "もりかわ ゆう", enName: "Yuu Morikawa", nickname: "ゆーゆ", birth: "2008年6月24日", pref: "兵庫県", gen: "21期研", note: "研究生", c1: "青", c1Hex: "#3B82F6", c2: "白", c2Hex: "#FFFFFF" },
+      { id: 45, name: "渡邉 葵心", kana: "わたなべ きこ", enName: "Kiko Watanabe", nickname: "きこちゃん", birth: "2007年7月12日", pref: "秋田県", gen: "21期研", note: "研究生", c1: "水色", c1Hex: "#00bfff", c2: "紫", c2Hex: "#BE79FF" },
+      { id: 46, name: "大西 ゆな", kana: "おおにし ゆな", enName: "Yuna Onishi", nickname: "ゆーちゃん", birth: "2008年6月15日", pref: "長崎県", gen: "22期研", note: "研究生", c1: "ピンク", c1Hex: "#FF7DA0", c2: "白", c2Hex: "#FFFFFF" },
+      { id: 47, name: "長谷川 百々花", kana: "はせがわ ももか", enName: "Momoka Hasegawa", nickname: "はせもも", birth: "2006年12月14日", pref: "福島県", gen: "22期研", note: "研究生 / 元チーム8", c1: "ピンク", c1Hex: "#FF7DA0", c2: "黄", c2Hex: "#FBBF24" },
+      { id: 48, name: "前田 衣澄", kana: "まえだ いずみ", enName: "Izumi Maeda", nickname: "いず", birth: "2008年11月17日", pref: "東京都", gen: "22期研", note: "研究生", c1: "赤", c1Hex: "#EF4444", c2: "白", c2Hex: "#FFFFFF" },
+      { id: 49, name: "山内 利乃明", kana: "やまうち りのあ", enName: "Rinoa Yamauchi", nickname: "りのあ", birth: "2012年12月13日", pref: "愛媛県", gen: "22期研", note: "研究生", c1: "オレンジ", c1Hex: "#FFA23A", c2: "ピンク", c2Hex: "#FF7DA0" }
+    ];
+
+
+    /* ==========================================================================
+       【4】システムロジック＆UIレンダリング
+       ========================================================================== */
+    
+    // 色名からフィルタータグを自動生成するヘルパー
+    function getColorTags(c1, c2) {
+      const combined = `${c1} ${c2}`;
+      const tags = [];
+      if (combined.includes("ピンク")) tags.push("pink");
+      if (combined.includes("赤")) tags.push("red");
+      if (combined.includes("白")) tags.push("white");
+      if (combined.includes("青") || combined.includes("水色")) tags.push("blue");
+      if (combined.includes("黄")) tags.push("yellow");
+      if (combined.includes("オレンジ")) tags.push("orange");
+      if (combined.includes("緑")) tags.push("green");
+      if (combined.includes("紫")) tags.push("purple");
+      return tags;
+    }
+
+    // 3つの分離データ（画像・SNS・基本情報）を統合
+    const members = MEMBERS_INFO.map(m => {
+      const sns = MEMBER_SNS[m.id] || {};
+      const img = MEMBER_IMAGES[m.id] || DEFAULT_IMAGE;
+      const initials = m.enName.split(' ').map(n => n[0]).join('').toUpperCase();
+      return {
+        ...m,
+        imageUrl: img,
+        initials: initials,
+        sns: sns,
+        pColorName: `${m.c1}×${m.c2}`,
+        pColors: [m.c1Hex, m.c2Hex],
+        tags: getColorTags(m.c1, m.c2)
+      };
+    });
+
+    // 期別カテゴリー定義
+    const allGens = [
+      { id: "all", label: "ALL" },
+      { id: "13期", label: "13期" },
+      { id: "15期", label: "15期" },
+      { id: "チーム8", label: "チーム8" },
+      { id: "ドラフト2期", label: "ドラフト2期" },
+      { id: "16期", label: "16期" },
+      { id: "17期", label: "17期" },
+      { id: "18期", label: "18期" },
+      { id: "19期", label: "19期" },
+      { id: "20期研", label: "20期研" },
+      { id: "21期研", label: "21期研" },
+      { id: "22期研", label: "22期研" }
+    ];
+
+    // クイックカラー選択肢
+    const systemColors = [
+      { id: "all", name: "ALL", class: "bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 text-slate-800 dark:text-slate-200" },
+      { id: "pink", name: "ピンク系", class: "bg-pink-400 text-white shadow-sm hover:scale-105" },
+      { id: "red", name: "赤系", class: "bg-red-500 text-white shadow-sm hover:scale-105" },
+      { id: "blue", name: "青・水色", class: "bg-blue-400 text-white shadow-sm hover:scale-105" },
+      { id: "yellow", name: "黄色系", class: "bg-yellow-300 text-slate-800 dark:bg-yellow-400 shadow-sm hover:scale-105" },
+      { id: "orange", name: "オレンジ系", class: "bg-orange-400 text-white shadow-sm hover:scale-105" },
+      { id: "green", name: "緑系", class: "bg-emerald-400 text-white shadow-sm hover:scale-105" },
+      { id: "purple", name: "紫系", class: "bg-purple-400 text-white shadow-sm hover:scale-105" },
+      { id: "white", name: "白系", class: "bg-white text-slate-700 dark:bg-slate-100 border border-slate-200 dark:border-slate-700 shadow-sm hover:scale-105" }
+    ];
+
+    // 期ごとのテーマカラースタイル
+    function getGenMeta(gen) {
+      if (gen.includes("研")) {
+        return {
+          color: "from-rose-50/50 to-purple-50/40 dark:from-rose-950/20 dark:to-purple-950/10",
+          border: "border-purple-200/80 dark:border-purple-900/40",
+          badge: "bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300"
+        };
+      }
+      if (gen === "チーム8") {
+        return {
+          color: "from-pink-50/60 to-sky-50/30 dark:from-pink-950/20 dark:to-sky-950/10",
+          border: "border-pink-200 dark:border-pink-900/40",
+          badge: "bg-sky-100 text-sky-700 dark:bg-sky-900/40 dark:text-sky-300"
+        };
+      }
+      return {
+        color: "from-pink-50/60 to-rose-100/30 dark:from-pink-950/20 dark:to-rose-900/10",
+        border: "border-pink-200 dark:border-pink-900/40",
+        badge: "bg-pink-100 text-pink-700 dark:bg-pink-900/40 dark:text-pink-300"
+      };
+    }
+
+    // アプリケーション状態管理
+    const state = {
+      gen: "all",
+      colorTag: "all",
+      searchQuery: "",
+      favorites: JSON.parse(localStorage.getItem('akb48_penlight_favs') || '[]'),
+      favoritesOnly: false,
+      theme: localStorage.getItem('akb48_theme') || 'light'
+    };
+
+    // 単色ペンライトSVGを生成する関数
+    function createSinglePenlightSvg(color, id, index, total, isPinned = false) {
+      const prefix = isPinned ? 'pin-' : '';
+      const gradId = `${prefix}pen-grad-${id}-${index}`;
+      const isWhite = color.toUpperCase() === '#FFFFFF';
+      
+      let gradHtml = `
+        <linearGradient id="${gradId}" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="${color}" />
+          <stop offset="35%" stop-color="#FFFFFF" />
+          <stop offset="70%" stop-color="${color}" />
+          <stop offset="100%" stop-color="${color}" />
+        </linearGradient>
+      `;
+      if (isWhite) {
+        gradHtml = `
+          <linearGradient id="${gradId}" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#E2E8F0" />
+            <stop offset="50%" stop-color="#FFFFFF" />
+            <stop offset="100%" stop-color="#CBD5E1" />
+          </linearGradient>
+        `;
+      }
+
+      const strokeColor = isWhite ? '#cbd5e1' : '#f8fafc';
+      
+      let transformStyle = '';
+      let marginStyle = '';
+      if (total > 1) {
+        const angle = -12 + (index * (24 / (total - 1)));
+        const tx = -4 + (index * 4);
+        transformStyle = `transform: rotate(${angle}deg) translateX(${tx}px);`;
+        marginStyle = index > 0 ? 'margin-left: -14px;' : '';
+      }
+
+      const glowColor = isWhite ? '#e2e8f0' : color;
+
+      return `
+        <svg viewBox="0 0 40 52" class="w-10 h-12 transition-all duration-300 hover:scale-110 hover:z-20 glow-effect" style="--glow-color: ${glowColor}; ${transformStyle} ${marginStyle} z-index: ${index + 1}; position: relative;">
+          <defs>
+            ${gradHtml}
+          </defs>
+          <path d="M18,34 L22,34 L23,47 A3,3 0 0,1 17,47 Z" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1.2"/>
+          <rect x="18" y="36" width="4" height="2" rx="0.5" fill="#94a3b8"/>
+          <rect x="13" y="6" width="14" height="27" rx="7" fill="url(#${gradId})" stroke="${strokeColor}" stroke-width="1" />
+          <rect x="12" y="32" width="16" height="2.5" fill="#cbd5e1" rx="0.5"/>
+        </svg>
+      `;
+    }
+
+    // ペンライト2本を描画するラッパー
+    function createPenlightsHtml(pColors, id, isPinned = false) {
+      let html = '<div class="flex items-center relative h-12 pr-1">';
+      pColors.forEach((color, index) => {
+        html += createSinglePenlightSvg(color, id, index, pColors.length, isPinned);
+      });
+      html += '</div>';
+      return html;
+    }
+
+    // SNSリンク生成関数（開設しているアカウントのみ表示・複数ある場合はそれぞれ独立表示）
+    function createSnsButtonsHtml(sns) {
+      if (!sns) return '';
+      let buttons = [];
+      
+      const toArray = (val) => Array.isArray(val) ? val : (val ? [val] : []);
+
+      // X (Twitter)
+      const xList = toArray(sns.x);
+      xList.forEach((url, idx) => {
+        const title = xList.length > 1 ? `X (Twitter) #${idx + 1}` : 'X (Twitter)';
+        buttons.push(`
+          <a href="${url}" target="_blank" rel="noopener noreferrer" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black flex items-center justify-center transition-all duration-200" title="${title}">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        `);
+      });
+
+      // Instagram
+      const instaList = toArray(sns.insta);
+      instaList.forEach((url, idx) => {
+        const title = instaList.length > 1 ? `Instagram #${idx + 1}` : 'Instagram';
+        buttons.push(`
+          <a href="${url}" target="_blank" rel="noopener noreferrer" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-gradient-to-tr hover:from-yellow-500 hover:via-pink-500 hover:to-purple-600 hover:text-white flex items-center justify-center transition-all duration-200" title="${title}">
+            <svg class="w-3.5 h-3.5 stroke-current fill-none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+        `);
+      });
+
+      // TikTok
+      const tiktokList = toArray(sns.tiktok);
+      tiktokList.forEach((url, idx) => {
+        const title = tiktokList.length > 1 ? `TikTok #${idx + 1}` : 'TikTok';
+        buttons.push(`
+          <a href="${url}" target="_blank" rel="noopener noreferrer" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-black hover:text-[#25f4ee] flex items-center justify-center transition-all duration-200" title="${title}">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.01 1.62 4.17.94 1.09 2.27 1.8 3.71 1.95v3.91c-1.57-.16-3.05-.79-4.22-1.85-.2-.17-.39-.36-.56-.56-.06.74-.04 1.48-.04 2.22 0 3.23-.74 6.32-3.12 8.3-2.11 1.81-5.11 2.28-7.66 1.34-2.82-1.01-4.79-3.79-4.83-6.83-.07-3.41 2.31-6.65 5.67-7.23.97-.18 1.97-.18 2.94.02v3.95c-.86-.25-1.83-.16-2.61.35-.99.62-1.39 1.93-1 3 .36 1.05 1.51 1.7 2.61 1.47 1-.16 1.78-.99 1.83-2V.02z"/></svg>
+          </a>
+        `);
+      });
+
+      // YouTube
+      const ytList = toArray(sns.youtube);
+      ytList.forEach((url, idx) => {
+        const title = ytList.length > 1 ? `YouTube #${idx + 1}` : 'YouTube';
+        buttons.push(`
+          <a href="${url}" target="_blank" rel="noopener noreferrer" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-[#FF0000] hover:text-white flex items-center justify-center transition-all duration-200" title="${title}">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        `);
+      });
+
+      if (buttons.length === 0) return '';
+      return `<div class="flex flex-wrap items-center gap-1.5 mt-2">${buttons.join('')}</div>`;
+    }
+
+    // お気に入りの登録・解除
+    function toggleFavorite(id, event) {
+      if (event) event.stopPropagation();
+      const index = state.favorites.indexOf(id);
+      if (index > -1) {
+        state.favorites.splice(index, 1);
+        showToast("お気に入りから削除しました", "★");
+      } else {
+        state.favorites.push(id);
+        showToast("お気に入りに登録しました！", "💖");
+      }
+      localStorage.setItem('akb48_penlight_favs', JSON.stringify(state.favorites));
+      renderGrid();
+    }
+
+    // ダークモード切り替え
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        state.theme = 'light';
+        document.getElementById('themeIconMobile').innerText = '🌙';
+        document.getElementById('themeIconPC').innerText = '🌙';
+      } else {
+        html.classList.add('dark');
+        state.theme = 'dark';
+        document.getElementById('themeIconMobile').innerText = '☀️';
+        document.getElementById('themeIconPC').innerText = '☀️';
+      }
+      localStorage.setItem('akb48_theme', state.theme);
+    }
+
+    function loadTheme() {
+      if (state.theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.getElementById('themeIconMobile').innerText = '☀️';
+        document.getElementById('themeIconPC').innerText = '☀️';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.getElementById('themeIconMobile').innerText = '🌙';
+        document.getElementById('themeIconPC').innerText = '🌙';
+      }
+    }
+
+    // お気に入り限定表示トグル
+    function toggleFavoritesOnly() {
+      state.favoritesOnly = !state.favoritesOnly;
+      const btn = document.getElementById("favToggleBtn");
+      const icon = document.getElementById("favToggleIcon");
+      if (state.favoritesOnly) {
+        btn.classList.add("bg-pink-500", "text-white", "border-pink-500", "hover:bg-pink-600");
+        btn.classList.remove("bg-white", "dark:bg-slate-900", "text-slate-500", "dark:text-slate-400");
+        icon.innerText = "★";
+      } else {
+        btn.classList.remove("bg-pink-500", "text-white", "border-pink-500", "hover:bg-pink-600");
+        btn.classList.add("bg-white", "dark:bg-slate-900", "text-slate-500", "dark:text-slate-400");
+        icon.innerText = "☆";
+      }
+      renderGrid();
+    }
+
+    // 期別タブの描画
+    function renderGenFilters() {
+      const container = document.getElementById("genFilterContainer");
+      container.innerHTML = allGens.map(g => {
+        const isActive = state.gen === g.id;
+        const activeClass = isActive
+          ? 'bg-pink-500 text-white shadow-sm'
+          : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-white/60 dark:hover:bg-slate-800/60';
+        return `
+          <button 
+            onclick="filterGen('${g.id}')"
+            class="px-3.5 py-1.5 text-xs font-bold rounded-xl whitespace-nowrap transition-all duration-200 ${activeClass}"
+          >
+            ${g.label}
+          </button>
+        `;
+      }).join('');
+    }
+
+    // クイックカラーフィルター構築
+    function renderColorFilters() {
+      const container = document.getElementById("colorFilterContainer");
+      container.innerHTML = systemColors.map(color => {
+        const isActive = state.colorTag === color.id;
+        const activeClass = isActive 
+          ? 'ring-2 ring-offset-2 ring-pink-500 dark:ring-offset-slate-950 scale-105 font-black z-10' 
+          : 'opacity-75 hover:opacity-100 scale-100';
+        return `
+          <button 
+            onclick="filterColor('${color.id}')"
+            class="px-3.5 py-1.5 rounded-full text-[11px] font-bold transition-all duration-200 ${color.class} ${activeClass}"
+          >
+            ${color.name}
+          </button>
+        `;
+      }).join('');
+    }
+
+    // メンバーカード生成
+    function createMemberCard(member, isPinned = false) {
+      const meta = getGenMeta(member.gen);
+      const penlightsHtml = createPenlightsHtml(member.pColors, member.id, isPinned);
+      const snsHtml = createSnsButtonsHtml(member.sns);
+      const isFav = state.favorites.includes(member.id);
+
+      return `
+        <div class="bg-gradient-to-br ${meta.color} bg-white dark:bg-slate-900/40 rounded-2xl border ${meta.border} p-5 shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-full group">
+          
+          <!-- お気に入り★ & 期別バッジ -->
+          <div class="absolute top-3.5 right-3.5 flex items-center gap-1.5 z-10">
+            <button onclick="toggleFavorite(${member.id}, event)" class="w-8 h-8 flex items-center justify-center rounded-full bg-white/80 dark:bg-slate-800/80 shadow-xs text-sm hover:scale-110 active:scale-[0.9] transition-all text-pink-500" title="お気に入り">
+              ${isFav ? '★' : '☆'}
+            </button>
+            <span class="text-[9px] font-black tracking-wider ${meta.badge} px-2.5 py-1 rounded-full uppercase">
+              ${member.gen}
+            </span>
+          </div>
+
+          <!-- メンバーヘッダー -->
+          <div>
+            <div class="flex items-start gap-3">
+              <img 
+                src="${member.imageUrl}" 
+                alt="${member.name}" 
+                onerror="this.src='https://placehold.co/150x150/fbcfe8/9d174d?text=${member.initials}'"
+                class="w-14 h-14 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm flex-shrink-0"
+              />
+              <div class="min-w-0 pr-16">
+                <span class="text-[10px] text-slate-400 dark:text-slate-500 font-bold block leading-tight tracking-wide font-mono uppercase truncate">${member.enName}</span>
+                <h3 class="text-base md:text-lg font-bold text-slate-800 dark:text-slate-100 tracking-wide mt-0.5 truncate">${member.name}</h3>
+                <span class="text-[11px] text-slate-400 dark:text-slate-500 block leading-none mt-0.5">${member.kana}</span>
+                ${snsHtml}
+              </div>
+            </div>
+
+            <!-- ニックネーム・生年月日・出身地セクション -->
+            <div class="mt-4 space-y-1.5 bg-white/60 dark:bg-slate-900/50 rounded-xl p-3 border border-slate-100/80 dark:border-slate-800/60">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500">愛称</span>
+                <span class="text-xs font-bold text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-950/50 px-2.5 py-0.5 rounded-full truncate">${member.nickname}</span>
+              </div>
+              <div class="flex items-center justify-between gap-2 text-[11px] text-slate-600 dark:text-slate-300 pt-1 border-t border-slate-100 dark:border-slate-800/60">
+                <span>🎂 ${member.birth}</span>
+                <span>📍 ${member.pref}</span>
+              </div>
+              ${member.note ? `
+                <div class="text-[10px] text-slate-400 dark:text-slate-500 pt-1 border-t border-slate-100 dark:border-slate-800/60 truncate">
+                  ℹ️ ${member.note}
+                </div>
+              ` : ''}
+            </div>
+          </div>
+
+          <!-- ペンライトカラーエリア -->
+          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80">
+            <div 
+              class="flex items-center justify-between gap-3 p-2 rounded-xl bg-white/70 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-800/60 cursor-pointer hover:bg-pink-50/60 dark:hover:bg-slate-800/80 transition-colors duration-150"
+              onclick="copyToClipboard('${member.pColorName}', '${member.name}')"
+              title="クリックでペンライトカラーをコピー"
+            >
+              <div class="flex items-center gap-3 min-w-0">
+                <div class="flex-shrink-0">
+                  ${penlightsHtml}
+                </div>
+                <div class="min-w-0">
+                  <span class="text-[8px] text-slate-400 dark:text-slate-500 font-black tracking-wider uppercase block leading-none">PENLIGHT (2本)</span>
+                  <span class="text-xs md:text-sm font-bold text-slate-800 dark:text-slate-200 mt-1 block truncate">
+                    ${member.pColorName}
+                  </span>
+                </div>
+              </div>
+              <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-lg flex-shrink-0">
+                📋 コピー
+              </span>
+            </div>
+          </div>
+
+        </div>
+      `;
+    }
+
+    // メイン描画エンジン
+    function renderGrid() {
+      const grid = document.getElementById("memberGrid");
+      const pinnedGrid = document.getElementById("pinnedGrid");
+      const pinnedSection = document.getElementById("pinnedSection");
+      const noResults = document.getElementById("noResults");
+      const resultCount = document.getElementById("resultCount");
+      
+      const filtered = members.filter(member => {
+        if (state.gen !== "all" && member.gen !== state.gen) return false;
+        if (state.colorTag !== "all" && !member.tags.includes(state.colorTag)) return false;
+        if (state.favoritesOnly && !state.favorites.includes(member.id)) return false;
+        
+        if (state.searchQuery) {
+          const query = state.searchQuery.toLowerCase().trim();
+          const matchName = member.name.replace(/\s+/g, '').toLowerCase().includes(query.replace(/\s+/g, ''));
+          const matchKana = member.kana.replace(/\s+/g, '').toLowerCase().includes(query.replace(/\s+/g, ''));
+          const matchEn = member.enName.toLowerCase().includes(query);
+          const matchNick = member.nickname.toLowerCase().includes(query);
+          const matchPref = member.pref.toLowerCase().includes(query);
+          const matchGen = member.gen.toLowerCase().includes(query);
+          const matchColor = member.pColorName.toLowerCase().includes(query);
+          const matchNote = member.note ? member.note.toLowerCase().includes(query) : false;
+          
+          if (!matchName && !matchKana && !matchEn && !matchNick && !matchPref && !matchGen && !matchColor && !matchNote) return false;
+        }
+        return true;
+      });
+
+      resultCount.innerText = `${filtered.length}人`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = "";
+        noResults.classList.remove("hidden");
+        pinnedSection.classList.add("hidden");
+        return;
+      }
+
+      noResults.classList.add("hidden");
+
+      const favMembers = filtered.filter(m => state.favorites.includes(m.id));
+      if (favMembers.length > 0 && !state.favoritesOnly) {
+        pinnedSection.classList.remove("hidden");
+        pinnedGrid.innerHTML = favMembers.map(m => createMemberCard(m, true)).join('');
+      } else {
+        pinnedSection.classList.add("hidden");
+      }
+
+      grid.innerHTML = filtered.map(m => createMemberCard(m, false)).join('');
+    }
+
+    // 期別フィルター切り替え
+    function filterGen(genId) {
+      state.gen = genId;
+      renderGenFilters();
+      renderGrid();
+    }
+
+    // 色分類フィルター
+    function filterColor(colorId) {
+      state.colorTag = colorId;
+      renderColorFilters();
+      renderGrid();
+    }
+
+    // 全てのフィルターをクリア
+    function resetFilters() {
+      state.gen = "all";
+      state.colorTag = "all";
+      state.searchQuery = "";
+      state.favoritesOnly = false;
+      document.getElementById("searchInput").value = "";
+      
+      const favBtn = document.getElementById("favToggleBtn");
+      favBtn.classList.remove("bg-pink-500", "text-white", "border-pink-500");
+      favBtn.classList.add("bg-white", "dark:bg-slate-900", "text-slate-500");
+      document.getElementById("favToggleIcon").innerText = "☆";
+
+      renderGenFilters();
+      renderColorFilters();
+      renderGrid();
+    }
+
+    // クリップボードコピー処理
+    function copyToClipboard(text, name) {
+      const copyViaInput = (val) => {
+        const tempInput = document.createElement("input");
+        tempInput.style.position = "absolute";
+        tempInput.style.left = "-9999px";
+        tempInput.value = val;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        const success = document.execCommand("copy");
+        document.body.removeChild(tempInput);
+        return success;
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast(`${name}のペンライト「${text}」をコピーしました！`);
+        }).catch(() => {
+          if (copyViaInput(text)) showToast(`${name}のペンライト「${text}」をコピーしました！`);
+        });
+      } else {
+        if (copyViaInput(text)) showToast(`${name}のペンライト「${text}」をコピーしました！`);
+      }
+    }
+
+    // トースト通知
+    function showToast(message, icon = "📋") {
+      const toast = document.getElementById("toast");
+      const toastMsg = document.getElementById("toastMsg");
+      const toastIcon = document.getElementById("toastIcon");
+      
+      toastMsg.innerText = message;
+      toastIcon.innerText = icon;
+      
+      toast.classList.remove("opacity-0", "translate-y-3", "pointer-events-none");
+      toast.classList.add("opacity-100", "translate-y-0");
+
+      setTimeout(() => {
+        toast.classList.remove("opacity-100", "translate-y-0");
+        toast.classList.add("opacity-0", "translate-y-3", "pointer-events-none");
+      }, 2000);
+    }
+
+    // 検索入力の監視
+    document.getElementById("searchInput").addEventListener("input", (e) => {
+      state.searchQuery = e.target.value;
+      renderGrid();
+    });
+
+    // ページシェア用関数
+    function shareOnX() {
+      const shareUrl = window.location.href;
+      const shareText = "AKB48現役メンバー49名のペンライトカラーがすぐわかる！「AKB48 ペンライトカラー早見表」✨";
+      const hashtags = "AKB48,ペンライトカラー";
+      const xUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}&hashtags=${encodeURIComponent(hashtags)}`;
+      window.open(xUrl, '_blank', 'noopener,noreferrer');
+    }
+
+    function shareOnLine() {
+      const shareUrl = window.location.href;
+      const lineUrl = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(shareUrl)}`;
+      window.open(lineUrl, '_blank', 'noopener,noreferrer');
+    }
+
+    function copyPageUrl() {
+      const pageUrl = window.location.href;
+      copyToClipboard(pageUrl, "ページURL");
+      showToast("ページのURLをコピーしました！", "🔗");
+    }
+
+    // 初期化
+    window.onload = () => {
+      loadTheme();
+      renderGenFilters();
+      renderColorFilters();
+      renderGrid();
+    };
+  </script>
+</body>
+</html>
