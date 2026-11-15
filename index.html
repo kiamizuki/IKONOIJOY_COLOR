@@ -2,16 +2,15 @@
 <html lang="ja" class="transition-colors duration-300">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>イコノイジョイ メンカラ＆ペンライトカラー早見表</title>
 
   <!-- ========================================== -->
   <!-- SNSシェア用リンクカード設定 (OGP / Twitter Card) -->
   <!-- ========================================== -->
   <meta property="og:title" content="イコノイジョイ メンカラ＆ペンライトカラー早見表">
-  <meta property="og:description" content="＝LOVE、≠ME、≒JOYのメンバーカラーとペンライトカラーが一目でわかる、ファン専用の非公式便利早見表ツール！各ファンネームやお気に入りピン留め機能も。">
-  <meta property="og:url" ontent="https://kiamizuki.github.io/IKONOIJOY_COLOR/
-/index.html">
+  <meta property="og:description" content="＝LOVE、≠ME、≒JOYのメンバーカラー、ペンライトカラー、全プロフィールがカード一目でわかる非公式早見表ツール！">
+  <meta property="og:url" content="https://kiamizuki.github.io/IKONOIJOY_COLOR/index.html">
   <meta property="og:image" content="https://kiamizuki.github.io/IKONOIJOY_COLOR/og-image.png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="イコノイジョイ ペンライトアシスタント">
@@ -20,8 +19,8 @@
   <!-- X (旧Twitter) 用個別設定 -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="イコノイジョイ メンカラ＆ペンライトカラー早見表">
-  <meta name="twitter:description" content="＝LOVE、≠ME、≒JOYのメンバーカラーとペンライトカラーが一目でわかる、ファン専用の非公式便利早見表ツール！">
-  <meta name="twitter:image"  content="https://kiamizuki.github.io/IKONOIJOY_COLOR/og-image.png">
+  <meta name="twitter:description" content="＝LOVE、≠ME、≒JOYのメンバーカラー、ペンライトカラー、全プロフィールがカード一目でわかる非公式早見表ツール！">
+  <meta name="twitter:image" content="https://kiamizuki.github.io/IKONOIJOY_COLOR/og-image.png">
   <!-- ========================================== -->
 
   <!-- Tailwind CSS CDN -->
@@ -29,10 +28,9 @@
   <!-- Google Fonts: Noto Sans JP & M PLUS Rounded 1c -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
   
   <script>
-    // Tailwindのカスタム設定
     tailwind.config = {
       darkMode: 'class',
       theme: {
@@ -51,66 +49,76 @@
       font-family: 'Noto Sans JP', 'M PLUS Rounded 1c', sans-serif;
       -webkit-tap-highlight-color: transparent;
     }
+
+    :focus-visible {
+      outline: 3px solid #ec4899;
+      outline-offset: 2px;
+    }
     
-    /* ライブ感のある発光グラデーションアニメーション */
     @keyframes glow {
-      0%, 100% { filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 10px var(--glow-color, #ff7da0)); }
-      50% { filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 16px var(--glow-color, #ff7da0)); }
+      0%, 100% { filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.45)) drop-shadow(0 0 10px var(--glow-color, #ff7da0)); }
+      50% { filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7)) drop-shadow(0 0 18px var(--glow-color, #ff7da0)); }
     }
     
     .glow-effect {
       animation: glow 3s infinite ease-in-out;
     }
 
-    /* 慣性スクロール */
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
+    @media (prefers-reduced-motion: reduce) {
+      .glow-effect {
+        animation: none;
+        filter: drop-shadow(0 0 6px var(--glow-color, #ff7da0));
+      }
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
     }
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
+
+    .safe-pb {
+      padding-bottom: max(6rem, env(safe-area-inset-bottom));
     }
   </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen pb-24 transition-colors duration-300">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen safe-pb transition-colors duration-300 antialiased">
+
+  <div id="srAnnouncer" class="sr-only" aria-live="polite"></div>
 
   <!-- ヘッダー -->
-  <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 shadow-sm sticky top-0 z-40 transition-colors duration-300">
-    <div class="max-w-6xl mx-auto px-4 py-3.5 flex flex-col md:flex-row items-center justify-between gap-4">
+  <header class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm sticky top-0 z-40 transition-colors duration-300">
+    <div class="max-w-6xl mx-auto px-4 py-3.5 flex flex-col md:flex-row items-center justify-between gap-3.5">
       
-      <!-- タイトル & 非公式バッジ -->
-      <div class="text-center md:text-left flex items-center justify-between w-full md:w-auto">
+      <div class="flex items-center justify-between w-full md:w-auto gap-2">
         <div>
-          <div class="flex items-center justify-center md:justify-start gap-2">
-            <h1 class="text-xl md:text-2xl font-bold font-rounded bg-gradient-to-r from-pink-500 via-emerald-500 to-yellow-500 bg-clip-text text-transparent flex items-center gap-2">
+          <div class="flex items-center gap-2 flex-wrap">
+            <h1 class="text-lg sm:text-xl md:text-2xl font-black font-rounded bg-gradient-to-r from-pink-600 via-emerald-600 to-amber-500 dark:from-pink-400 dark:via-emerald-400 dark:to-yellow-400 bg-clip-text text-transparent">
               メンカラ＆ペンライト早見表
             </h1>
-            <span class="bg-slate-100 dark:bg-slate-800 text-[9px] text-slate-500 dark:text-slate-400 font-bold px-1.5 py-0.5 rounded border border-slate-200/60 dark:border-slate-700/60">非公式</span>
+            <span class="bg-slate-100 dark:bg-slate-800 text-xs text-slate-700 dark:text-slate-300 font-bold px-2.5 py-0.5 rounded-md border border-slate-300 dark:border-slate-700">非公式</span>
           </div>
-          <p class="text-[10px] text-slate-400 dark:text-slate-500 mt-0.5 text-center md:text-left">イコノイジョイのメンバーカラー＆ペンライト色まとめファンアプリ</p>
+          <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">イコノイジョイ メンバーカラー・ペンライト・全プロフィールまとめ</p>
         </div>
         
-        <!-- モバイル用ダークモード切り替えボタン -->
-        <button onclick="toggleDarkMode()" class="md:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-amber-400 transition-colors" aria-label="テーマ切り替え">
-          <span id="themeIconMobile" class="text-lg">🌙</span>
+        <button type="button" onclick="toggleDarkMode()" class="md:hidden min-w-[44px] min-h-[44px] flex items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-amber-300 shadow-xs active:scale-95 transition-all" aria-label="テーマ切り替え">
+          <span id="themeIconMobile" class="text-xl" aria-hidden="true">🌙</span>
         </button>
       </div>
       
-      <!-- 検索・システムコントロール -->
-      <div class="w-full md:w-auto flex items-center gap-2">
-        <div class="relative flex-1 md:w-64">
+      <div class="w-full md:w-auto flex items-center gap-2.5">
+        <div class="relative flex-1 md:w-80">
+          <label for="searchInput" class="sr-only">メンバー検索</label>
           <input 
-            type="text" 
+            type="search" 
             id="searchInput" 
-            placeholder="メンバー名・愛称・ファンネーム・色で検索..." 
-            class="w-full pl-10 pr-4 py-2 text-sm border border-slate-200 dark:border-slate-800 dark:bg-slate-850 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400 dark:focus:ring-pink-500 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600"
+            placeholder="名前・愛称・色・出身地・趣味などで検索..." 
+            class="w-full min-h-[44px] pl-11 pr-11 py-2 text-base md:text-sm bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-full text-slate-900 dark:text-slate-100 transition-all placeholder:text-slate-500 dark:placeholder:text-slate-400"
           >
-          <span class="absolute left-3.5 top-2.5 text-slate-400 dark:text-slate-600 text-sm">🔍</span>
+          <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 dark:text-slate-400 text-base pointer-events-none" aria-hidden="true">🔍</span>
+          <button type="button" id="clearSearchBtn" onclick="clearSearch()" aria-label="検索クリア" class="hidden absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-sm font-bold flex items-center justify-center hover:bg-slate-300 dark:hover:bg-slate-600">✕</button>
         </div>
         
-        <!-- PC用ダークモード切り替えボタン -->
-        <button onclick="toggleDarkMode()" class="hidden md:flex p-2.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-amber-400 hover:scale-105 transition-all" title="ダークモード切り替え">
-          <span id="themeIconPC" class="text-md">🌙</span>
+        <button type="button" onclick="toggleDarkMode()" class="hidden md:flex min-w-[44px] min-h-[44px] items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-amber-300 hover:scale-105 active:scale-95 transition-all shadow-xs" aria-label="テーマ切り替え" title="テーマ切り替え">
+          <span id="themeIconPC" class="text-xl" aria-hidden="true">🌙</span>
         </button>
       </div>
 
@@ -120,200 +128,298 @@
   <main class="max-w-6xl mx-auto px-4 mt-6">
     
     <!-- グループ切り替えタブ -->
-    <div class="flex justify-center p-1 bg-slate-200/60 dark:bg-slate-900/60 rounded-2xl max-w-md mx-auto mb-5 border border-slate-100 dark:border-slate-800/80">
-      <button onclick="filterGroup('all')" id="tab-all" class="flex-1 py-2 text-xs md:text-sm font-bold rounded-xl transition-all duration-300 bg-white dark:bg-slate-800 text-slate-800 dark:text-white shadow-sm">ALL</button>
-      <button onclick="filterGroup('equal-love')" id="tab-equal-love" class="flex-1 py-2 text-xs md:text-sm font-bold rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all duration-300">＝LOVE</button>
-      <button onclick="filterGroup('not-equal-me')" id="tab-not-equal-me" class="flex-1 py-2 text-xs md:text-sm font-bold rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all duration-300">≠ME</button>
-      <button onclick="filterGroup('nearly-equal-joy')" id="tab-nearly-equal-joy" class="flex-1 py-2 text-xs md:text-sm font-bold rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all duration-300">≒JOY</button>
+    <div role="tablist" aria-label="グループ絞り込み" class="grid grid-cols-4 gap-1 p-1.5 bg-slate-200/80 dark:bg-slate-900 rounded-2xl max-w-xl mx-auto mb-5 border border-slate-300/70 dark:border-slate-800 shadow-inner">
+      <button type="button" role="tab" aria-selected="true" onclick="filterGroup('all')" id="tab-all" class="min-h-[44px] py-2 px-1 text-xs sm:text-sm font-black rounded-xl transition-all duration-200 bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm">ALL (33)</button>
+      <button type="button" role="tab" aria-selected="false" onclick="filterGroup('equal-love')" id="tab-equal-love" class="min-h-[44px] py-2 px-1 text-xs sm:text-sm font-black rounded-xl text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all duration-200">＝LOVE</button>
+      <button type="button" role="tab" aria-selected="false" onclick="filterGroup('not-equal-me')" id="tab-not-equal-me" class="min-h-[44px] py-2 px-1 text-xs sm:text-sm font-black rounded-xl text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all duration-200">≠ME</button>
+      <button type="button" role="tab" aria-selected="false" onclick="filterGroup('nearly-equal-joy')" id="tab-nearly-equal-joy" class="min-h-[44px] py-2 px-1 text-xs sm:text-sm font-black rounded-xl text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all duration-200">≒JOY</button>
     </div>
 
-    <!-- お気に入り/推しメンのみ表示トグル -->
-    <div class="flex justify-center mb-5">
-      <button onclick="toggleFavoritesOnly()" id="favToggleBtn" class="flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
-        <span id="favToggleIcon">☆</span>
+    <!-- お気に入りトグル -->
+    <div class="flex justify-center mb-6">
+      <button type="button" aria-pressed="false" onclick="toggleFavoritesOnly()" id="favToggleBtn" class="min-h-[44px] flex items-center gap-2 px-5 py-2 rounded-full text-xs sm:text-sm font-bold border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 shadow-xs transition-all">
+        <span id="favToggleIcon" class="text-lg leading-none text-pink-600 dark:text-pink-400" aria-hidden="true">☆</span>
         <span>お気に入りメンバーのみ表示</span>
       </button>
     </div>
 
-    <!-- 色系統クイックフィルター -->
-    <div class="mb-8">
-      <p class="text-[10px] font-black text-slate-400 dark:text-slate-500 text-center mb-2.5 uppercase tracking-widest">カラー系統で絞り込む</p>
-      <div class="flex flex-wrap justify-center gap-1.5 max-w-2xl mx-auto px-2" id="colorFilterContainer">
-        <!-- JSで動的に構築 -->
-      </div>
-    </div>
+    <!-- カラー系統フィルター -->
+    <section aria-label="カラー系統フィルター" class="mb-8">
+      <p class="text-xs font-black text-slate-600 dark:text-slate-400 text-center mb-3 tracking-wider">カラー系統で絞り込む</p>
+      <div class="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto px-1" id="colorFilterContainer"></div>
+    </section>
 
-    <!-- 「お気に入り・推し」セクション（ピン留め） -->
-    <div id="pinnedSection" class="hidden mb-10">
-      <div class="flex items-center gap-2 mb-4 border-b border-pink-100 dark:border-pink-950/40 pb-2">
-        <span class="text-lg">💖</span>
-        <h2 class="text-sm font-bold font-rounded text-pink-500 tracking-wider">マイ推し（お気に入りピン留め）</h2>
+    <!-- ピン留めセクション -->
+    <section id="pinnedSection" aria-labelledby="pinnedHeading" class="hidden mb-10">
+      <div class="flex items-center gap-2 mb-4 border-b-2 border-pink-200 dark:border-pink-900/70 pb-2.5">
+        <span class="text-xl" aria-hidden="true">💖</span>
+        <h2 id="pinnedHeading" class="text-base font-black font-rounded text-pink-600 dark:text-pink-400 tracking-wider">マイ推し（お気に入りピン留め）</h2>
       </div>
-      <div id="pinnedGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- お気に入りメンバーがここに複製されます -->
-      </div>
-    </div>
+      <div id="pinnedGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
 
-    <!-- メインメンバー一覧グリッド -->
-    <div>
-      <div class="flex items-center justify-between mb-4">
-        <h2 id="gridTitle" class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">メンバー一覧</h2>
-        <span id="resultCount" class="text-xs font-bold text-slate-400">0人</span>
+    <!-- メイン一覧 -->
+    <section aria-labelledby="gridTitle">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-4 px-1">
+        <h2 id="gridTitle" class="text-base font-black tracking-wider text-slate-800 dark:text-slate-200">メンバー一覧</h2>
+        <span id="resultCount" class="text-xs sm:text-sm font-black px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200">0人</span>
       </div>
-      <div id="memberGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- JSでカードを動的にレンダリング -->
-      </div>
-    </div>
+      <div id="memberGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
 
-    <!-- 該当なし表示 -->
-    <div id="noResults" class="hidden text-center py-20">
-      <div class="text-5xl mb-4">🧐</div>
-      <p class="text-slate-500 dark:text-slate-400 font-bold">条件に合うメンバーが見つかりませんでした</p>
-      <p class="text-xs text-slate-400 mt-1">検索ワードを変えるか、フィルターをリセットしてください</p>
-      <button onclick="resetFilters()" class="mt-5 px-5 py-2.5 text-xs font-bold text-pink-500 hover:text-white border border-pink-400 dark:border-pink-800 hover:bg-pink-400 dark:hover:bg-pink-900 rounded-full transition-all shadow-sm">
+    <!-- 該当なし -->
+    <div id="noResults" class="hidden text-center py-16 px-4 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 mt-4">
+      <div class="text-5xl mb-4" aria-hidden="true">🧐</div>
+      <p class="text-base text-slate-800 dark:text-slate-200 font-bold">条件に合うメンバーが見つかりませんでした</p>
+      <p class="text-sm text-slate-600 dark:text-slate-400 mt-1.5">検索ワードを変えるか、フィルターをリセットしてください</p>
+      <button type="button" onclick="resetFilters()" class="mt-6 min-h-[44px] px-6 py-2.5 text-sm font-bold text-white bg-pink-600 hover:bg-pink-700 rounded-full transition-all shadow-sm">
         すべての条件をクリアする
       </button>
     </div>
   </main>
 
   <!-- フッター -->
-  <footer class="mt-20 text-center text-xs text-slate-400 dark:text-slate-600 border-t border-slate-100 dark:border-slate-900 py-10 px-4">
-    <p class="font-rounded font-bold bg-gradient-to-r from-pink-400 via-emerald-400 to-yellow-400 bg-clip-text text-transparent inline-block mb-2">イコノイジョイ ペンライトアシスタント</p>
-    <p>© 2026 IKONOIJOY Penlight Assistant</p>
-    <p class="mt-1.5 text-[11px] leading-relaxed max-w-xl mx-auto">
-      本アプリはファン有志が制作した非公式のファンツールです。<br>@kiamizuki070121
-    </p>
-	  <!-- ページをシェアするボタンセクション -->
-    <div class="flex flex-wrap justify-center items-center gap-2.5 mb-6 px-4 py-3 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800/80 shadow-xs max-w-md mx-auto">
-      <span class="text-xs font-bold text-slate-500 dark:text-slate-400 flex items-center gap-1">📣 この早見表をシェア：</span>
-      <div class="flex items-center gap-2">
-        <!-- X (Twitter) -->
-        <button onclick="shareOnX()" class="w-8 h-8 rounded-full bg-black hover:bg-slate-800 text-white flex items-center justify-center transition-all duration-200" title="X (Twitter) でシェア">
-          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-          </svg>
+  <footer class="mt-20 text-center text-xs text-slate-600 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 py-10 px-4">
+    <div class="flex flex-wrap justify-center items-center gap-3 mb-6 px-5 py-3.5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs max-w-md mx-auto">
+      <span class="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-200 flex items-center gap-1.5">
+        <span aria-hidden="true">📣</span> この早見表をシェア：
+      </span>
+      <div class="flex items-center gap-3">
+        <button type="button" onclick="shareOnX()" class="w-11 h-11 rounded-full bg-black hover:bg-slate-800 text-white flex items-center justify-center transition-all duration-200 shadow-xs hover:scale-105" aria-label="Xでシェア" title="Xでシェア">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </button>
-        <!-- LINE -->
-        <button onclick="shareOnLine()" class="w-8 h-8 rounded-full bg-[#06C755] hover:bg-[#05b04b] text-white flex items-center justify-center transition-all duration-200" title="LINE でシェア">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path d="M24 10.3c0-4.7-4.8-8.5-10.7-8.5S2.6 5.6 2.6 10.3c0 4.2 3.8 7.7 9 8.4.3.1.8.2 1 .5.2.2.2.6.1.8l-.4 2.6c-.1.6.2.2.5-.1l3.5-3.5c2.4-1.2 5.3-3.9 7.7-8.7zm-14.7 2.4c0 .3-.2.5-.5.5h-1.5c-.3 0-.5-.2-.5-.5V8.5c0-.3.2-.5.5-.5h.5c.3 0 .5.2.5.5v3.2H8.8c.3 0 .5.2.5.5zm2.8 0c0 .3-.2.5-.5.5h-.5c-.3 0-.5-.2-.5-.5V8.5c0-.3.2-.5.5-.5h.5c.3 0 .5.2.5.5zm4.1 0c0 .3-.2.5-.5.5h-.5c-.3 0-.5-.2-.5-.5V9.4l-1.3 3.3c-.1.2-.3.3-.5.3h-.1c-.2 0-.4-.1-.5-.3L12 9.4v2.9c0 .3-.2.5-.5.5h-.5c-.3 0-.5-.2-.5-.5V8.5c0-.3.2-.5.5-.5h.8c.2 0 .4.1.5.3l1.2 3 1.2-3c.1-.2.3-.3.5-.3h.8c.3 0 .5.2.5.5zm4.1-3.7c0 .3-.2.5-.5.5h-1.5v1.1h1.5c.3 0 .5.2.5.5v.5c0 .3-.2.5-.5.5h-1.5v1.1h1.5c.3 0 .5.2.5.5v.5c0 .3-.2.5-.5.5h-2.5c-.3 0-.5-.2-.5-.5V8.5c0-.3.2-.5.5-.5h2.5c.3 0 .5.2.5.5z"/>
-          </svg>
+        <button type="button" onclick="shareOnLine()" class="w-11 h-11 rounded-full bg-[#06C755] hover:bg-[#05b04b] text-white flex items-center justify-center transition-all duration-200 shadow-xs hover:scale-105" aria-label="LINEでシェア" title="LINEでシェア">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 10.3c0-4.7-4.8-8.5-10.7-8.5S2.6 5.6 2.6 10.3c0 4.2 3.8 7.7 9 8.4.3.1.8.2 1 .5.2.2.2.6.1.8l-.4 2.6c-.1.6.2.2.5-.1l3.5-3.5c2.4-1.2 5.3-3.9 7.7-8.7zm-14.7 2.4c0 .3-.2.5-.5.5h-1.5c-.3 0-.5-.2-.5-.5V8.5c0-.3.2-.5.5-.5h.5c.3 0 .5.2.5.5v3.2H8.8c.3 0 .5.2.5.5zm2.8 0c0 .3-.2.5-.5.5h-.5c-.3 0-.5-.2-.5-.5V8.5c0-.3.2-.5.5-.5h.5c.3 0 .5.2.5.5zm4.1 0c0 .3-.2.5-.5.5h-.5c-.3 0-.5-.2-.5-.5V9.4l-1.3 3.3c-.1.2-.3.3-.5.3h-.1c-.2 0-.4-.1-.5-.3L12 9.4v2.9c0 .3-.2.5-.5.5h-.5c-.3 0-.5-.2-.5-.5V8.5c0-.3.2-.5.5-.5h.8c.2 0 .4.1.5.3l1.2 3 1.2-3c.1-.2.3-.3.5-.3h.8c.3 0 .5.2.5.5zm4.1-3.7c0 .3-.2.5-.5.5h-1.5v1.1h1.5c.3 0 .5.2.5.5v.5c0 .3-.2.5-.5.5h-1.5v1.1h1.5c.3 0 .5.2.5.5v.5c0 .3-.2.5-.5.5h-2.5c-.3 0-.5-.2-.5-.5V8.5c0-.3.2-.5.5-.5h2.5c.3 0 .5.2.5.5z"/></svg>
         </button>
-        <!-- コピー -->
-        <button onclick="copyPageUrl()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center transition-all duration-200" title="ページURLをコピー">
-          <span class="text-xs">🔗</span>
+        <button type="button" onclick="copyPageUrl()" class="w-11 h-11 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 flex items-center justify-center transition-all duration-200 shadow-xs hover:scale-105" aria-label="URLコピー" title="URLコピー">
+          <span class="text-base" aria-hidden="true">🔗</span>
         </button>
       </div>
     </div>
+    <p class="font-rounded font-bold text-sm bg-gradient-to-r from-pink-600 via-emerald-600 to-amber-500 dark:from-pink-400 dark:via-emerald-400 dark:to-yellow-400 bg-clip-text text-transparent inline-block mb-1.5">イコノイジョイ ペンライトアシスタント</p>
+    <p>© 2026 IKONOIJOY Penlight Assistant</p>
   </footer>
 
   <!-- トースト通知 -->
-  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 transform bg-slate-900/95 dark:bg-slate-100/95 text-white dark:text-slate-950 text-xs px-5 py-3 rounded-full shadow-2xl opacity-0 translate-y-3 pointer-events-none transition-all duration-300 z-50 flex items-center gap-2 font-bold">
-    <span id="toastIcon">📋</span> <span id="toastMsg">コピーしました！</span>
+  <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 left-1/2 -translate-x-1/2 transform bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-950 text-xs sm:text-sm px-5 py-3 rounded-full shadow-2xl opacity-0 translate-y-3 pointer-events-none transition-all duration-300 z-50 flex items-center gap-2 font-bold whitespace-nowrap">
+    <span id="toastIcon" class="text-base" aria-hidden="true">💖</span> <span id="toastMsg">登録しました！</span>
   </div>
 
   <script>
-    // メンバーカラーのパレット定義
-    const colorPalette = {
-      "薄紫（ラベンダー）": ["#E8D7FF"],
-      "ラベンダー": ["#E8D7FF"],
-      "白": ["#FFFFFF"],
-      "紫": ["#BE79FF"],
-      "オレンジ": ["#FFA23A"],
-      "青": ["#3B82F6"],
-      "水色": ["#60A5FA"],
-      "ピンク": ["#FF7DA0"],
-      "薄ピンク": ["#FFCCD5"],
-      "赤": ["#EF4444"],
-      "黄色": ["#FBBF24"],
-      "黄": ["#FBBF24"],
-      "ミントグリーン": ["#6EE7B7"],
-      "黒": ["#1F2937"], 
-      "緑": ["#10B981"],
-      "薄黄色": ["#FEF08A"],
-      "アイスエメラルドグリーン": ["#A7F3D0"],
-      "エメラルドグリーン": ["#34D399"]
-    };
+    // =========================================================================
+    // 1. メンバー基本プロフィール・紹介設定 (名前・グループ・誕生日・趣味・特技など)
+    // =========================================================================
+    const memberProfiles = [
+      // ＝LOVE
+      { id: "emiri", group: "equal-love", name: "大谷 映美里", kana: "OTANI EMIRI", nickname: "", role: "", bloodType: "O型", zodiac: "うお座", height: "155cm", birthday: "1998/3/15", birthplace: "東京都", hobby: "メイクやファッションを楽しむこと、ラーメン巡り", skill: "ジョッキ持ち", qualification: "", fanName: "甘やかし隊", memberTags: [] },
+      { id: "hana", group: "equal-love", name: "大場 花菜", kana: "OBA HANA", nickname: "", role: "", bloodType: "A型", zodiac: "みずがめ座", height: "160cm", birthday: "2000/2/4", birthplace: "埼玉県", hobby: "舞台・ミュージカル観劇 レトロファッション、動物の赤ちゃんをみること", skill: "イラスト、書道", qualification: "", fanName: "花菜まる", memberTags: ["おおばはなしか"] },
+      { id: "risa", group: "equal-love", name: "音嶋 莉沙", kana: "OTOSHIMA RISA", nickname: "", role: "", bloodType: "B型", zodiac: "しし座", height: "160cm", birthday: "1998/8/11", birthplace: "福岡県", hobby: "人間観察、コスメ収集、食べ歩き", skill: "フラフープ、名前を覚える、福岡愛を語る", qualification: "", fanName: "", memberTags: [] },
+      { id: "kiara", group: "equal-love", name: "齋藤 樹愛羅", kana: "SAITO KIARA", nickname: "", role: "", bloodType: "B型", zodiac: "いて座", height: "156.2cm", birthday: "2004/11/26", birthplace: "栃木県", hobby: "ゲーム、カラオケに行く、メイク動画など見て真似する", skill: "立ちブリッチ、秒数を頭の中で測る、ドラえもんとまさおくんのモノマネ", qualification: "", fanName: "きあら部", memberTags: ["助けてきゃーたん"] },
+      { id: "maika", group: "equal-love", name: "佐々木 舞香", kana: "SASAKI MAIKA", nickname: "", role: "", bloodType: "A型", zodiac: "みずがめ座", height: "157cm", birthday: "2000/1/21", birthplace: "愛知県", hobby: "寝ること", skill: "絡まったネックレスを絶対解ける", qualification: "", fanName: "もちごころ", memberTags: [] },
+      { id: "hitomi", group: "equal-love", name: "髙松 瞳", kana: "TAKAMATSU HITOMI", nickname: "", role: "", bloodType: "AB型", zodiac: "やぎ座", height: "163cm", birthday: "2001/1/19", birthplace: "東京都", hobby: "映画、ドラマ鑑賞", skill: "バトントワリング", qualification: "", fanName: "eyes", memberTags: ["ひとみへの巻物"] },
+      { id: "shoko", group: "equal-love", name: "瀧脇 笙古", kana: "TAKIWAKI SHOKO", nickname: "", role: "", bloodType: "O型", zodiac: "かに座", height: "158cm", birthday: "2001/7/9", birthplace: "神奈川県", hobby: "料理、ヘアアレンジ、横浜散策、カフェ巡り", skill: "マラソン", qualification: "", fanName: "しょこら", memberTags: [] },
+      { id: "iori", group: "equal-love", name: "野口 衣織", kana: "NOGUCHI IORI", nickname: "", role: "", bloodType: "O型", zodiac: "おうし座", height: "161cm", birthday: "2000/4/26", birthplace: "茨城県", hobby: "アニメ漫画ゲーム、動画鑑賞", skill: "特にない！！", qualification: "", fanName: "いおりんぐ", memberTags: [] },
+      { id: "sana", group: "equal-love", name: "諸橋 沙夏", kana: "MOROHASHI SANA", nickname: "", role: "", bloodType: "B型", zodiac: "しし座", height: "158cm", birthday: "1996/8/3", birthplace: "福島県", hobby: "映画鑑賞", skill: "フラダンス、タヒチアンダンス", qualification: "水泳泳力検定2級", fanName: "つん族", memberTags: ["さなぼいす"] },
+      { id: "anna", group: "equal-love", name: "山本 杏奈", kana: "YAMAMOTO ANNA", nickname: "", role: "イコラブリーダー", bloodType: "A型", zodiac: "いて座", height: "149.5cm", birthday: "1997/11/30", birthplace: "広島県", hobby: "スポーツ観戦、ダンス、料理", skill: "目分量料理", qualification: "", fanName: "杏zoo", memberTags: ["あんなるーむ"] },
 
-    // メンバーデータ定義 (＝LOVE、≠ME、≒JOY)
-    const members = [
-      // ＝LOVE (イコラブ)
-      { id: "emiri", group: "equal-love", name: "大谷 映美里", kana: "Emiri Otani", mColorName: "薄紫", pColorName: "白×紫", mColors: ["#E8D7FF"], pColors: ["#FFFFFF", "#BE79FF"], tags: ["purple", "lavender", "white"], imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR50fHQkIbiJp_nEkXZQNn1JwUQK9Eto9xcbIqPwEgOhg&s=10", initials: "EO", sns: { twitter: "otani_emiri", instagram: "otani_emiri", tiktok: "equal_love_emiri" }, fanName: "甘やかし隊" },
-      { id: "hana", group: "equal-love", name: "大場 花菜", kana: "Hana Oba", mColorName: "オレンジ", pColorName: "オレンジ×青", mColors: ["#FFA23A"], pColors: ["#FFA23A", "#3B82F6"], tags: ["orange", "blue"], imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_95W16IBbvdE5PmJ3l5PteMENMwqmhAftyHH02eLMNQ&s=10", initials: "HO", sns: { twitter: "hana_oba", instagram: "oba_hana_", tiktok: "equal_love_hana_" } , fanName: "花菜まる",memberTags: ["おおばはなしか"] },
-      { id: "risa", group: "equal-love", name: "音嶋 莉沙", kana: "Risa Otoshima", mColorName: "水色", pColorName: "水色×ピンク", mColors: ["#00bfff"], pColors: ["#00bfff", "#FF7DA0"], tags: ["blue", "sky", "pink"], imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpzgabDS57pT8cN39-pHi43h5gEaUdlwvi9Xj1KJax8A&s=10", initials: "RO", sns: { twitter: "otoshima_risa", instagram: "otoshima_risa", tiktok: "equal_love_risa_" } },
-      { id: "kiara", group: "equal-love", name: "齋藤 樹愛羅", kana: "Kiara Saito", mColorName: "薄ピンク", pColorName: "薄ピンク", mColors: ["#FFCCD5"], pColors: ["#FFCCD5", "#FFCCD5"], tags: ["pink"], imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReuALrFZumuqMAJGP2QOO7m89kvagd7AmUvYTeQYlCgg&s=10", initials: "KS", sns: { twitter: "saitou_kiara", instagram: "saito_kiara_", tiktok: "equal_love_kiara" } , fanName: "きあら部",memberTags: ["助けてきゃーたん"] },
-      { id: "maika", group: "equal-love", name: "佐々木 舞香", kana: "Maika Sasaki", mColorName: "白", pColorName: "白", mColors: ["#FFFFFF"], pColors: ["#FFFFFF","#FFFFFF"], tags: ["white"], imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSrkXBWROVnQH5Wa_aOpis_ogom2J6ms3RNYK7y7XGsQ&s=10", initials: "MS", sns: { twitter: "sasaki_maika", instagram: "maika_sasaki_", tiktok: "" } , fanName: "もちごころ" },
-      { id: "hitomi", group: "equal-love", name: "髙松 瞳", kana: "Hitomi Takamatsu", mColorName: "赤", pColorName: "赤", mColors: ["#EF4444"], pColors: ["#EF4444","#EF4444"], tags: ["red"], imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRztG7ZTwCm4SV_YebLWSo77qJLnLx2n3yVx1OaEYMdqw&s=10", initials: "HT", sns: { twitter: "takamatsuhitomi", instagram: "takamatsu__hitomi", tiktok: "" } , fanName: "eyes",memberTags: ["ひとみへの巻物"] },
-      { id: "shoko", group: "equal-love", name: "瀧脇 笙古", kana: "Shoko Takiwaki", mColorName: "黄色", pColorName: "黄色(×オレンジ(×ピンク))", mColors: ["#FBBF24"], pColors: ["#FBBF24", "#FFA23A", "#FF7DA0"], tags: ["yellow", "orange", "pink"], imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_UmQnufcbf9K52V6G_Q_9X2zLl5X1unyKx70HvHKwqA&s=10", initials: "ST", sns: { twitter: "shoko_takiwaki", instagram: "takiwaki_shoko_", tiktok: "" } , fanName: "しょこら" },
-      { id: "iori", group: "equal-love", name: "野口 衣織", kana: "Iori Noguchi", mColorName: "紫", pColorName: "紫(巨峰カラー)", mColors: ["#BE79FF"], pColors: ["#BE79FF","#BE79FF"], tags: ["purple"], imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPWNeQ8OeoB0cBF-k5xbd13McjwshSRJwufDQD_0vPTg&s=10", initials: "IN", sns: { twitter: "noguchi_iori", instagram: "noguchi_iori_", tiktok: "" } , fanName: "いおりんぐ" },
-      { id: "sana", group: "equal-love", name: "諸橋 沙夏", kana: "Sana Morohashi", mColorName: "緑", pColorName: "黄緑", mColors: ["#10B981"], pColors: ["#7cfc00","#7cfc00"], tags: ["green"], imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqrxid1OdpfiwAJPa4g1XKnTfV326Irkq6owCmYyTsgQ&s=10", initials: "SM", sns: { twitter: "morohashi_sana", instagram: "morohashi_sana", tiktok: "" } , fanName: "つん族",memberTags: ["さなぼいす"] },
-      { id: "anna", group: "equal-love", name: "山本 杏奈", kana: "Anna Yamamoto", mColorName: "青", pColorName: "黄色×青", mColors: ["#3B82F6"], pColors: ["#FBBF24", "#3B82F6"], tags: ["yellow", "blue"], imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToF4dVtrjwhcajNCJe371lMa2l73--Fx3L0Kxzejf0fw&s=10", initials: "AY", sns: { twitter: "yamamoto_anna_", instagram: "yamamoto_anna_", tiktok: "equal_love_anna" } , fanName: "杏zoo",memberTags: ["あんなるーむ"] },
+      // ≠ME
+      { id: "hana_o", group: "not-equal-me", name: "尾木 波菜", kana: "OGI HANA", nickname: "", role: "", bloodType: "B型", zodiac: "おうし座", height: "162.5cm", birthday: "2003/5/8", birthplace: "千葉県", hobby: "", skill: "", qualification: "", fanName: "はちみつ", memberTags: [] },
+      { id: "kirari", group: "not-equal-me", name: "落合 希来里", kana: "OCHIAI KIRARI", nickname: "", role: "", bloodType: "B型", zodiac: "ふたご座", height: "148.5cm", birthday: "2001/5/22", birthplace: "栃木県", hobby: "", skill: "", qualification: "", fanName: "きらつき隊", memberTags: ["シェアきら"] },
+      { id: "moeko", group: "not-equal-me", name: "蟹沢 萌子", kana: "KANISAWA MOEKO", nickname: "", role: "ノイミ―リーダー", bloodType: "B型", zodiac: "さそり座", height: "163.4cm", birthday: "1999/10/25", birthplace: "神奈川県", hobby: "", skill: "", qualification: "", fanName: "", memberTags: [] },
+      { id: "natsune", group: "not-equal-me", name: "河口 夏音", kana: "KAWAGUCHI NATSUNE", nickname: "", role: "", bloodType: "AB型", zodiac: "しし座", height: "165cm", birthday: "2001/7/29", birthplace: "広島県", hobby: "", skill: "", qualification: "", fanName: "", memberTags: ["夏音色ダイアリー"] },
+      { id: "natsumi", group: "not-equal-me", name: "川中子 奈月心", kana: "KAWANAGO NATSUMI", nickname: "", role: "", bloodType: "A型", zodiac: "てんびん座", height: "163.7cm", birthday: "2005/9/26", birthplace: "東京都", hobby: "", skill: "", qualification: "", fanName: "なつ民", memberTags: ["エゴサなつみん"] },
+      { id: "momo", group: "not-equal-me", name: "櫻井 もも", kana: "SAKURAI MOMO", nickname: "", role: "", bloodType: "A型", zodiac: "おひつじ座", height: "152.7cm", birthday: "2004/4/13", birthplace: "神奈川県", hobby: "", skill: "", qualification: "", fanName: "", memberTags: ["きゅんかわ"] },
+      { id: "hitomi_s", group: "not-equal-me", name: "鈴木 瞳美", kana: "SUZUKI HITOMI", nickname: "", role: "", bloodType: "B型", zodiac: "おひつじ座", height: "159.5cm", birthday: "2001/4/13", birthplace: "東京都", hobby: "", skill: "", qualification: "", fanName: "すずき沼の住人", memberTags: [] },
+      { id: "saya", group: "not-equal-me", name: "谷崎 早耶", kana: "TANIZAKI SAYA", nickname: "", role: "", bloodType: "B型", zodiac: "てんびん座", height: "161cm", birthday: "1999/10/7", birthplace: "熊本県", hobby: "", skill: "", qualification: "", fanName: "さやうさぐみ", memberTags: ["さやうさのおと", "さやうさるーむ"] },
+      { id: "nanaka", group: "not-equal-me", name: "冨田 菜々風", kana: "TOMITA NANAKA", nickname: "", role: "", bloodType: "A型", zodiac: "かに座", height: "162cm", birthday: "2000/7/17", birthplace: "鹿児島県", hobby: "", skill: "", qualification: "", fanName: "", memberTags: [] },
+      { id: "shiori", group: "not-equal-me", name: "永田 詩央里", kana: "NAGATA SHIORI", nickname: "", role: "", bloodType: "A型", zodiac: "おひつじ座", height: "150.2cm", birthday: "2004/4/2", birthplace: "広島県", hobby: "", skill: "", qualification: "", fanName: "しおりおし", memberTags: [] },
+      { id: "miyuki", group: "not-equal-me", name: "本田 珠由記", kana: "HONDA MIYUKI", nickname: "", role: "", bloodType: "AB型", zodiac: "うお座", height: "153cm", birthday: "2004/2/27", birthplace: "栃木県", hobby: "", skill: "", qualification: "", fanName: "みるふぁむ", memberTags: ["聞いて聞いておみるちゃん"] },
 
-      // ≠ME (ノイミー)
-      { id: "hana_o", group: "not-equal-me", name: "尾木 波菜", kana: "Hana Ogi", mColorName: "青", pColorName: "青×白", mColors: ["#3B82F6"], pColors: ["#3B82F6", "#FFFFFF"], tags: ["blue", "white"], imageUrl: "https://pbs.twimg.com/profile_images/2069616844550381571/tO7rYHos_400x400.jpg", initials: "HO", sns: { twitter: "ogi_hana_", instagram: "ogi_hana__", tiktok: "notequal_me_hana" } , fanName: "はちみつ" },
-      { id: "kirari", group: "not-equal-me", name: "落合 希来里", kana: "Kirari Ochiai", mColorName: "黄", pColorName: "黄×黄", mColors: ["#FBBF24"], pColors: ["#FBBF24", "#FBBF24"], tags: ["yellow"], imageUrl: "https://pbs.twimg.com/profile_images/2069617011748229120/zqoxL-rF_400x400.jpg", initials: "KO", sns: { twitter: "ochiai_kirari", instagram: "_ochiaikirari_", tiktok: "notequal_me_kirari" } , fanName: "きらつき隊",memberTags: ["シェアきら"] },
-      { id: "moeko", group: "not-equal-me", name: "蟹沢 萌子", kana: "Moeko Kanisawa", mColorName: "赤", pColorName: "水色×赤", mColors: ["#EF4444"], pColors: ["#00bfff", "#EF4444"], tags: ["blue", "sky", "red"], imageUrl: "https://pbs.twimg.com/profile_images/2069617148960632832/fGXHt6HI_400x400.jpg", initials: "MK", sns: { twitter: "kanisawa_moeko", instagram: "kanisawa_moeko_", tiktok: "notequal_me_moeko" }  },
-      { id: "natsune", group: "not-equal-me", name: "河口 夏音", kana: "Natsune Kawaguchi", mColorName: "オレンジ", pColorName: "オレンジ×白", mColors: ["#FFA23A"], pColors: ["#FFA23A", "#FFFFFF"], tags: ["orange", "white"], imageUrl: "https://pbs.twimg.com/profile_images/2069617275343372288/HW7uu3uN_400x400.jpg", initials: "NK", sns: { twitter: "kawaguchi_natsu", instagram: "kawaguchi__natsune", tiktok: "notequal_me_natsune" } ,memberTags: ["夏音色ダイアリー"] },
-      { id: "natsumi", group: "not-equal-me", name: "川中子 奈月心", kana: "Natsumi Kawanago", mColorName: "黒", pColorName: "黒×ミントグリーン", mColors: ["#1F2937"], pColors: ["#1F2937", "#6EE7B7"], tags: ["black", "green"], imageUrl: "https://pbs.twimg.com/profile_images/2069617404787949568/mTgPtHVY_400x400.jpg", initials: "NK", sns: { twitter: "kawanagonatsumi", instagram: "kawanago__natsumi", tiktok: "notequal_me_natsumi" } , fanName: "なつ民",memberTags: ["エゴサなつみん"] },
-      { id: "momo", group: "not-equal-me", name: "櫻井 もも", kana: "Momo Sakurai", mColorName: "ピンク", pColorName: "さくら色×もも色", mColors: ["#FF7DA0"], pColors: ["#FF7DA0", "#FFCCD5"], tags: ["pink"], imageUrl: "https://pbs.twimg.com/profile_images/2069617538913193984/6SSmWcdX_400x400.jpg", initials: "MS", sns: { twitter: "_sakurai_momo_", instagram: "sakurai_momo_", tiktok: "notequal_me_momo" } , memberTags: ["きゅんかわ"] },
-      { id: "hitomi_s", group: "not-equal-me", name: "鈴木 瞳美", kana: "Hitomi Suzuki", mColorName: "薄ピンク", pColorName: "薄ピンク×薄ピンク", mColors: ["#FFCCD5"], pColors: ["#FFCCD5", "#FFCCD5"], tags: ["pink"], imageUrl: "https://pbs.twimg.com/profile_images/2069617660753752064/WcTC2GKm_400x400.jpg", initials: "HS", sns: { twitter: "suzuki_hitomi_", instagram: "suzuki_hitomi__", tiktok: "notequal_me_hitomi" } , fanName: "すずき沼の住人" },
-      { id: "saya", group: "not-equal-me", name: "谷崎 早耶", kana: "Saya Tanizaki", mColorName: "白", pColorName: "ピンク×白", mColors: ["#FFFFFF"], pColors: ["#FF7DA0", "#FFFFFF"], tags: ["pink", "white"], imageUrl: "https://pbs.twimg.com/profile_images/2069618206050840576/gyxYKAc2_400x400.jpg", initials: "ST", sns: { twitter: "tanizaki_saya", instagram: "tanizaki_saya_", tiktok: "notequal_me_saya" } , fanName: "さやうさぐみ",memberTags: ["さやうさのおと","さやうさるーむ"] },
-      { id: "nanaka", group: "not-equal-me", name: "冨田 菜々風", kana: "Nanaka Tomita", mColorName: "緑", pColorName: "黄×緑", mColors: ["#10B981"], pColors: ["#FBBF24", "#10B981"], tags: ["yellow", "green"], imageUrl: "https://pbs.twimg.com/profile_images/2069618322765938688/vSVbD5yn_400x400.jpg", initials: "NT", sns: { twitter: "tomita_nanaka", instagram: "tomita_nanaka", tiktok: "notequal_me_nanaka7" }  },
-      { id: "shiori", group: "not-equal-me", name: "永田 詩央里", kana: "Shiori Nagata", mColorName: "ネイビーブルー", pColorName: "青×青", mColors: ["#000080"], pColors: ["#3B82F6", "#3B82F6"], tags: ["blue"], imageUrl: "https://pbs.twimg.com/profile_images/2069618469797249024/yPfNQJ3m_400x400.jpg", initials: "SN", sns: { twitter: "nagata_shiori_", instagram: "nagata__shiori", tiktok: "notequal_me_shiori" } , fanName: "しおりおし" },
-      { id: "miyuki", group: "not-equal-me", name: "本田 珠由記", kana: "Miyuki Honda", mColorName: "薄紫", pColorName: "薄紫×水色", mColors: ["#E8D7FF"], pColors: ["#E8D7FF", "#00bfff"], tags: ["purple", "lavender", "blue", "sky"], imageUrl: "https://pbs.twimg.com/profile_images/2069618593218834432/catamWPA.jpg", initials: "MH", sns: { twitter: "honda_miyuki_", instagram: "honda_miyuki__", tiktok: "notequal_me_miyuki" } , fanName: "みるふぁむ",memberTags: ["聞いて聞いておみるちゃん"] },
-
-      // ≒JOY (ニアジョイ)
-      { id: "jurii", group: "nearly-equal-joy", name: "逢田 珠里依", kana: "Jurii Aida", mColorName: "ボルドー", pColorName: "赤×黄", mColors: ["#8b0000"], pColors: ["#EF4444", "#ffff00"], tags: ["red"], imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgXMcZPmhXDwiZTQHCmu2K863_LepTPH0bcXnsod_hOQ&s=10", initials: "JA", sns: { twitter: "aida_jurii", instagram: "aida_jurii__", tiktok: "" }  },
-      { id: "konoa", group: "nearly-equal-joy", name: "天野 香乃愛", kana: "Konoa Amano", mColorName: "薄ピンク", pColorName: "薄ピンク×黄色", mColors: ["#FFCCD5"], pColors: ["#FFCCD5", "#ffff00"], tags: ["pink"], imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwAZW-lzjNsq_NrQ9XIwYNsA4xggn-H0GCq-k_WaVT0g&s=10", initials: "KA", sns: { twitter: "amano_konoa", instagram: "amano_konoa__", tiktok: "nearlyequal_joy_konoa" } , fanName: "この担",memberTags: ["このたんにワンコール"] },
-      { id: "ayumi", group: "nearly-equal-joy", name: "市原 愛弓", kana: "Ayumi Ichihara", mColorName: "紫", pColorName: "紫×紫", mColors: ["#BE79FF"], pColors: ["#BE79FF", "#BE79FF"], tags: ["purple"], imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSumORjXqMi3Yu9cM13q7LpeG4fDvHwF_tLPHNMLEsASg&s=10", initials: "AI", sns: { twitter: "ichihara_ayumi_", instagram: "ichihara_ayumi_", tiktok: "" } , memberTags: ["あゆみんエゴサ用"] },
-      { id: "renn", group: "nearly-equal-joy", name: "江角 怜音", kana: "Renon Esumi", mColorName: "青", pColorName: "青×青", mColors: ["#3B82F6"], pColors: ["#3B82F6", "#3B82F6"], tags: ["blue"], imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEfuAMxUL4fusum6arLPUb-jiHb5wHn7wDcVUtJ-1yuw&s=10", initials: "RE", sns: { twitter: "esumi_renon", instagram: "esumi_renon", tiktok: "" }  },
-      { id: "mitsuki", group: "nearly-equal-joy", name: "大信田 美月", kana: "Mitsuki Oshida", mColorName: "水色", pColorName: "水色×水色", mColors: ["#00bfff"], pColors: ["#00bfff", "#00bfff"], tags: ["blue", "sky"], imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGEvzuVmyWRGj5bifkLsqOipP2O85ZywSW7twsDGSnlA&s=10", initials: "MO", sns: { twitter: "oshida_mitsuki", instagram: "oshida_mitsuki", tiktok: "nearlyequal_joy_mitsuki" } },
-      { id: "aoi", group: "nearly-equal-joy", name: "大西 葵", kana: "Aoi Onishi", mColorName: "白", pColorName: "白×白", mColors: ["#FFFFFF"], pColors: ["#FFFFFF", "#FFFFFF"], tags: ["white"], imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNZcP9Lns1xxqNAEl20rt5GtbilDJTG712bd7PoL7Y9Q&s=10", initials: "AO", sns: { twitter: "onishi_aoi", instagram: "onishi_aoi_", tiktok: "nearlyequal_joy_aoi" }},
-      { id: "amimi", group: "nearly-equal-joy", name: "小澤 愛実", kana: "Aimi Ozawa", mColorName: "黄色", pColorName: "黄×黄", mColors: ["#FBBF24"], pColors: ["#FBBF24", "#FBBF24"], tags: ["yellow"], imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsWkTx7RroR1FKaFUk5LNpKjGOgvFpu_grWAGYVle7LA&s=10", initials: "AO", sns: { twitter: "ozawa_aimi__", instagram: "ozawa_aimi_", tiktok: "nearlyequal_joy_aimi" }, fanName: "あいまー" },
-      { id: "mai", group: "nearly-equal-joy", name: "高橋 舞", kana: "Mai Takahashi", mColorName: "オレンジ", pColorName: "オレンジ×サクラピンク", mColors: ["#FFA23A"], pColors: ["#FFA23A", "#FFCCD5"], tags: ["pink"], imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdAbzgJ2H5pwgQrOKPAuX5paHxu8vMuLYm0xaTkAQcF7ATILjXAHK3XMA3&s=10", initials: "MT", sns: { twitter: "takahashi_mai__", instagram: "takahashi_mai__", tiktok: "nearlyequal_joy_mai_" } },
-      { id: "riko", group: "nearly-equal-joy", name: "藤沢 莉子", kana: "Riko Fujisawa", mColorName: "緑", pColorName: "緑×白", mColors: ["#10B981"], pColors: ["#10B981", "#FFFFFF"], tags: ["orange"], imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq564B2GcqzjJthurtcyMjG3BJgAkS0wfw5hfR4lBWvQ&s=10", initials: "RF", sns: { twitter: "fujisawa_riko", instagram: "fujisawa_riko", tiktok: "nearlyequal_joy_riko" }, fanName: "りこふぁみ" },
-      { id: "yuika", group: "nearly-equal-joy", name: "村山 結香", kana: "Yuuka Murayama", mColorName: "赤", pColorName: "赤×赤", mColors: ["#EF4444"], pColors: ["#EF4444", "#EF4444"], tags: ["red"], imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe1UDUE3QhTrJso99hKMUvOfgDTw_qtH9QojzxEcRyVQ&s=10", initials: "YM", sns: { twitter: "murayama_yuuka", instagram: "murayama_yuuka_", tiktok: "" } ,memberTags: ["ゆうかにゆーか"] },
-      { id: "kyoka", group: "nearly-equal-joy", name: "山田 杏佳", kana: "Momoka Yamada", mColorName: "ピンク", pColorName: "ピンク×薄紫", mColors: ["#FF7DA0"], pColors: ["#FF7DA0", "#E8D7FF"], tags: ["pink"], imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFSqPfQnInzYqAI9GwFJnQqcBnvkoMUQSIhQS3o1fcdw&s=10", initials: "MY", sns: { twitter: "yamada_momoka_", instagram: "yamada_momoka_", tiktok: "nearlyequal_joy_momoka" } ,memberTags: ["ももかわいい"] },
-      { id: "arisu", group: "nearly-equal-joy", name: "山野 愛月", kana: "Arisu Yamano", mColorName: "アイスエメラルドグリーン", pColorName: "エメラルドグリーン×エメラルドグリーン", mColors: ["#A7F3D0"], pColors: ["#A7F3D0", "#A7F3D0"], tags: ["green"], imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT77huM84B8Sqwnu-HRA2eHbl9GfXXW35tFqMh91OOqCw&s=10", initials: "AY", sns: { twitter: "yamano_arisu", instagram: "yamano_arisu_", tiktok: "nearlyequal_joy_arisu" } ,memberTags: ["ありすに報告していいの"] }
+      // ≒JOY
+      { id: "jurii", group: "nearly-equal-joy", name: "逢田 珠里依", kana: "AIDA JURII", nickname: "じゅりい", role: "", bloodType: "O型", zodiac: "おとめ座", height: "161cm", birthday: "2005/9/13", birthplace: "東京都", hobby: "", skill: "", qualification: "", fanName: "", memberTags: [] },
+      { id: "konoa", group: "nearly-equal-joy", name: "天野 香乃愛", kana: "AMANO KONOA", nickname: "このたん", role: "", bloodType: "O型", zodiac: "みずがめ座", height: "157cm", birthday: "2007/1/21", birthplace: "埼玉県", hobby: "", skill: "", qualification: "", fanName: "この担", memberTags: ["このたんにワンコール"] },
+      { id: "ayumi", group: "nearly-equal-joy", name: "市原 愛弓", kana: "ICHIHARA AYUMI", nickname: "あゆみん", role: "", bloodType: "A型", zodiac: "しし座", height: "161.5cm", birthday: "2003/8/21", birthplace: "福岡県", hobby: "", skill: "", qualification: "", fanName: "", memberTags: ["あゆみんエゴサ用"] },
+      { id: "renn", group: "nearly-equal-joy", name: "江角 怜音", kana: "ESUMI RENON", nickname: "れのん", role: "", bloodType: "B型", zodiac: "おうし座", height: "160cm", birthday: "2005/4/26", birthplace: "大阪府", hobby: "", skill: "", qualification: "", fanName: "", memberTags: [] },
+      { id: "mitsuki", group: "nearly-equal-joy", name: "大信田 美月", kana: "OSHIDA MITSUKI", nickname: "みっちゃん", role: "", bloodType: "O型", zodiac: "てんびん座", height: "155cm", birthday: "2004/9/27", birthplace: "大阪府", hobby: "", skill: "", qualification: "", fanName: "", memberTags: [] },
+      { id: "aoi", group: "nearly-equal-joy", name: "大西 葵", kana: "ONISHI AOI", nickname: "あおい", role: "", bloodType: "B型", zodiac: "しし座", height: "156cm", birthday: "2005/8/6", birthplace: "東京都", hobby: "", skill: "", qualification: "", fanName: "", memberTags: [] },
+      { id: "amimi", group: "nearly-equal-joy", name: "小澤 愛実", kana: "OZAWA AIMI", nickname: "あいみ", role: "ニアジョイリーダー", bloodType: "", zodiac: "おひつじ座", height: "163cm", birthday: "2003/4/9", birthplace: "神奈川県", hobby: "", skill: "", qualification: "", fanName: "あいまー", memberTags: [] },
+      { id: "mai", group: "nearly-equal-joy", name: "髙橋 舞", kana: "TAKAHASHI MAI", nickname: "まいちゃん", role: "", bloodType: "O型", zodiac: "うお座", height: "160cm", birthday: "2005/2/22", birthplace: "兵庫県", hobby: "", skill: "", qualification: "", fanName: "", memberTags: [] },
+      { id: "riko", group: "nearly-equal-joy", name: "藤沢 莉子", kana: "FUJISAWA RIKO", nickname: "りこ", role: "", bloodType: "B型", zodiac: "やぎ座", height: "155cm", birthday: "2004/1/16", birthplace: "埼玉県", hobby: "", skill: "", qualification: "", fanName: "りこふぁみ", memberTags: [] },
+      { id: "yuika", group: "nearly-equal-joy", name: "村山 結香", kana: "MURAYAMA YUUKA", nickname: "ゆうか", role: "", bloodType: "O型", zodiac: "みずがめ座", height: "158.5cm", birthday: "2004/2/15", birthplace: "福岡県", hobby: "", skill: "", qualification: "", fanName: "", memberTags: ["ゆうかにゆーか"] },
+      { id: "kyoka", group: "nearly-equal-joy", name: "山田 杏佳", kana: "YAMADA MOMOKA", nickname: "ももちゃん", role: "", bloodType: "B型", zodiac: "みずがめ座", height: "161cm", birthday: "2006/2/2", birthplace: "神奈川県", hobby: "", skill: "", qualification: "", fanName: "", memberTags: ["ももかわいい"] },
+      { id: "arisu", group: "nearly-equal-joy", name: "山野 愛月", kana: "YAMANO ARISU", nickname: "ありす", role: "", bloodType: "A型", zodiac: "てんびん座", height: "153.5cm", birthday: "2006/10/21", birthplace: "大阪府", hobby: "", skill: "", qualification: "", fanName: "", memberTags: ["ありすに報告していいの"] }
     ];
 
-    // グループ別のテーマカラー定義 (イコラブ＝ピンク、ノイミー＝エメラルド、ニアジョイ＝イエロー)
+    // =========================================================================
+    // 2. メンバー別 アイコン設定 (プロフィール画像URL・イニシャル)
+    // =========================================================================
+    const memberIcons = {
+      emiri:    { imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR50fHQkIbiJp_nEkXZQNn1JwUQK9Eto9xcbIqPwEgOhg&s=10", initials: "EO" },
+      hana:     { imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_95W16IBbvdE5PmJ3l5PteMENMwqmhAftyHH02eLMNQ&s=10", initials: "HO" },
+      risa:     { imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpzgabDS57pT8cN39-pHi43h5gEaUdlwvi9Xj1KJax8A&s=10", initials: "RO" },
+      kiara:    { imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReuALrFZumuqMAJGP2QOO7m89kvagd7AmUvYTeQYlCgg&s=10", initials: "KS" },
+      maika:    { imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSrkXBWROVnQH5Wa_aOpis_ogom2J6ms3RNYK7y7XGsQ&s=10", initials: "MS" },
+      hitomi:   { imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRztG7ZTwCm4SV_YebLWSo77qJLnLx2n3yVx1OaEYMdqw&s=10", initials: "HT" },
+      shoko:    { imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_UmQnufcbf9K52V6G_Q_9X2zLl5X1unyKx70HvHKwqA&s=10", initials: "ST" },
+      iori:     { imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPWNeQ8OeoB0cBF-k5xbd13McjwshSRJwufDQD_0vPTg&s=10", initials: "IN" },
+      sana:     { imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqrxid1OdpfiwAJPa4g1XKnTfV326Irkq6owCmYyTsgQ&s=10", initials: "SM" },
+      anna:     { imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToF4dVtrjwhcajNCJe371lMa2l73--Fx3L0Kxzejf0fw&s=10", initials: "AY" },
+
+      hana_o:   { imageUrl: "https://pbs.twimg.com/profile_images/2069616844550381571/tO7rYHos_400x400.jpg", initials: "HO" },
+      kirari:   { imageUrl: "https://pbs.twimg.com/profile_images/2069617011748229120/zqoxL-rF_400x400.jpg", initials: "KO" },
+      moeko:    { imageUrl: "https://pbs.twimg.com/profile_images/2069617148960632832/fGXHt6HI_400x400.jpg", initials: "MK" },
+      natsune:  { imageUrl: "https://pbs.twimg.com/profile_images/2069617275343372288/HW7uu3uN_400x400.jpg", initials: "NK" },
+      natsumi:  { imageUrl: "https://pbs.twimg.com/profile_images/2069617404787949568/mTgPtHVY_400x400.jpg", initials: "NK" },
+      momo:     { imageUrl: "https://pbs.twimg.com/profile_images/2069617538913193984/6SSmWcdX_400x400.jpg", initials: "MS" },
+      hitomi_s: { imageUrl: "https://pbs.twimg.com/profile_images/2069617660753752064/WcTC2GKm_400x400.jpg", initials: "HS" },
+      saya:     { imageUrl: "https://pbs.twimg.com/profile_images/2069618206050840576/gyxYKAc2_400x400.jpg", initials: "ST" },
+      nanaka:   { imageUrl: "https://pbs.twimg.com/profile_images/2069618322765938688/vSVbD5yn_400x400.jpg", initials: "NT" },
+      shiori:   { imageUrl: "https://pbs.twimg.com/profile_images/2069618469797249024/yPfNQJ3m_400x400.jpg", initials: "SN" },
+      miyuki:   { imageUrl: "https://pbs.twimg.com/profile_images/2069618593218834432/catamWPA.jpg", initials: "MH" },
+
+      jurii:    { imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgXMcZPmhXDwiZTQHCmu2K863_LepTPH0bcXnsod_hOQ&s=10", initials: "JA" },
+      konoa:    { imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwAZW-lzjNsq_NrQ9XIwYNsA4xggn-H0GCq-k_WaVT0g&s=10", initials: "KA" },
+      ayumi:    { imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSumORjXqMi3Yu9cM13q7LpeG4fDvHwF_tLPHNMLEsASg&s=10", initials: "AI" },
+      renn:     { imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEfuAMxUL4fusum6arLPUb-jiHb5wHn7wDcVUtJ-1yuw&s=10", initials: "RE" },
+      mitsuki:  { imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGEvzuVmyWRGj5bifkLsqOipP2O85ZywSW7twsDGSnlA&s=10", initials: "MO" },
+      aoi:      { imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNZcP9Lns1xxqNAEl20rt5GtbilDJTG712bd7PoL7Y9Q&s=10", initials: "AO" },
+      amimi:    { imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsWkTx7RroR1FKaFUk5LNpKjGOgvFpu_grWAGYVle7LA&s=10", initials: "AO" },
+      mai:      { imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdAbzgJ2H5pwgQrOKPAuX5paHxu8vMuLYm0xaTkAQcF7ATILjXAHK3XMA3&s=10", initials: "MT" },
+      riko:     { imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq564B2GcqzjJthurtcyMjG3BJgAkS0wfw5hfR4lBWvQ&s=10", initials: "RF" },
+      yuika:    { imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe1UDUE3QhTrJso99hKMUvOfgDTw_qtH9QojzxEcRyVQ&s=10", initials: "YM" },
+      kyoka:    { imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFSqPfQnInzYqAI9GwFJnQqcBnvkoMUQSIhQS3o1fcdw&s=10", initials: "MY" },
+      arisu:    { imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT77huM84B8Sqwnu-HRA2eHbl9GfXXW35tFqMh91OOqCw&s=10", initials: "AY" }
+    };
+
+    // =========================================================================
+    // 3. メンバー別 SNSリンク設定
+    // =========================================================================
+    const memberSnsLinks = {
+      emiri:    { twitter: "otani_emiri",      instagram: "otani_emiri",       tiktok: "equal_love_emiri" },
+      hana:     { twitter: "hana_oba",         instagram: "oba_hana_",         tiktok: "equal_love_hana_" },
+      risa:     { twitter: "otoshima_risa",    instagram: "otoshima_risa",     tiktok: "equal_love_risa_" },
+      kiara:    { twitter: "saitou_kiara",     instagram: "saito_kiara_",      tiktok: "equal_love_kiara" },
+      maika:    { twitter: "sasaki_maika",     instagram: "maika_sasaki_",     tiktok: "" },
+      hitomi:   { twitter: "takamatsuhitomi",  instagram: "takamatsu__hitomi", tiktok: "" },
+      shoko:    { twitter: "shoko_takiwaki",   instagram: "takiwaki_shoko_",   tiktok: "" },
+      iori:     { twitter: "noguchi_iori",     instagram: "noguchi_iori_",     tiktok: "" },
+      sana:     { twitter: "morohashi_sana",   instagram: "morohashi_sana",    tiktok: "" },
+      anna:     { twitter: "yamamoto_anna_",   instagram: "yamamoto_anna_",    tiktok: "equal_love_anna" },
+
+      hana_o:   { twitter: "ogi_hana_",        instagram: "ogi_hana__",        tiktok: "notequal_me_hana" },
+      kirari:   { twitter: "ochiai_kirari",    instagram: "_ochiaikirari_",    tiktok: "notequal_me_kirari" },
+      moeko:    { twitter: "kanisawa_moeko",   instagram: "kanisawa_moeko_",   tiktok: "notequal_me_moeko" },
+      natsune:  { twitter: "kawaguchi_natsu",  instagram: "kawaguchi__natsune",tiktok: "notequal_me_natsune" },
+      natsumi:  { twitter: "kawanagonatsumi",  instagram: "kawanago__natsumi", tiktok: "notequal_me_natsumi" },
+      momo:     { twitter: "_sakurai_momo_",   instagram: "sakurai_momo_",     tiktok: "notequal_me_momo" },
+      hitomi_s: { twitter: "suzuki_hitomi_",   instagram: "suzuki_hitomi__",   tiktok: "notequal_me_hitomi" },
+      saya:     { twitter: "tanizaki_saya",    instagram: "tanizaki_saya_",    tiktok: "notequal_me_saya" },
+      nanaka:   { twitter: "tomita_nanaka",    instagram: "tomita_nanaka",     tiktok: "notequal_me_nanaka7" },
+      shiori:   { twitter: "nagata_shiori_",   instagram: "nagata__shiori",    tiktok: "notequal_me_shiori" },
+      miyuki:   { twitter: "honda_miyuki_",    instagram: "honda_miyuki__",    tiktok: "notequal_me_miyuki" },
+
+      jurii:    { twitter: "aida_jurii",       instagram: "aida_jurii__",      tiktok: "" },
+      konoa:    { twitter: "amano_konoa",      instagram: "amano_konoa__",     tiktok: "nearlyequal_joy_konoa" },
+      ayumi:    { twitter: "ichihara_ayumi_",  instagram: "ichihara_ayumi_",   tiktok: "" },
+      renn:     { twitter: "esumi_renon",      instagram: "esumi_renon",       tiktok: "" },
+      mitsuki:  { twitter: "oshida_mitsuki",   instagram: "oshida_mitsuki",    tiktok: "nearlyequal_joy_mitsuki" },
+      aoi:      { twitter: "onishi_aoi",       instagram: "onishi_aoi_",       tiktok: "nearlyequal_joy_aoi" },
+      amimi:    { twitter: "ozawa_aimi__",     instagram: "ozawa_aimi_",       tiktok: "nearlyequal_joy_aimi" },
+      mai:      { twitter: "takahashi_mai__",  instagram: "takahashi_mai__",   tiktok: "nearlyequal_joy_mai_" },
+      riko:     { twitter: "fujisawa_riko",    instagram: "fujisawa_riko",     tiktok: "nearlyequal_joy_riko" },
+      yuika:    { twitter: "murayama_yuuka",   instagram: "murayama_yuuka_",   tiktok: "" },
+      kyoka:    { twitter: "yamada_momoka_",   instagram: "yamada_momoka_",    tiktok: "nearlyequal_joy_momoka" },
+      arisu:    { twitter: "yamano_arisu",     instagram: "yamano_arisu_",     tiktok: "nearlyequal_joy_arisu" }
+    };
+
+    // =========================================================================
+    // 4. メンバー別 カラー設定
+    // =========================================================================
+    const memberColors = {
+      emiri:    { mColorName: "薄紫",       pColorName: "白×紫",                     mColors: ["#E8D7FF"], pColors: ["#FFFFFF", "#BE79FF"],            tags: ["purple", "lavender", "white"] },
+      hana:     { mColorName: "オレンジ",   pColorName: "オレンジ×青",               mColors: ["#FFA23A"], pColors: ["#FFA23A", "#3B82F6"],            tags: ["orange", "blue"] },
+      risa:     { mColorName: "水色",       pColorName: "水色×ピンク",               mColors: ["#00bfff"], pColors: ["#00bfff", "#FF7DA0"],            tags: ["blue", "sky", "pink"] },
+      kiara:    { mColorName: "薄ピンク",   pColorName: "薄ピンク",                  mColors: ["#FFCCD5"], pColors: ["#FFCCD5", "#FFCCD5"],            tags: ["pink"] },
+      maika:    { mColorName: "白",         pColorName: "白",                        mColors: ["#FFFFFF"], pColors: ["#FFFFFF", "#FFFFFF"],            tags: ["white"] },
+      hitomi:   { mColorName: "赤",         pColorName: "赤",                        mColors: ["#EF4444"], pColors: ["#EF4444", "#EF4444"],            tags: ["red"] },
+      shoko:    { mColorName: "黄色",       pColorName: "黄色(オレンジ・ピンク)",    mColors: ["#FBBF24"], pColors: ["#FBBF24", "#FFA23A", "#FF7DA0"], tags: ["yellow", "orange", "pink"] },
+      iori:     { mColorName: "紫",         pColorName: "紫(巨峰カラー)",            mColors: ["#BE79FF"], pColors: ["#BE79FF", "#BE79FF"],            tags: ["purple"] },
+      sana:     { mColorName: "緑",         pColorName: "黄緑",                      mColors: ["#10B981"], pColors: ["#7cfc00", "#7cfc00"],            tags: ["green"] },
+      anna:     { mColorName: "青",         pColorName: "黄色×青",                   mColors: ["#3B82F6"], pColors: ["#FBBF24", "#3B82F6"],            tags: ["yellow", "blue"] },
+
+      hana_o:   { mColorName: "青",             pColorName: "青×白",                 mColors: ["#3B82F6"], pColors: ["#3B82F6", "#FFFFFF"],            tags: ["blue", "white"] },
+      kirari:   { mColorName: "黄",             pColorName: "黄×黄",                 mColors: ["#FBBF24"], pColors: ["#FBBF24", "#FBBF24"],            tags: ["yellow"] },
+      moeko:    { mColorName: "赤",             pColorName: "水色×赤",               mColors: ["#EF4444"], pColors: ["#00bfff", "#EF4444"],            tags: ["blue", "sky", "red"] },
+      natsune:  { mColorName: "オレンジ",       pColorName: "オレンジ×白",           mColors: ["#FFA23A"], pColors: ["#FFA23A", "#FFFFFF"],            tags: ["orange", "white"] },
+      natsumi:  { mColorName: "黒",             pColorName: "黒×ミントグリーン",     mColors: ["#1F2937"], pColors: ["#1F2937", "#6EE7B7"],            tags: ["black", "green"] },
+      momo:     { mColorName: "ピンク",         pColorName: "さくら色×もも色",       mColors: ["#FF7DA0"], pColors: ["#FF7DA0", "#FFCCD5"],            tags: ["pink"] },
+      hitomi_s: { mColorName: "薄ピンク",       pColorName: "薄ピンク×薄ピンク",     mColors: ["#FFCCD5"], pColors: ["#FFCCD5", "#FFCCD5"],            tags: ["pink"] },
+      saya:     { mColorName: "白",             pColorName: "ピンク×白",             mColors: ["#FFFFFF"], pColors: ["#FF7DA0", "#FFFFFF"],            tags: ["pink", "white"] },
+      nanaka:   { mColorName: "緑",             pColorName: "黄×緑",                 mColors: ["#10B981"], pColors: ["#FBBF24", "#10B981"],            tags: ["yellow", "green"] },
+      shiori:   { mColorName: "ネイビー",       pColorName: "青×青",                 mColors: ["#000080"], pColors: ["#3B82F6", "#3B82F6"],            tags: ["blue"] },
+      miyuki:   { mColorName: "薄紫",           pColorName: "薄紫×水色",             mColors: ["#E8D7FF"], pColors: ["#E8D7FF", "#00bfff"],            tags: ["purple", "lavender", "blue", "sky"] },
+
+      jurii:    { mColorName: "ボルドー",                 pColorName: "赤×黄",                           mColors: ["#8b0000"], pColors: ["#EF4444", "#ffff00"], tags: ["red"] },
+      konoa:    { mColorName: "薄ピンク",                 pColorName: "薄ピンク×黄色",                   mColors: ["#FFCCD5"], pColors: ["#FFCCD5", "#ffff00"], tags: ["pink"] },
+      ayumi:    { mColorName: "紫",                       pColorName: "紫×紫",                           mColors: ["#BE79FF"], pColors: ["#BE79FF", "#BE79FF"], tags: ["purple"] },
+      renn:     { mColorName: "青",                       pColorName: "青×青",                           mColors: ["#3B82F6"], pColors: ["#3B82F6", "#3B82F6"], tags: ["blue"] },
+      mitsuki:  { mColorName: "水色",                     pColorName: "水色×水色",                       mColors: ["#00bfff"], pColors: ["#00bfff", "#00bfff"], tags: ["blue", "sky"] },
+      aoi:      { mColorName: "白",                       pColorName: "白×白",                           mColors: ["#FFFFFF"], pColors: ["#FFFFFF", "#FFFFFF"], tags: ["white"] },
+      amimi:    { mColorName: "黄色",                     pColorName: "黄×黄",                           mColors: ["#FBBF24"], pColors: ["#FBBF24", "#FBBF24"], tags: ["yellow"] },
+      mai:      { mColorName: "オレンジ",                 pColorName: "オレンジ×サクラピンク",           mColors: ["#FFA23A"], pColors: ["#FFA23A", "#FFCCD5"], tags: ["pink", "orange"] },
+      riko:     { mColorName: "緑",                       pColorName: "緑×白",                           mColors: ["#10B981"], pColors: ["#10B981", "#FFFFFF"], tags: ["green", "white"] },
+      yuika:    { mColorName: "赤",                       pColorName: "赤×赤",                           mColors: ["#EF4444"], pColors: ["#EF4444", "#EF4444"], tags: ["red"] },
+      kyoka:    { mColorName: "ピンク",                   pColorName: "ピンク×薄紫",                     mColors: ["#FF7DA0"], pColors: ["#FF7DA0", "#E8D7FF"], tags: ["pink", "purple"] },
+      arisu:    { mColorName: "アイスエメラルド",         pColorName: "エメラルド×エメラルド",           mColors: ["#A7F3D0"], pColors: ["#A7F3D0", "#A7F3D0"], tags: ["green"] }
+    };
+
+    // =========================================================================
+    // 5. データ統合
+    // =========================================================================
+    const members = memberProfiles.map(profile => ({
+      ...profile,
+      ...(memberIcons[profile.id] || { imageUrl: "", initials: "" }),
+      sns: memberSnsLinks[profile.id] || { twitter: "", instagram: "", tiktok: "" },
+      ...(memberColors[profile.id] || { mColorName: "", pColorName: "", mColors: ["#CBD5E1"], pColors: ["#CBD5E1"], tags: [] })
+    }));
+
     const groupMeta = {
       "equal-love": { 
         name: "＝LOVE", 
-        color: "from-pink-50/60 to-pink-100/30 dark:from-pink-950/20 dark:to-pink-900/10", 
-        border: "border-pink-200 dark:border-pink-900/40", 
-        badge: "bg-pink-100 text-pink-700 dark:bg-pink-900/40 dark:text-pink-300" 
+        color: "from-pink-50/80 via-white to-pink-100/40 dark:from-pink-950/30 dark:via-slate-900 dark:to-pink-900/20", 
+        border: "border-pink-200 dark:border-pink-800/70", 
+        badge: "bg-pink-100 text-pink-800 dark:bg-pink-900/60 dark:text-pink-200 border border-pink-200 dark:border-pink-700/60",
+        accentText: "text-pink-700 dark:text-pink-300"
       },
       "not-equal-me": { 
         name: "≠ME", 
-        color: "from-emerald-50/60 to-emerald-100/30 dark:from-emerald-950/20 dark:to-emerald-900/10", 
-        border: "border-emerald-200 dark:border-emerald-900/40", 
-        badge: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300" 
+        color: "from-emerald-50/80 via-white to-emerald-100/40 dark:from-emerald-950/30 dark:via-slate-900 dark:to-emerald-900/20", 
+        border: "border-emerald-200 dark:border-emerald-800/70", 
+        badge: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-200 border border-emerald-200 dark:border-emerald-700/60",
+        accentText: "text-emerald-700 dark:text-emerald-300"
       },
       "nearly-equal-joy": { 
         name: "≒JOY", 
-        color: "from-yellow-50/60 to-yellow-100/30 dark:from-yellow-950/20 dark:to-yellow-900/10", 
-        border: "border-yellow-200 dark:border-yellow-900/40", 
-        badge: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/40 dark:text-yellow-300" 
+        color: "from-yellow-50/90 via-white to-amber-100/40 dark:from-yellow-950/30 dark:via-slate-900 dark:to-amber-900/20", 
+        border: "border-amber-200 dark:border-amber-800/70", 
+        badge: "bg-amber-100 text-amber-900 dark:bg-amber-900/60 dark:text-amber-200 border border-amber-300 dark:border-amber-700/60",
+        accentText: "text-amber-800 dark:text-amber-300"
       }
     };
 
-    // クイックカラー選択肢 (エラー解決用：グローバルで確実に定義)
     const systemColors = [
-      { id: "all", name: "ALL", class: "bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 text-slate-800 dark:text-slate-200" },
-      { id: "red", name: "赤系", class: "bg-red-500 text-white shadow-sm hover:scale-105" },
-      { id: "pink", name: "ピンク系", class: "bg-pink-400 text-white shadow-sm hover:scale-105" },
-      { id: "blue", name: "青・水色", class: "bg-blue-400 text-white shadow-sm hover:scale-105" },
-      { id: "purple", name: "紫・薄紫", class: "bg-purple-400 text-white shadow-sm hover:scale-105" },
-      { id: "yellow", name: "黄・薄黄", class: "bg-yellow-300 text-slate-800 dark:bg-yellow-400 shadow-sm hover:scale-105" },
-      { id: "orange", name: "オレンジ系", class: "bg-orange-400 text-white shadow-sm hover:scale-105" },
-      { id: "green", name: "緑・エメラルド", class: "bg-emerald-400 text-white shadow-sm hover:scale-105" },
-      { id: "white", name: "白系", class: "bg-white text-slate-700 dark:bg-slate-100 border border-slate-200 dark:border-slate-700 shadow-sm hover:scale-105" },
-      { id: "black", name: "黒系", class: "bg-slate-800 dark:bg-slate-200 text-white dark:text-slate-900 shadow-sm hover:scale-105" }
+      { id: "all", name: "ALL", class: "bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 text-slate-900 dark:text-slate-100 border border-slate-300 dark:border-slate-700" },
+      { id: "red", name: "赤系", class: "bg-red-600 text-white shadow-sm hover:scale-105" },
+      { id: "pink", name: "ピンク系", class: "bg-pink-600 text-white shadow-sm hover:scale-105" },
+      { id: "blue", name: "青・水色", class: "bg-blue-600 text-white shadow-sm hover:scale-105" },
+      { id: "purple", name: "紫・薄紫", class: "bg-purple-600 text-white shadow-sm hover:scale-105" },
+      { id: "yellow", name: "黄・薄黄", class: "bg-yellow-300 text-slate-950 border border-yellow-400 shadow-sm hover:scale-105" },
+      { id: "orange", name: "オレンジ系", class: "bg-orange-600 text-white shadow-sm hover:scale-105" },
+      { id: "green", name: "緑・エメラルド", class: "bg-emerald-600 text-white shadow-sm hover:scale-105" },
+      { id: "white", name: "白系", class: "bg-white text-slate-900 border border-slate-300 shadow-sm hover:scale-105" },
+      { id: "black", name: "黒系", class: "bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-950 border border-slate-700 dark:border-slate-300 shadow-sm hover:scale-105" }
     ];
 
-    // アプリケーションの状態管理
     const state = {
       group: "all",
       colorTag: "all",
@@ -323,8 +429,15 @@
       theme: localStorage.getItem('ikj_theme') || 'light'
     };
 
-    // グループ別の図形を切り分けて構築する関数 (イコラブ＝ハート、ノイミー＝ダイヤ、ニアジョイ＝王冠)
-    function createShapeSvg(id, colors, group, isPinned = false) {
+    function announceToScreenReader(message) {
+      const announcer = document.getElementById('srAnnouncer');
+      if (announcer) {
+        announcer.textContent = '';
+        setTimeout(() => { announcer.textContent = message; }, 50);
+      }
+    }
+
+    function createShapeSvg(id, colors, group, isPinned = false, sizeClass = "w-10 h-10") {
       let gradStr = '';
       const prefix = isPinned ? 'pin-' : '';
       if (colors.length === 1) {
@@ -336,156 +449,115 @@
       }
 
       const isWhite = colors.every(c => c.toUpperCase() === '#FFFFFF');
-      const strokeColor = isWhite ? '#cbd5e1' : '#f1f5f9';
-      const glowVar = colors[0];
+      const strokeColor = isWhite ? '#64748b' : '#cbd5e1';
+      const glowVar = colors[0] === '#FFFFFF' ? '#94a3b8' : colors[0];
+      const gradId = `${prefix}color-grad-${id}-${sizeClass.replace(/\s+/g, '')}`;
 
       let shapePath = '';
-      if (group === 'equal-love') {
-        // ハート型 (＝LOVE)
-        shapePath = `<path d="M16,28.5 C16,28.5 3,20 3,11.5 C3,5.5 7,2.5 11.5,2.5 C14.5,2.5 16,4.5 16,4.5 C16,4.5 17.5,2.5 20.5,2.5 C25,2.5 29,5.5 29,11.5 C29,20 16,28.5 16,28.5 Z" fill="url(#${prefix}color-grad-${id})" stroke="${strokeColor}" stroke-width="1.5" />`;
-      
+      if (group === 'not-equal-me') {
+        shapePath = `
+          <polygon points="8,5 24,5 30,13 16,29 2,13" fill="url(#${gradId})" stroke="${strokeColor}" stroke-width="1.5" stroke-linejoin="round" />
+          <polyline points="2,13 30,13" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1" />
+          <polyline points="8,5 12,13 16,29 20,13 24,5" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1" />
+        `;
+      } else if (group === 'nearly-equal-joy') {
+        shapePath = `
+          <path d="M4,24 L3,10 L10,16 L16,6 L22,16 L29,10 L28,24 Z" fill="url(#${gradId})" stroke="${strokeColor}" stroke-width="1.5" stroke-linejoin="round" />
+          <rect x="4" y="25" width="24" height="3.5" rx="1.5" fill="url(#${gradId})" stroke="${strokeColor}" stroke-width="1.2" />
+          <circle cx="16" cy="4.5" r="1.8" fill="url(#${gradId})" stroke="${strokeColor}" stroke-width="1" />
+        `;
       } else {
-        // デフォルト（ハート）
-        shapePath = `<path d="M16,28.5 C16,28.5 3,20 3,11.5 C3,5.5 7,2.5 11.5,2.5 C14.5,2.5 16,4.5 16,4.5 C16,4.5 17.5,2.5 20.5,2.5 C25,2.5 29,5.5 29,11.5 C29,20 16,28.5 16,28.5 Z" fill="url(#${prefix}color-grad-${id})" stroke="${strokeColor}" stroke-width="1.5" />`;
+        shapePath = `<path d="M16,28.5 C16,28.5 3,20 3,11.5 C3,5.5 7,2.5 11.5,2.5 C14.5,2.5 16,4.5 16,4.5 C16,4.5 17.5,2.5 20.5,2.5 C25,2.5 29,5.5 29,11.5 C29,20 16,28.5 16,28.5 Z" fill="url(#${gradId})" stroke="${strokeColor}" stroke-width="1.5" />`;
       }
 
       return `
-        <svg viewBox="0 0 32 32" class="w-10 h-10 transition-transform duration-300 hover:scale-125 glow-effect" style="--glow-color: ${glowVar}">
-          <defs>
-            <linearGradient id="${prefix}color-grad-${id}" x1="0%" y1="100%" x2="100%" y2="0%">
-              ${gradStr}
-            </linearGradient>
-          </defs>
+        <svg viewBox="0 0 32 32" aria-hidden="true" class="${sizeClass} transition-transform duration-300 glow-effect" style="--glow-color: ${glowVar}">
+          <defs><linearGradient id="${gradId}" x1="0%" y1="100%" x2="100%" y2="0%">${gradStr}</linearGradient></defs>
           ${shapePath}
         </svg>
       `;
     }
 
-    // 単色ペンライトを生成する関数
-    function createSinglePenlightSvg(color, id, index, total, isPinned = false) {
+    function createSinglePenlightSvg(color, id, index, total, isPinned = false, sizeClass = "w-8 h-10") {
       const prefix = isPinned ? 'pin-' : '';
-      const gradId = `${prefix}pen-grad-${id}-${index}`;
+      const gradId = `${prefix}pen-grad-${id}-${index}-${sizeClass.replace(/\s+/g, '')}`;
       const isWhite = color.toUpperCase() === '#FFFFFF';
       
-      // 3D風グラデーション定義
-      let gradHtml = `
+      let gradHtml = isWhite ? `
         <linearGradient id="${gradId}" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="${color}" />
-          <stop offset="35%" stop-color="#FFFFFF" />
-          <stop offset="70%" stop-color="${color}" />
-          <stop offset="100%" stop-color="${color}" />
+          <stop offset="0%" stop-color="#CBD5E1" /><stop offset="50%" stop-color="#FFFFFF" /><stop offset="100%" stop-color="#94A3B8" />
+        </linearGradient>
+      ` : `
+        <linearGradient id="${gradId}" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="${color}" /><stop offset="35%" stop-color="#FFFFFF" /><stop offset="70%" stop-color="${color}" /><stop offset="100%" stop-color="${color}" />
         </linearGradient>
       `;
-      if (isWhite) {
-        gradHtml = `
-          <linearGradient id="${gradId}" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#E2E8F0" />
-            <stop offset="50%" stop-color="#FFFFFF" />
-            <stop offset="100%" stop-color="#CBD5E1" />
-          </linearGradient>
-        `;
-      }
 
-      const strokeColor = isWhite ? '#cbd5e1' : '#f8fafc';
-      
-      // 複数ある場合にバルログ持ち風に重ね合わせるための角度と位置計算
+      const strokeColor = isWhite ? '#64748b' : '#cbd5e1';
       let transformStyle = '';
       let marginStyle = '';
       if (total > 1) {
-        const angle = -15 + (index * (30 / (total - 1)));
-        const tx = -6 + (index * 6);
+        const angle = -14 + (index * (28 / (total - 1)));
+        const tx = -3 + (index * 3);
         transformStyle = `transform: rotate(${angle}deg) translateX(${tx}px);`;
-        marginStyle = index > 0 ? 'margin-left: -18px;' : '';
+        marginStyle = index > 0 ? 'margin-left: -14px;' : '';
       }
 
-      const glowColor = color === '#FFFFFF' ? '#e2e8f0' : color;
+      const glowColor = color === '#FFFFFF' ? '#94a3b8' : color;
 
       return `
-        <svg viewBox="0 0 40 52" class="w-9 h-11 transition-all duration-300 hover:scale-110 hover:z-20 glow-effect" style="--glow-color: ${glowColor}; ${transformStyle} ${marginStyle} z-index: ${index + 1}; position: relative;">
-          <defs>
-            ${gradHtml}
-          </defs>
-          <!-- 持ち手 -->
-          <path d="M18,34 L22,34 L23,47 A3,3 0 0,1 17,47 Z" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1.2"/>
-          <rect x="18" y="36" width="4" height="2" rx="0.5" fill="#94a3b8"/>
-          <!-- 発光部 -->
-          <rect x="13" y="6" width="14" height="27" rx="7" fill="url(#${gradId})" stroke="${strokeColor}" stroke-width="1" />
-          <!-- キャップ -->
-          <rect x="12" y="32" width="16" height="2.5" fill="#cbd5e1" rx="0.5"/>
+        <svg viewBox="0 0 40 52" aria-hidden="true" class="${sizeClass} transition-all duration-300 glow-effect" style="--glow-color: ${glowColor}; ${transformStyle} ${marginStyle} z-index: ${index + 1}; position: relative;">
+          <defs>${gradHtml}</defs>
+          <path d="M18,34 L22,34 L23,47 A3,3 0 0,1 17,47 Z" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.2"/>
+          <rect x="18" y="36" width="4" height="2" rx="0.5" fill="#64748b"/>
+          <rect x="13" y="6" width="14" height="27" rx="7" fill="url(#${gradId})" stroke="${strokeColor}" stroke-width="1.2" />
+          <rect x="12" y="32" width="16" height="2.5" fill="#94a3b8" rx="0.5"/>
         </svg>
       `;
     }
 
-    // 各メンバーのペンライト群(本数分)を描画するラッパー
-    function createPenlightsHtml(pColors, id, isPinned = false) {
-      let html = '<div class="flex items-center relative h-12 pr-2">';
+    function createPenlightsHtml(pColors, id, isPinned = false, sizeClass = "w-8 h-10") {
+      let html = '<div class="flex items-center justify-center relative">';
       pColors.forEach((color, index) => {
-        html += createSinglePenlightSvg(color, id, index, pColors.length, isPinned);
+        html += createSinglePenlightSvg(color, id, index, pColors.length, isPinned, sizeClass);
       });
       html += '</div>';
       return html;
     }
 
-    // 各アイドルのSNSリンクを生成するヘルパー関数 (インラインSVG使用)
-    function createSnsButtonsHtml(sns) {
+    function createSnsButtonsHtml(member) {
+      const sns = member.sns;
       if (!sns) return '';
-      let html = '<div class="flex items-center gap-2 mt-2">';
-      
-      // X (旧Twitter)
+      let html = '<div class="flex items-center gap-1.5 mt-2">';
       if (sns.twitter) {
-        html += `
-          <a href="https://x.com/${sns.twitter}" target="_blank" rel="noopener noreferrer" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black flex items-center justify-center transition-all duration-200" title="X (Twitter)">
-            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-            </svg>
-          </a>
-        `;
+        html += `<a href="https://x.com/${sns.twitter}" target="_blank" rel="noopener noreferrer" aria-label="${member.name}のX" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-black hover:text-white flex items-center justify-center transition-all shadow-2xs"><svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>`;
       }
-      
-      // Instagram
       if (sns.instagram) {
-        html += `
-          <a href="https://instagram.com/${sns.instagram}" target="_blank" rel="noopener noreferrer" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-gradient-to-tr hover:from-yellow-500 hover:via-pink-500 hover:to-purple-600 hover:text-white flex items-center justify-center transition-all duration-200" title="Instagram">
-            <svg class="w-3.5 h-3.5 stroke-current fill-none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-            </svg>
-          </a>
-        `;
+        html += `<a href="https://instagram.com/${sns.instagram}" target="_blank" rel="noopener noreferrer" aria-label="${member.name}のInstagram" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-gradient-to-tr hover:from-yellow-500 hover:via-pink-500 hover:to-purple-600 hover:text-white flex items-center justify-center transition-all shadow-2xs"><svg class="w-3.5 h-3.5 stroke-current fill-none" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>`;
       }
-
-      // TikTok
       if (sns.tiktok) {
-        html += `
-          <a href="https://www.tiktok.com/@${sns.tiktok}" target="_blank" rel="noopener noreferrer" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-black hover:text-[#25f4ee] flex items-center justify-center transition-all duration-200" title="TikTok">
-            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-              <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.01 1.62 4.17.94 1.09 2.27 1.8 3.71 1.95v3.91c-1.57-.16-3.05-.79-4.22-1.85-.2-.17-.39-.36-.56-.56-.06.74-.04 1.48-.04 2.22 0 3.23-.74 6.32-3.12 8.3-2.11 1.81-5.11 2.28-7.66 1.34-2.82-1.01-4.79-3.79-4.83-6.83-.07-3.41 2.31-6.65 5.67-7.23.97-.18 1.97-.18 2.94.02v3.95c-.86-.25-1.83-.16-2.61.35-.99.62-1.39 1.93-1 3 .36 1.05 1.51 1.7 2.61 1.47 1-.16 1.78-.99 1.83-2V.02z"/>
-            </svg>
-          </a>
-        `;
+        html += `<a href="https://www.tiktok.com/@${sns.tiktok}" target="_blank" rel="noopener noreferrer" aria-label="${member.name}のTikTok" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-black hover:text-[#25f4ee] flex items-center justify-center transition-all shadow-2xs"><svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.01 1.62 4.17.94 1.09 2.27 1.8 3.71 1.95v3.91c-1.57-.16-3.05-.79-4.22-1.85-.2-.17-.39-.36-.56-.56-.06.74-.04 1.48-.04 2.22 0 3.23-.74 6.32-3.12 8.3-2.11 1.81-5.11 2.28-7.66 1.34-2.82-1.01-4.79-3.79-4.83-6.83-.07-3.41 2.31-6.65 5.67-7.23.97-.18 1.97-.18 2.94.02v3.95c-.86-.25-1.83-.16-2.61.35-.99.62-1.39 1.93-1 3 .36 1.05 1.51 1.7 2.61 1.47 1-.16 1.78-.99 1.83-2V.02z"/></svg></a>`;
       }
-      
       html += '</div>';
       return html;
     }
 
-    // お気に入りの登録・解除
     function toggleFavorite(id, event) {
       if (event) event.stopPropagation();
+      const member = members.find(m => m.id === id);
+      const memberName = member ? member.name : 'メンバー';
       const index = state.favorites.indexOf(id);
       if (index > -1) {
         state.favorites.splice(index, 1);
-        showToast("お気に入りから削除しました", "★");
+        showToast(`${memberName}をお気に入りから解除しました`, "☆");
       } else {
         state.favorites.push(id);
-        showToast("お気に入りに登録しました！", "💖");
+        showToast(`${memberName}をお気に入りに登録しました！`, "💖");
       }
       localStorage.setItem('ikj_favorites', JSON.stringify(state.favorites));
       renderGrid();
     }
 
-    // ダークモード切り替え
     function toggleDarkMode() {
       const html = document.documentElement;
       if (html.classList.contains('dark')) {
@@ -493,16 +565,17 @@
         state.theme = 'light';
         document.getElementById('themeIconMobile').innerText = '🌙';
         document.getElementById('themeIconPC').innerText = '🌙';
+        announceToScreenReader('ライトモードに切り替えました');
       } else {
         html.classList.add('dark');
         state.theme = 'dark';
         document.getElementById('themeIconMobile').innerText = '☀️';
         document.getElementById('themeIconPC').innerText = '☀️';
+        announceToScreenReader('ダークモードに切り替えました');
       }
       localStorage.setItem('ikj_theme', state.theme);
     }
 
-    // 初期テーマのロード
     function loadTheme() {
       if (state.theme === 'dark') {
         document.documentElement.classList.add('dark');
@@ -515,35 +588,38 @@
       }
     }
 
-    // クイックお気に入りフィルター
     function toggleFavoritesOnly() {
       state.favoritesOnly = !state.favoritesOnly;
       const btn = document.getElementById("favToggleBtn");
       const icon = document.getElementById("favToggleIcon");
+      btn.setAttribute("aria-pressed", String(state.favoritesOnly));
       if (state.favoritesOnly) {
-        btn.classList.add("bg-pink-500", "text-white", "border-pink-500", "hover:bg-pink-600");
-        btn.classList.remove("bg-white", "dark:bg-slate-900", "text-slate-500", "dark:text-slate-400");
+        btn.classList.add("bg-pink-600", "text-white", "border-pink-600", "hover:bg-pink-700");
+        btn.classList.remove("bg-white", "dark:bg-slate-900", "text-slate-800", "dark:text-slate-200");
+        icon.classList.remove("text-pink-600", "dark:text-pink-400");
         icon.innerText = "★";
       } else {
-        btn.classList.remove("bg-pink-500", "text-white", "border-pink-500", "hover:bg-pink-600");
-        btn.classList.add("bg-white", "dark:bg-slate-900", "text-slate-500", "dark:text-slate-400");
+        btn.classList.remove("bg-pink-600", "text-white", "border-pink-600", "hover:bg-pink-700");
+        btn.classList.add("bg-white", "dark:bg-slate-900", "text-slate-800", "dark:text-slate-200");
+        icon.classList.add("text-pink-600", "dark:text-pink-400");
         icon.innerText = "☆";
       }
       renderGrid();
     }
 
-    // クイックカラーフィルター構築
     function renderColorFilters() {
       const container = document.getElementById("colorFilterContainer");
       container.innerHTML = systemColors.map(color => {
         const isActive = state.colorTag === color.id;
         const activeClass = isActive 
-          ? 'ring-2 ring-offset-2 ring-pink-500 dark:ring-offset-slate-950 scale-105 font-black z-10' 
-          : 'opacity-70 hover:opacity-100 scale-100';
+          ? 'ring-2 ring-offset-2 ring-pink-600 dark:ring-pink-400 dark:ring-offset-slate-950 scale-105 font-black z-10' 
+          : 'opacity-90 hover:opacity-100 scale-100';
         return `
           <button 
+            type="button"
+            aria-pressed="${isActive}"
             onclick="filterColor('${color.id}')"
-            class="px-3.5 py-1.5 rounded-full text-[11px] font-bold transition-all duration-200 ${color.class} ${activeClass}"
+            class="min-h-[40px] px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 ${color.class} ${activeClass}"
           >
             ${color.name}
           </button>
@@ -551,99 +627,140 @@
       }).join('');
     }
 
-    // カードテンプレート生成 (ファンネーム＆タグが上部、カラーが横並び)
+    // =========================================================================
+    // スタイリッシュ＆カードに全情報収約型テンプレート
+    // =========================================================================
     function createMemberCard(member, isPinned = false) {
       const meta = groupMeta[member.group];
-      const shapeSvg = createShapeSvg(member.id, member.mColors, member.group, isPinned);
-      const penlightsHtml = createPenlightsHtml(member.pColors, member.id, isPinned);
-      const snsHtml = createSnsButtonsHtml(member.sns);
+      const shapeSvg = createShapeSvg(member.id, member.mColors, member.group, isPinned, "w-10 h-10");
+      const penlightsHtml = createPenlightsHtml(member.pColors, member.id, isPinned, "w-8 h-10");
+      const snsHtml = createSnsButtonsHtml(member);
       const isFav = state.favorites.includes(member.id);
       
-      // メンバータグの生成
       const tagsHtml = (member.memberTags || []).map(t => 
-        `<span class="text-[9px] font-medium px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">#${t}</span>`
+        `<span class="inline-block text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">#${t}</span>`
       ).join('');
 
+      const roleBadge = member.role 
+        ? `<span class="inline-flex items-center gap-1 text-[11px] font-black px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-900/60 text-amber-900 dark:text-amber-200 border border-amber-300 dark:border-amber-700/70">👑 ${member.role}</span>` 
+        : '';
+      const nicknameBadge = member.nickname 
+        ? `<span class="inline-flex items-center text-[11px] font-bold px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">愛称: ${member.nickname}</span>` 
+        : '';
+
       return `
-        <div class="bg-gradient-to-br ${meta.color} bg-white dark:bg-slate-900/40 rounded-2xl border ${meta.border} p-5 shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-full min-h-[300px] group">
+        <article class="bg-gradient-to-br ${meta.color} bg-white dark:bg-slate-900 rounded-3xl border ${meta.border} p-5 shadow-sm hover:shadow-md transition-all duration-300 relative flex flex-col justify-between h-full group">
           
           <!-- お気に入り★ & グループバッジ -->
-          <div class="absolute top-3.5 right-3.5 flex items-center gap-1.5 z-10">
-            <button onclick="toggleFavorite('${member.id}', event)" class="w-8 h-8 flex items-center justify-center rounded-full bg-white/80 dark:bg-slate-800/80 shadow-xs text-sm hover:scale-110 active:scale-[0.9] transition-all text-pink-500" title="お気に入り">
+          <div class="absolute top-4 right-4 flex items-center gap-2 z-10">
+            <button 
+              type="button"
+              aria-pressed="${isFav}"
+              aria-label="${isFav ? member.name + 'をお気に入りから解除' : member.name + 'をお気に入りに登録'}"
+              onclick="toggleFavorite('${member.id}', event)" 
+              class="w-10 h-10 flex items-center justify-center rounded-full bg-white/95 dark:bg-slate-800/95 border border-slate-300 dark:border-slate-700 shadow-xs text-base hover:scale-105 active:scale-95 transition-all text-pink-600 dark:text-pink-400" 
+              title="${isFav ? 'お気に入り解除' : 'お気に入り登録'}"
+            >
               ${isFav ? '★' : '☆'}
             </button>
-            <span class="text-[9px] font-black tracking-wider ${meta.badge} px-2.5 py-1 rounded-full uppercase">
+            <span class="text-[11px] font-black tracking-wider ${meta.badge} px-2.5 py-1 rounded-full uppercase shadow-2xs">
               ${meta.name}
             </span>
           </div>
 
-          <!-- メンバーヘッダー (丸アバター画像 & ローマ字ふりがな & 名前 & SNSボタン) -->
-          <div class="flex items-start gap-3">
-            <img 
-              src="${member.imageUrl}" 
-              alt="${member.name}" 
-              onerror="this.src='https://placehold.co/150x150/cbd5e1/1e293b?text=${member.initials}'"
-              class="w-12 h-12 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm flex-shrink-0"
-            />
-            <div class="min-w-0 pr-16">
-              <span class="text-[10px] text-slate-400 dark:text-slate-500 font-bold block leading-tight tracking-wide font-mono uppercase">${member.kana}</span>
-              <h3 class="text-base md:text-lg font-bold text-slate-800 dark:text-slate-100 tracking-wide mt-0.5 truncate">${member.name}</h3>
-              ${snsHtml}
-            </div>
-          </div>
-
-          <!-- ファンネーム＆メンバータグセクション -->
-          <div class="mt-4 space-y-2">
-            <!-- 推し名/ファンネーム -->
-            <div class="flex items-center gap-2">
-              <span class="text-[9px] font-black tracking-wide text-slate-400 dark:text-slate-500 uppercase flex-shrink-0">ファンネーム:</span>
-              <span class="text-xs font-bold text-slate-700 dark:text-slate-300 truncate">${member.fanName || '未設定'}</span>
-			  <span class="text-xs font-bold text-slate-700 dark:text-slate-300 truncate">${tagsHtml}</span>
-            </div>
-          </div>
-
-          <!-- カラー情報エリア (横並びに綺麗に配置) -->
-          <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800/80 grid grid-cols-2 gap-3">
-            
-            <!-- メンバーカラー -->
-            <div class="flex items-center gap-2 p-1.5 rounded-xl border border-slate-100/50 dark:border-slate-800/50">
-              <div class="flex-shrink-0">
-                ${shapeSvg}
+          <div>
+            <!-- ヘッダー（画像＋名前＋SNS） -->
+            <div class="flex items-start gap-3 pr-24">
+              <img 
+                src="${member.imageUrl}" 
+                alt="${member.name}" 
+                loading="lazy"
+                onerror="this.src='https://placehold.co/150x150/cbd5e1/1e293b?text=${member.initials}'"
+                class="w-14 h-14 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm flex-shrink-0"
+              />
+              <div class="min-w-0">
+                <span class="text-[10px] text-slate-500 dark:text-slate-400 font-bold block leading-tight tracking-wider font-mono uppercase">${member.kana}</span>
+                <h3 class="text-base font-black text-slate-900 dark:text-white tracking-wide mt-0.5 leading-snug truncate">${member.name}</h3>
+                ${snsHtml}
               </div>
-              <div class="min-w-0 flex-1">
-                <span class="text-[8px] text-slate-400 dark:text-slate-500 font-black block tracking-wider uppercase leading-none">MEMBER</span>
-                <span class="text-[11px] font-bold text-slate-700 dark:text-slate-300 mt-1 block break-all leading-tight">
+            </div>
+
+            <!-- リーダー・愛称バッジ -->
+            ${(roleBadge || nicknameBadge) ? `
+              <div class="flex flex-wrap items-center gap-1.5 mt-3">
+                ${roleBadge}
+                ${nicknameBadge}
+              </div>
+            ` : ''}
+
+            <!-- 基本プロフィールスペック -->
+            <div class="mt-3 grid grid-cols-2 gap-1.5 text-xs bg-white/80 dark:bg-slate-800/60 rounded-2xl p-2.5 border border-slate-200/70 dark:border-slate-700/70">
+              <div class="flex items-center gap-1 text-slate-700 dark:text-slate-300 truncate">
+                <span class="text-xs" aria-hidden="true">🎂</span>
+                <span class="font-medium">${member.birthday}</span>
+              </div>
+              <div class="flex items-center gap-1 text-slate-700 dark:text-slate-300 truncate">
+                <span class="text-xs" aria-hidden="true">📍</span>
+                <span class="font-medium">${member.birthplace}</span>
+              </div>
+              <div class="flex items-center gap-1 text-slate-700 dark:text-slate-300 truncate">
+                <span class="text-xs" aria-hidden="true">🩸</span>
+                <span class="font-medium">${member.bloodType || '非公開'} / ${member.zodiac}</span>
+              </div>
+              <div class="flex items-center gap-1 text-slate-700 dark:text-slate-300 truncate">
+                <span class="text-xs" aria-hidden="true">📏</span>
+                <span class="font-medium">${member.height}</span>
+              </div>
+            </div>
+
+            <!-- パーソナル情報（趣味・特技・資格） -->
+            ${(member.hobby || member.skill || member.qualification) ? `
+              <div class="mt-3 space-y-1.5 text-xs bg-slate-50/70 dark:bg-slate-800/40 rounded-2xl p-3 border border-slate-200/50 dark:border-slate-800">
+                ${member.hobby ? `<p class="text-slate-700 dark:text-slate-300 leading-relaxed"><strong class="text-pink-600 dark:text-pink-400 font-bold mr-1">趣味:</strong>${member.hobby}</p>` : ''}
+                ${member.skill ? `<p class="text-slate-700 dark:text-slate-300 leading-relaxed"><strong class="text-emerald-600 dark:text-emerald-400 font-bold mr-1">特技:</strong>${member.skill}</p>` : ''}
+                ${member.qualification ? `<p class="text-slate-700 dark:text-slate-300 leading-relaxed"><strong class="text-amber-600 dark:text-amber-400 font-bold mr-1">資格:</strong>${member.qualification}</p>` : ''}
+              </div>
+            ` : ''}
+
+            <!-- ファンネーム＆ハッシュタグ -->
+            ${(member.fanName || tagsHtml) ? `
+              <div class="mt-2.5 space-y-1">
+                ${member.fanName ? `<p class="text-xs text-slate-600 dark:text-slate-400"><strong class="text-slate-800 dark:text-slate-200 mr-1">ファンネーム:</strong>${member.fanName}</p>` : ''}
+                ${tagsHtml ? `<div class="flex flex-wrap gap-1 mt-1">${tagsHtml}</div>` : ''}
+              </div>
+            ` : ''}
+          </div>
+
+          <!-- 下部：カラー情報エリア（改行なし・文字小さめ最適化） -->
+          <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800">
+            <div class="grid grid-cols-2 gap-2">
+              
+              <!-- メンバーカラー -->
+              <div class="flex flex-col items-center justify-center text-center p-2 rounded-2xl bg-white/90 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
+                <span class="text-[9px] text-slate-500 dark:text-slate-400 font-black tracking-wider uppercase mb-0.5">MEMBER</span>
+                <div class="h-10 flex items-center justify-center">${shapeSvg}</div>
+                <span class="text-[11px] font-black text-slate-900 dark:text-white mt-1 block whitespace-nowrap truncate max-w-full">
                   ${member.mColorName}
                 </span>
               </div>
-            </div>
 
-            <!-- ペンライトカラー (クリックでコピー) -->
-            <div 
-              class="flex items-center gap-2 p-1.5 rounded-xl  border border-slate-100/50 dark:border-slate-800/50 cursor-pointer hover:bg-slate-100/60 dark:hover:bg-slate-800/40 transition-colors duration-150"
-              onclick="copyToClipboard('${member.pColorName}', '${member.name}')"
-              title="ペンライト設定をコピー"
-            >
-              <div class="flex-shrink-0 scale-95 origin-left">
-                ${penlightsHtml}
-              </div>
-              <div class="min-w-0 flex-1">
-                <span class="text-[8px] text-slate-400 dark:text-slate-500 font-black flex items-center gap-1 tracking-wider uppercase leading-none">
-                  PENLIGHT <span class="text-[9px] text-slate-300 dark:text-slate-600"></span>
-                </span>
-                <span class="text-[11px] font-bold text-slate-700 dark:text-slate-300 mt-1 block break-all leading-tight">
+              <!-- ペンライトカラー（イラスト下・改行無し小さめ） -->
+              <div class="flex flex-col items-center justify-center text-center p-2 rounded-2xl bg-white/90 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
+                <span class="text-[9px] text-slate-500 dark:text-slate-400 font-black tracking-wider uppercase mb-0.5">PENLIGHT</span>
+                <div class="h-10 flex items-center justify-center">${penlightsHtml}</div>
+                <span class="text-[10px] font-bold text-slate-700 dark:text-slate-200 mt-1 block whitespace-nowrap truncate max-w-full" title="${member.pColorName}">
                   ${member.pColorName}
                 </span>
               </div>
-            </div>
 
+            </div>
           </div>
 
-        </div>
+        </article>
       `;
     }
 
-    // データ描画エンジン
+    // グリッド描画エンジン
     function renderGrid() {
       const grid = document.getElementById("memberGrid");
       const pinnedGrid = document.getElementById("pinnedGrid");
@@ -651,24 +768,22 @@
       const noResults = document.getElementById("noResults");
       const resultCount = document.getElementById("resultCount");
       
-      // 各フィルターを適用して抽出
       const filtered = members.filter(member => {
-        // グループ
         if (state.group !== "all" && member.group !== state.group) return false;
-        // カラー系統タグ
         if (state.colorTag !== "all" && !member.tags.includes(state.colorTag)) return false;
-        // お気に入り限定
         if (state.favoritesOnly && !state.favorites.includes(member.id)) return false;
-        // 検索クエリ
+        
         if (state.searchQuery) {
           const query = state.searchQuery.toLowerCase().trim();
-          const matchName = member.name.toLowerCase().includes(query);
-          const matchKana = member.kana.toLowerCase().includes(query);
-          const matchColor = member.mColorName.toLowerCase().includes(query) || member.pColorName.toLowerCase().includes(query);
-          const matchFanName = member.fanName ? member.fanName.toLowerCase().includes(query) : false;
-          const matchTags = member.memberTags ? member.memberTags.some(t => t.toLowerCase().includes(query)) : false;
-          
-          if (!matchName && !matchKana && !matchColor && !matchFanName && !matchTags) return false;
+          const searchableFields = [
+            member.name, member.kana, member.nickname, member.role,
+            member.mColorName, member.pColorName, member.fanName,
+            member.birthplace, member.bloodType, member.zodiac, member.birthday,
+            member.hobby, member.skill, member.qualification,
+            ...(member.memberTags || [])
+          ];
+          const isMatch = searchableFields.some(field => field && field.toLowerCase().includes(query));
+          if (!isMatch) return false;
         }
         return true;
       });
@@ -684,7 +799,6 @@
 
       noResults.classList.add("hidden");
 
-      // ピン留め（お気に入り）構築
       const favMembers = filtered.filter(m => state.favorites.includes(m.id));
       if (favMembers.length > 0 && !state.favoritesOnly) {
         pinnedSection.classList.remove("hidden");
@@ -693,54 +807,54 @@
         pinnedSection.classList.add("hidden");
       }
 
-      // メインリストのレンダリング
       grid.innerHTML = filtered.map(m => createMemberCard(m, false)).join('');
     }
 
-    // グループフィルター切り替え
     function filterGroup(groupName) {
       state.group = groupName;
-      const tabs = ['all', 'equal-love', 'not-equal-me', 'nearly-equal-joy'];
-      tabs.forEach(tabId => {
+      ['all', 'equal-love', 'not-equal-me', 'nearly-equal-joy'].forEach(tabId => {
         const tab = document.getElementById(`tab-${tabId}`);
-        if (tabId === groupName) {
-          if (tabId === 'all') {
-            tab.className = "flex-1 py-2 text-xs md:text-sm font-bold rounded-xl transition-all duration-300 bg-white dark:bg-slate-800 text-slate-800 dark:text-white shadow-sm";
-          } else if (tabId === 'equal-love') {
-            // ＝LOVE: ピンク
-            tab.className = "flex-1 py-2 text-xs md:text-sm font-bold rounded-xl transition-all duration-300 bg-pink-500 text-white shadow-sm";
-          } else if (tabId === 'not-equal-me') {
-            // ≠ME: エメラルドグリーン
-            tab.className = "flex-1 py-2 text-xs md:text-sm font-bold rounded-xl transition-all duration-300 bg-emerald-500 text-white shadow-sm";
-          } else if (tabId === 'nearly-equal-joy') {
-            // ≒JOY: イエロー
-            tab.className = "flex-1 py-2 text-xs md:text-sm font-bold rounded-xl transition-all duration-300 bg-yellow-400 text-slate-900 shadow-sm";
-          }
+        const isSelected = tabId === groupName;
+        tab.setAttribute('aria-selected', String(isSelected));
+        if (isSelected) {
+          if (tabId === 'all') tab.className = "min-h-[44px] py-2 px-1 text-xs sm:text-sm font-black rounded-xl bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm";
+          else if (tabId === 'equal-love') tab.className = "min-h-[44px] py-2 px-1 text-xs sm:text-sm font-black rounded-xl bg-pink-600 text-white shadow-sm";
+          else if (tabId === 'not-equal-me') tab.className = "min-h-[44px] py-2 px-1 text-xs sm:text-sm font-black rounded-xl bg-emerald-600 text-white shadow-sm";
+          else if (tabId === 'nearly-equal-joy') tab.className = "min-h-[44px] py-2 px-1 text-xs sm:text-sm font-black rounded-xl bg-yellow-300 text-slate-950 shadow-sm";
         } else {
-          tab.className = "flex-1 py-2 text-xs md:text-sm font-bold rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all duration-300";
+          tab.className = "min-h-[44px] py-2 px-1 text-xs sm:text-sm font-black rounded-xl text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white";
         }
       });
       renderGrid();
     }
 
-    // 色分類フィルター
     function filterColor(colorId) {
       state.colorTag = colorId;
       renderColorFilters();
       renderGrid();
     }
 
-    // 全てのフィルターをクリア
+    function clearSearch() {
+      state.searchQuery = "";
+      const input = document.getElementById("searchInput");
+      input.value = "";
+      document.getElementById("clearSearchBtn").classList.add("hidden");
+      renderGrid();
+      input.focus();
+    }
+
     function resetFilters() {
       state.group = "all";
       state.colorTag = "all";
       state.searchQuery = "";
       state.favoritesOnly = false;
       document.getElementById("searchInput").value = "";
+      document.getElementById("clearSearchBtn").classList.add("hidden");
       
       const favBtn = document.getElementById("favToggleBtn");
-      favBtn.classList.remove("bg-pink-500", "text-white", "border-pink-500");
-      favBtn.classList.add("bg-white", "dark:bg-slate-900", "text-slate-500");
+      favBtn.setAttribute("aria-pressed", "false");
+      favBtn.classList.remove("bg-pink-600", "text-white", "border-pink-600");
+      favBtn.classList.add("bg-white", "dark:bg-slate-900", "text-slate-800", "dark:text-slate-200");
       document.getElementById("favToggleIcon").innerText = "☆";
 
       filterGroup("all");
@@ -748,104 +862,44 @@
       renderGrid();
     }
 
-    // クリップボードコピー処理
-    function copyToClipboard(text, name) {
-      const copyViaInput = (val) => {
-        const tempInput = document.createElement("input");
-        tempInput.style.position = "absolute";
-        tempInput.style.left = "-9999px";
-        tempInput.value = val;
-        document.body.appendChild(tempInput);
-        tempInput.select();
-        const success = document.execCommand("copy");
-        document.body.removeChild(tempInput);
-        return success;
-      };
-
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(() => {
-          showToast(`${name}のペンライト「${text}」をコピーしました！`);
-        }).catch(() => {
-          if(copyViaInput(text)) {
-            showToast(`${name}のペンライト「${text}」をコピーしました！`);
-          }
-        });
-      } else {
-        if(copyViaInput(text)) {
-          showToast(`${name}のペンライト「${text}」をコピーしました！`);
-        }
-      }
-    }
-
-    // トースト通知のポップアップ
-    function showToast(message, icon = "📋") {
+    let toastTimer = null;
+    function showToast(message, icon = "💖") {
       const toast = document.getElementById("toast");
-      const toastMsg = document.getElementById("toastMsg");
-      const toastIcon = document.getElementById("toastIcon");
-      
-      toastMsg.innerText = message;
-      toastIcon.innerText = icon;
-      
+      document.getElementById("toastMsg").innerText = message;
+      document.getElementById("toastIcon").innerText = icon;
       toast.classList.remove("opacity-0", "translate-y-3", "pointer-events-none");
       toast.classList.add("opacity-100", "translate-y-0");
-
-      setTimeout(() => {
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
         toast.classList.remove("opacity-100", "translate-y-0");
         toast.classList.add("opacity-0", "translate-y-3", "pointer-events-none");
-      }, 2000);
+      }, 2200);
     }
 
-    // 検索入力の監視
     document.getElementById("searchInput").addEventListener("input", (e) => {
       state.searchQuery = e.target.value;
+      const clearBtn = document.getElementById("clearSearchBtn");
+      if (state.searchQuery.length > 0) clearBtn.classList.remove("hidden");
+      else clearBtn.classList.add("hidden");
       renderGrid();
     });
 
-    // ページシェア用関数
     function shareOnX() {
       const shareUrl = window.location.href;
-      const shareText = "＝LOVE、≠ME、≒JOYのメンバーカラーとペンライト色がすぐわかる！「イコノイジョイ メンカラ＆ペンライトカラー早見表」✨";
-      const hashtags = "イコノイジョイペンライトカラー早見表";
-      const xUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}&hashtags=${encodeURIComponent(hashtags)}`;
-      window.open(xUrl, '_blank', 'noopener,noreferrer');
+      const shareText = "＝LOVE、≠ME、≒JOYのメンカラ・ペンライト・全プロフィールがすぐわかる早見表！✨";
+      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`, '_blank', 'noopener,noreferrer');
     }
 
     function shareOnLine() {
-      const shareUrl = window.location.href;
-      const lineUrl = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(shareUrl)}`;
-      window.open(lineUrl, '_blank', 'noopener,noreferrer');
+      window.open(`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(window.location.href)}`, '_blank', 'noopener,noreferrer');
     }
 
     function copyPageUrl() {
-      const pageUrl = window.location.href;
-      const copyViaInput = (val) => {
-        const tempInput = document.createElement("input");
-        tempInput.style.position = "absolute";
-        tempInput.style.left = "-9999px";
-        tempInput.value = val;
-        document.body.appendChild(tempInput);
-        tempInput.select();
-        const success = document.execCommand("copy");
-        document.body.removeChild(tempInput);
-        return success;
-      };
-
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(pageUrl).then(() => {
-          showToast("ページのURLをコピーしました！", "🔗");
-        }).catch(() => {
-          if (copyViaInput(pageUrl)) {
-            showToast("ページのURLをコピーしました！", "🔗");
-          }
-        });
-      } else {
-        if (copyViaInput(pageUrl)) {
-          showToast("ページのURLをコピーしました！", "🔗");
-        }
-      }
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        showToast("ページのURLをコピーしました！", "🔗");
+      }).catch(() => {});
     }
 
-    // ページロード時の初期設定
     window.onload = () => {
       loadTheme();
       renderColorFilters();
